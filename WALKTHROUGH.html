@@ -245,7 +245,7 @@
 
         <div class="info">
             <strong>&#x1F6E1;&#xFE0F; Protective Items:</strong><br>
-            Protective items both <strong>PREVENT</strong> curses (if equipped before encountering them - you'll see a description of the item shielding you) and <strong>CURE</strong> curses (if equipped after being cursed). Even at Stage 2 of a curse, equipping the matching protective item will instantly cure you!
+            Protective items both <strong>PREVENT</strong> curses (if equipped before encountering them - you'll see a description of the item shielding you) and <strong>SLOW</strong> curses (if equipped after being cursed). Equipping a protective item will <strong>remove one stage</strong> of the matching curse and <strong>halt</strong> its progression. Unequipping lets the curse resume, and re-equipping halts it again — but the one-stage reduction only happens the first time.
         </div>
 
         <div class="info">
@@ -365,7 +365,7 @@
             <strong>Hidden Area:</strong> Hayloft (Keen Eye 3 auto-discovers, or roll 2d20 vs DC 16). Check each visit!<br>
             <strong>Search:</strong> Get <span class="item">Brass Bell Collar</span> (protects from cow curse)<br>
             <strong>Optional Encounter:</strong> Approach the Shadows (Grit DC 15) - can retry if you fail<br>
-            <strong>Connections:</strong> Milking Station, Pasture
+            <strong>Connections:</strong> Milking Station, Pasture, Chicken Coop
         </div>
 
         <h4>5. Hayloft (Optional but Highly Recommended)</h4>
@@ -403,6 +403,48 @@
             - Must have <code>learnedRitualLocation</code> flag (from Abigail)<br>
             <br>
             <strong>Result:</strong> <span class="emoji">&#x1F389; VICTORY!</span> The curse is broken, all active curses are cured, and you find true love with Abigail!
+        </div>
+
+        <h3>Optional Areas (New!)</h3>
+
+        <h4>Smokehouse (off Farmhouse)</h4>
+        <div class="room-section">
+            <strong>Encounter:</strong> Peer Into the Smoke - <span class="stat">Charm DC 14</span><br>
+            <strong>Failure:</strong> <span class="curse">Ghost Curse Stage 1</span><br>
+            <strong>Search:</strong> <span class="item">Smoked Jerky Pouch</span> (+1 Grit, body slot)<br>
+            <strong>Tip:</strong> Good early source of Grit if you need it for tougher encounters later.
+        </div>
+
+        <h4>Chicken Coop (off Barn)</h4>
+        <div class="room-section">
+            <strong>Requirement:</strong> Must unlock Barn first (need Barn Key)<br>
+            <strong>Encounter:</strong> Investigate the Nesting Boxes - <span class="stat">Charm DC 13</span> (easiest encounter in the game)<br>
+            <strong>Failure:</strong> <span class="curse">Mouse Curse Stage 1</span><br>
+            <strong>Search:</strong> <span class="item">Copper Thimble</span> (+1 Charm, pocket slot) and <span class="curse">Dusty Black Egg</span> (cursed - triggers Mouse Curse!)<br>
+            <strong>Tip:</strong> The Copper Thimble is great for boosting Charm before talking to Abigail.
+        </div>
+
+        <h4>Cornfield (off Pasture)</h4>
+        <div class="room-section">
+            <strong>Encounter:</strong> Push Deeper Into the Rows - <span class="stat">Keen Eye DC 15</span><br>
+            <strong>Failure:</strong> <span class="curse">Scarecrow Curse Stage 1</span><br>
+            <strong>Search:</strong> <span class="item">Tarnished Compass</span> (+1 Keen Eye, pocket slot) and <span class="curse">Straw Poppet</span> (cursed - triggers Scarecrow Curse!)<br>
+            <strong>Connection:</strong> Leads to Grain Silo
+        </div>
+
+        <h4>Grain Silo (off Cornfield)</h4>
+        <div class="room-section">
+            <strong>Encounter:</strong> Confront the Shadow in the Grain - <span class="stat">Grit DC 16</span> (Hard!)<br>
+            <strong>Failure:</strong> <span class="curse">Cow Curse Stage 1</span><br>
+            <strong>Search:</strong> <span class="item">Iron Lantern</span> (+1 Charm, hands slot)<br>
+            <strong>Hidden Area:</strong> Silo Basement (Keen Eye 4 auto-discovers, or roll 2d20 vs DC 17)<br>
+            <strong>Tip:</strong> The spectral bull here is tougher than the barn encounter. Equip Grit-boosting items first!
+        </div>
+
+        <h4>Silo Basement (hidden under Grain Silo)</h4>
+        <div class="room-section">
+            <strong>Search:</strong> <span class="item">Well-Worn Boots</span> (+1 Grit, pocket slot)<br>
+            <strong>Tip:</strong> Another Grit boost for the toughest encounters.
         </div>
 
         <!-- HIDDEN AREAS -->
@@ -447,6 +489,13 @@
                 <td>DC 19</td>
                 <td><span class="item">Salt Circle Amulet</span> (ghost protection), Sturdy Overalls (+1 Grit)</td>
             </tr>
+            <tr>
+                <td><strong class="hidden">Silo Basement</strong></td>
+                <td>Grain Silo</td>
+                <td>Keen Eye 4+</td>
+                <td>DC 17</td>
+                <td><span class="item">Well-Worn Boots</span> (+1 Grit)</td>
+            </tr>
         </table>
 
         <div class="info">
@@ -484,8 +533,9 @@
         <div class="tip">
             <strong>How Protective Items Work:</strong><br>
             1. <strong>Prevention:</strong> If equipped BEFORE an encounter, they block the curse entirely and you'll see a description of the item shielding you<br>
-            2. <strong>Cure:</strong> If equipped AFTER you're cursed, they instantly remove the curse!<br>
-            3. Even if cursed at Stage 2, equipping the right item will cure you immediately
+            2. <strong>Reduction:</strong> If equipped AFTER you're cursed, they remove one stage and halt the curse's progression<br>
+            3. The one-stage reduction only happens the first time — unequipping and re-equipping will halt the curse again but won't remove more stages<br>
+            4. If the curse is at Stage 1, equipping the protective item will cure it completely!
         </div>
         <table>
             <tr>
@@ -552,6 +602,31 @@
                 <td>+1 Charm</td>
                 <td>Hayloft (hidden in Barn)</td>
             </tr>
+            <tr>
+                <td><span class="item">Smoked Jerky Pouch</span></td>
+                <td>+1 Grit</td>
+                <td>Smokehouse</td>
+            </tr>
+            <tr>
+                <td><span class="item">Tarnished Compass</span></td>
+                <td>+1 Keen Eye</td>
+                <td>Cornfield</td>
+            </tr>
+            <tr>
+                <td><span class="item">Iron Lantern</span></td>
+                <td>+1 Charm</td>
+                <td>Grain Silo</td>
+            </tr>
+            <tr>
+                <td><span class="item">Well-Worn Boots</span></td>
+                <td>+1 Grit</td>
+                <td>Silo Basement (hidden in Grain Silo)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Copper Thimble</span></td>
+                <td>+1 Charm</td>
+                <td>Chicken Coop</td>
+            </tr>
         </table>
 
         <h3>&#x2620;&#xFE0F; Cursed Items (Hidden Curses!)</h3>
@@ -589,6 +664,20 @@
                 <td>Bee Hives (search)</td>
                 <td><span class="item">Beekeeper's Smoke Veil</span></td>
             </tr>
+            <tr>
+                <td><span class="curse">Straw Poppet</span></td>
+                <td>Scarecrow Curse Stage 1</td>
+                <td>-1 Charm</td>
+                <td>Cornfield (search)</td>
+                <td><span class="item">Blessed Straw Hat</span></td>
+            </tr>
+            <tr>
+                <td><span class="curse">Dusty Black Egg</span></td>
+                <td>Mouse Curse Stage 1</td>
+                <td>-1 Keen Eye</td>
+                <td>Chicken Coop (search)</td>
+                <td><span class="item">Mouser's Charm</span></td>
+            </tr>
         </table>
 
         <!-- ENDINGS -->
@@ -600,8 +689,10 @@
         <div class="room-section">
             <strong>How to Get Cursed:</strong><br>
             - Pick up <span class="curse">Moldy Cheese Wheel</span> in Garden (hidden curse)<br>
+            - Pick up <span class="curse">Dusty Black Egg</span> in Chicken Coop (hidden curse)<br>
+            - Fail Charm DC 13 check: "Investigate the Nesting Boxes" in Chicken Coop<br>
             <br>
-            <strong>Cure/Prevention:</strong> <span class="item">Mouser's Charm</span> (found in Hayloft) - Equip to instantly cure at ANY stage!<br>
+            <strong>Cure/Prevention:</strong> <span class="item">Mouser's Charm</span> (found in Hayloft) - Equip to reduce one stage and halt progression!<br>
             <br>
             <strong>Progression:</strong><br>
             <strong>Stage 1:</strong> Nose twitches constantly, crave cheese, ears feel pointed (2 rooms to Stage 2)<br>
@@ -615,8 +706,9 @@
         <div class="room-section">
             <strong>How to Get Cursed:</strong><br>
             - Fail Grit DC 15 check: "Approach the Shadows" in Barn<br>
+            - Fail Grit DC 16 check: "Confront the Shadow in the Grain" in Grain Silo<br>
             <br>
-            <strong>Cure/Prevention:</strong> <span class="item">Brass Bell Collar</span> (found in Barn) - Equip to instantly cure at ANY stage!<br>
+            <strong>Cure/Prevention:</strong> <span class="item">Brass Bell Collar</span> (found in Barn) - Equip to reduce one stage and halt progression!<br>
             <br>
             <strong>Progression:</strong><br>
             <strong>Stage 1:</strong> Hands feel heavy, posture shifts (2 rooms to Stage 2)<br>
@@ -632,7 +724,7 @@
             - Fail Keen Eye DC 14 check: "Examine the Hives Closely" in Bee Hives<br>
             - Pick up <span class="curse">Sticky Honeycomb</span> in Bee Hives (hidden curse)<br>
             <br>
-            <strong>Cure/Prevention:</strong> <span class="item">Beekeeper's Smoke Veil</span> (found in Bee Hives) - Equip to instantly cure at ANY stage!<br>
+            <strong>Cure/Prevention:</strong> <span class="item">Beekeeper's Smoke Veil</span> (found in Bee Hives) - Equip to reduce one stage and halt progression!<br>
             <br>
             <strong>Progression:</strong><br>
             <strong>Stage 1:</strong> Persistent buzzing in ears, crave pollen (2 rooms to Stage 2)<br>
@@ -646,8 +738,10 @@
         <div class="room-section">
             <strong>How to Get Cursed:</strong><br>
             - Fail Grit DC 16 check: "Approach the Scarecrow" in Pasture<br>
+            - Fail Keen Eye DC 15 check: "Push Deeper Into the Rows" in Cornfield<br>
+            - Pick up <span class="curse">Straw Poppet</span> in Cornfield (hidden curse)<br>
             <br>
-            <strong>Cure/Prevention:</strong> <span class="item">Blessed Straw Hat</span> (found in Garden) - Equip to instantly cure at ANY stage!<br>
+            <strong>Cure/Prevention:</strong> <span class="item">Blessed Straw Hat</span> (found in Garden) - Equip to reduce one stage and halt progression!<br>
             <br>
             <strong>Progression:</strong><br>
             <strong>Stage 1:</strong> Joints feel stiff like wood, urge to stand still (2 rooms to Stage 2)<br>
@@ -662,9 +756,10 @@
             <strong>How to Get Cursed:</strong><br>
             - Fail Grit DC 15 check: "Investigate the Cold Spot" in Farmhouse<br>
             - Fail Charm DC 12 check: "Speak with Abigail's Spirit" in Milking Station<br>
+            - Fail Charm DC 14 check: "Peer Into the Smoke" in Smokehouse<br>
             - Pick up <span class="curse">Cracked Hand Mirror</span> in Farmhouse (hidden curse)<br>
             <br>
-            <strong>Cure/Prevention:</strong> <span class="item">Salt Circle Amulet</span> (found in Old Well) - Equip to instantly cure at ANY stage!<br>
+            <strong>Cure/Prevention:</strong> <span class="item">Salt Circle Amulet</span> (found in Old Well) - Equip to reduce one stage and halt progression!<br>
             <br>
             <strong>Progression:</strong><br>
             <strong>Stage 1:</strong> Icy chill in bones, feel less solid (2 rooms to Stage 2)<br>
@@ -675,7 +770,7 @@
         </div>
 
         <div class="warning">
-            <strong>&#x26A0;&#xFE0F; Important:</strong> You can have multiple curses active at once! Each progresses independently. If any curse reaches Stage 3, it's game over - and the ending screen will show the specific transformation that claimed you. <strong>However, you can cure any curse at any stage by equipping the matching protective item!</strong> Collect protective items proactively to stay safe.
+            <strong>&#x26A0;&#xFE0F; Important:</strong> You can have multiple curses active at once! Each progresses independently. If all 4 body parts become cursed, it's game over - and the ending screen will show your full transformation. <strong>Equipping the matching protective item will remove one stage and halt progression.</strong> Collect protective items proactively to stay safe.
         </div>
 
         <!-- MAP -->
@@ -694,7 +789,7 @@
             </tr>
             <tr>
                 <td><strong>Farmhouse</strong></td>
-                <td>Garden, Barn</td>
+                <td>Garden, Barn, Smokehouse</td>
                 <td>Root Cellar</td>
                 <td>-</td>
             </tr>
@@ -718,7 +813,7 @@
             </tr>
             <tr>
                 <td><strong>Barn</strong></td>
-                <td>Farmhouse, Milking Station, Pasture</td>
+                <td>Farmhouse, Milking Station, Pasture, Chicken Coop</td>
                 <td>Hayloft</td>
                 <td>Requires Barn Key (stays locked until found!)</td>
             </tr>
@@ -736,7 +831,7 @@
             </tr>
             <tr>
                 <td><strong>Pasture</strong></td>
-                <td>Barn, Garden</td>
+                <td>Barn, Garden, Cornfield</td>
                 <td>Old Well</td>
                 <td>-</td>
             </tr>
@@ -745,6 +840,36 @@
                 <td>Pasture</td>
                 <td>-</td>
                 <td>Must discover hidden area</td>
+            </tr>
+            <tr>
+                <td><strong>Smokehouse</strong></td>
+                <td>Farmhouse</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Cornfield</strong></td>
+                <td>Pasture, Grain Silo</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Grain Silo</strong></td>
+                <td>Cornfield</td>
+                <td>Silo Basement</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Silo Basement</strong></td>
+                <td>Grain Silo</td>
+                <td>-</td>
+                <td>Must discover hidden area</td>
+            </tr>
+            <tr>
+                <td><strong>Chicken Coop</strong></td>
+                <td>Barn</td>
+                <td>-</td>
+                <td>-</td>
             </tr>
         </table>
 
@@ -825,6 +950,38 @@
                 <td>Hard</td>
                 <td>Scarecrow Curse Stage 1</td>
             </tr>
+            <tr>
+                <td>Investigate the Nesting Boxes</td>
+                <td>Chicken Coop</td>
+                <td>Charm</td>
+                <td>13</td>
+                <td>Medium</td>
+                <td>Mouse Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Peer Into the Smoke</td>
+                <td>Smokehouse</td>
+                <td>Charm</td>
+                <td>14</td>
+                <td>Medium</td>
+                <td>Ghost Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Push Deeper Into the Rows</td>
+                <td>Cornfield</td>
+                <td>Keen Eye</td>
+                <td>15</td>
+                <td>Medium</td>
+                <td>Scarecrow Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Confront the Shadow in the Grain</td>
+                <td>Grain Silo</td>
+                <td>Grit</td>
+                <td>16</td>
+                <td>Hard</td>
+                <td>Cow Curse Stage 1</td>
+            </tr>
         </table>
 
         <div class="tip">
@@ -837,6 +994,7 @@
                 <th>Your Stat</th>
                 <th>Modifier</th>
                 <th>DC 12</th>
+                <th>DC 13</th>
                 <th>DC 14</th>
                 <th>DC 15</th>
                 <th>DC 16</th>
@@ -845,6 +1003,7 @@
                 <td>2</td>
                 <td>+0</td>
                 <td>45%</td>
+                <td>40%</td>
                 <td>35%</td>
                 <td>30%</td>
                 <td>25%</td>
@@ -853,6 +1012,7 @@
                 <td>3</td>
                 <td>+1</td>
                 <td>50%</td>
+                <td>45%</td>
                 <td>40%</td>
                 <td>35%</td>
                 <td>30%</td>
@@ -861,6 +1021,7 @@
                 <td>4</td>
                 <td>+2</td>
                 <td>55%</td>
+                <td>50%</td>
                 <td>45%</td>
                 <td>40%</td>
                 <td>35%</td>
@@ -869,6 +1030,7 @@
                 <td>5</td>
                 <td>+3</td>
                 <td>60%</td>
+                <td>55%</td>
                 <td>50%</td>
                 <td>45%</td>
                 <td>40%</td>
@@ -900,15 +1062,16 @@
         <h3>&#x1F6E1;&#xFE0F; If Things Go Wrong</h3>
         <div class="tip">
             <strong>Got cursed? Don't panic!</strong><br>
-            1. Find and equip the matching protective item - it will <strong>CURE YOU INSTANTLY</strong>, even at Stage 2!<br>
+            1. Find and equip the matching protective item - it will <strong>remove one stage and halt the curse</strong>!<br>
             2. Protective items:<br>
             &nbsp;&nbsp;&nbsp;- <span class="curse">Cow Curse</span> &rarr; <span class="item">Brass Bell Collar</span> (Barn)<br>
             &nbsp;&nbsp;&nbsp;- <span class="curse">Bee Curse</span> &rarr; <span class="item">Beekeeper's Smoke Veil</span> (Bee Hives)<br>
             &nbsp;&nbsp;&nbsp;- <span class="curse">Scarecrow Curse</span> &rarr; <span class="item">Blessed Straw Hat</span> (Garden)<br>
             &nbsp;&nbsp;&nbsp;- <span class="curse">Ghost Curse</span> &rarr; <span class="item">Salt Circle Amulet</span> (Old Well)<br>
             &nbsp;&nbsp;&nbsp;- <span class="curse">Mouse Curse</span> &rarr; <span class="item">Mouser's Charm</span> (Hayloft)<br>
-            3. You have 4 room transitions before Stage 3, but the cure works at ANY stage<br>
-            4. Save frequently so you can reload if needed
+            3. The stage reduction only happens the first time you equip the item against that curse<br>
+            4. Keep the item equipped to prevent the curse from advancing further<br>
+            5. Save frequently so you can reload if needed
         </div>
 
         <div class="tip">
@@ -995,7 +1158,7 @@
         </p>
 
         <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #8b6f47;">
-            Created for Cursed Farm Adventure | Last Updated: February 2025
+            Created for Cursed Farm Adventure | Last Updated: February 2026
         </p>
     </div>
 </body>
