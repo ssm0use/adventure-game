@@ -269,10 +269,20 @@
       "amount": 1
     },
     "curseEffect": {
-      "curse": "mouse"
+      "curse": "spider"
     },
     "canEquip": false,
     "canUse": false,
     "warning": "The egg pulses with a faint heartbeat. Nothing good can come of this."
+  },
+  "spidersilkBracelet": {
+    "id": "spidersilkBracelet",
+    "name": "Spidersilk Bracelet",
+    "description": "A delicate bracelet woven from impossibly fine spider silk. It shimmers faintly and feels warm against your skin, as though warding something away.",
+    "type": "protective",
+    "protectsFrom": "spider",
+    "equipSlot": "hands",
+    "canEquip": true,
+    "canUse": false
   }
 }

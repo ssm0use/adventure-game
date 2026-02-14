@@ -487,7 +487,7 @@
       {
         "id": "search_chickencoop",
         "storyKey": "chickencoop_explore",
-        "items": ["copperThimble", "dustyEgg"],
+        "items": ["copperThimble", "dustyEgg", "spidersilkBracelet"],
         "oneTime": true
       }
     ]

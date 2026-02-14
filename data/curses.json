@@ -63,5 +63,18 @@
     },
     "advanceText": "Your body twitches and shrinks. The Mouse Transformation gnaws at you, reducing more of your human form.",
     "overwriteText": "The Mouse Transformation scurries over another curse's claim, small but relentless, replacing it with fur and whiskers."
+  },
+  "spider": {
+    "name": "Spider Transformation",
+    "protectiveItem": "spidersilkBracelet",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your eyes have split into a cluster of eight, gleaming like black pearls across your forehead. Tiny fangs have descended from your upper jaw, dripping with a faintly luminous venom.",
+      "arms": "Two extra pairs of limbs have erupted from your sides, thin and chitinous, ending in sharp, hooked claws. Your original arms have darkened and hardened, covered in coarse bristles.",
+      "body": "Your abdomen has swollen into a bulbous, silk-producing spinneret sac. Dark, glossy chitin plates have replaced the skin across your back, and fine threads of webbing trail from your every movement.",
+      "legs": "Your legs have lengthened and segmented into eight spindly, jointed limbs. They move in an unsettling, skittering rhythm, and sticky silk pads on their tips let you cling to any surface."
+    },
+    "advanceText": "A prickling wave crawls across your skin. The Spider Transformation spins deeper into you, binding more of your body in its web.",
+    "overwriteText": "The Spider Transformation creeps over another curse's hold, wrapping it in silk and claiming the territory with patient, venomous hunger."
   }
 }
