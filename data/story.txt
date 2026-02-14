@@ -179,3 +179,91 @@ The curses have claimed every part of your body. What remains is no longer human
 
 The farm continues its dark existence, waiting for the next unfortunate soul to answer the job posting. Perhaps in another timeline, you made different choices...
 [END]
+
+[smokehouse_entrance]
+The smokehouse is a squat stone building, barely taller than you, with a single heavy door and no windows. Inside, the air is thick with the ghost of old smoke -- not real smoke, but a spectral haze that clings to your skin and stings your eyes. Iron hooks dangle from the ceiling like the fingers of some vast, hidden hand. Slabs of something dark hang from a few of them, though you can't tell if it's ancient meat or something worse. The walls are black with decades of soot, and in the far corner, a stone fire pit sits cold and dead. Despite this, the room feels warm -- too warm -- as if a fire burned here moments ago.
+[END]
+
+[smokehouse_ghost_encounter]
+The haze in the smokehouse thickens without warning, swirling into a dense column of gray. From within the smoke, a figure takes shape -- a young man in work clothes, his face gaunt and hollow-eyed. He opens his mouth and a sound comes out that is half-scream, half-sob, reverberating off the stone walls. This was a farmhand once, someone like you, someone who came here for honest work. His translucent hands reach for you, not with malice but with desperate loneliness. He wants company in the smoke. You need to find the right words, the right tone, before his grief pulls you in...
+[END]
+
+[smokehouse_ghost_success]
+You hold up your hands slowly, keeping your voice low and steady. "Easy now. I see you. I know you're hurting." The words feel inadequate, but it's not the words that matter -- it's the warmth behind them, the genuine sympathy in your voice. The ghostly farmhand hesitates, his hollow eyes searching your face. Then, slowly, the tension drains from his spectral form. He nods once, a gesture of recognition, and dissolves back into the haze. The smoke thins. You can breathe again.
+[END]
+
+[smokehouse_ghost_failure]
+You stumble backward, words catching in your throat. The ghost's wailing intensifies, a sound like wind through a hollow tree, and the smoke rushes at you like a living thing. It fills your lungs, your eyes, your thoughts. For a terrible moment you feel what he feels -- the loneliness of decades, the cold of a body that no longer exists. When the smoke finally releases you, something has changed. Your hands look pale. Too pale. Almost transparent...
+[END]
+
+[smokehouse_explore]
+Behind the fire pit, wedged into a gap between two stones, you find a leather pouch. Inside is strips of jerky, dark and perfectly preserved despite what must be decades of sitting here. You take a tentative bite -- it's incredible. Savory, dense, and warming. Each piece fills you with a stubborn determination, as if the spirit of whoever cured this meat poured their grit into the recipe.
+[END]
+
+[cornfield_entrance]
+Beyond the pasture fence, the corn begins. It shouldn't be this tall -- the stalks tower well over your head, their leaves rasping against each other in a breeze you can't feel. The rows stretch in every direction, straight at first glance but subtly wrong, curving inward like the walls of a maze. The light dims the moment you step between the first stalks, as if the sun itself is reluctant to follow you in here. Something rustles deeper in the field. It could be wind. It could be an animal. But it moves with a slow, deliberate rhythm that sounds almost like footsteps.
+[END]
+
+[cornfield_scarecrow_encounter]
+The corn closes in around you as you push deeper. The stalks lean inward, brushing your shoulders, your face. Dry leaves scratch at your skin like wooden fingers. Then you see it -- or rather, them. Scarecrow figures are lashed to posts throughout the field, one at every junction of the rows. Their burlap heads turn to track you, slow and creaking. The corn itself seems to stiffen, stalks going rigid as fence posts, hemming you in. You need to spot the way out before the field decides to keep you here permanently...
+[END]
+
+[cornfield_scarecrow_success]
+Your sharp eyes catch what others would miss -- a pattern in the scarecrows' positions, a gap in the wall of corn where the stalks are thinner and paler. You bolt for it, ducking under grasping leaves and wooden arms. The field groans around you, stalks cracking and snapping in frustration, but you burst through the thin spot and into a small clearing. The scarecrows sag on their posts behind you, still and lifeless once more.
+[END]
+
+[cornfield_scarecrow_failure]
+The corn closes like a fist. You can't see the sky, can't see the ground, can't see anything but an endless wall of dry stalks pressing against you from every side. Something rough scrapes across your arms -- not corn leaves, but twine. Your joints lock up, stiffening like green wood drying in the sun. When the stalks finally part again, your arms feel wrong. Heavy. Rigid. You look down and see splinters where skin should be...
+[END]
+
+[cornfield_explore]
+Near the base of one of the scarecrow posts, half-buried in the dark soil between the corn rows, you find a collection of objects. A tarnished brass compass catches your eye first -- its needle spins lazily, ignoring north entirely, pointing instead toward... something. And beside it, tangled in the roots of a corn stalk, is a small doll made of straw and corn husks. It has black button eyes. It stares at you.
+[END]
+
+[grainsilo_entrance]
+The grain silo rises from the edge of the cornfield like a sentinel tower, its corrugated metal walls streaked with rust and age. The door hangs half-open on broken hinges. Inside, the air is thick with the smell of ancient grain gone to rot -- sweet and cloying, like something fermenting in the dark. The interior is a tall cylinder of shadow. Old grain still fills the bottom third of the silo, a sea of desiccated wheat and barley that shifts and settles with soft, unsettling whispers. Metal rungs climb one wall, leading to a catwalk high above. And somewhere in the grain, something large is breathing.
+[END]
+
+[grainsilo_cow_encounter]
+The grain erupts. A massive shape surges upward from the desiccated sea -- a spectral bull, bigger than any living animal, its translucent hide rippling with pale blue fire. Unlike the ghost cow in the barn, this one is no docile creature. Its horns are wide and sharp, its eyes blaze crimson, and it snorts vapor that smells of copper and old blood. It lowers its enormous head and charges through the grain, sending up a wave of rotting kernels. The silo shakes with the force of its hooves. You have to stand your ground or be trampled and changed...
+[END]
+
+[grainsilo_cow_success]
+You brace yourself, feet planted wide in the shifting grain, and let out a roar of defiance that surprises even you. The bull bears down, a freight train of spectral muscle and cold fire, but you do not flinch. At the last instant, it splits around you like water around a stone, its phantom body passing through the air on either side. You feel the chill of its passage, the thunder of its hooves, but you hold. The bull reforms behind you, shakes its massive head, and sinks back into the grain with a low, grudging bellow.
+[END]
+
+[grainsilo_cow_failure]
+The bull hits you like a wall of frozen wind. You're lifted off your feet and thrown backward into the grain, which swallows you to the chest. The bull circles back, lowering its horns, and you feel its cursed energy washing over you in waves. Your shoulders broaden painfully, your spine shifts with a sickening crack. When you finally claw your way out of the grain, your hands feel thick and clumsy, and there's a heaviness in your bones that wasn't there before...
+[END]
+
+[grainsilo_explore]
+Climbing the metal rungs to the catwalk, you find a maintenance platform overlooking the grain below. Someone lived up here once -- there's a bedroll, a tin cup, and scratches on the wall counting days. Hundreds of scratches. Among the meager belongings is a wrought-iron lantern, its glass panes miraculously intact. When you pick it up, a tiny flame flickers to life inside it, warm and steady, casting your shadow in dramatic angles across the silo wall.
+[END]
+
+[silobasement_discover]
+Your keen eyes notice something the rust and grain almost hide -- a seam in the metal floor beneath the catwalk, and a recessed handle covered in corroded bolts. Someone sealed this shut on purpose. With effort, you wrench the hatch open, revealing a narrow ladder descending into darkness below the silo's foundation.
+[END]
+
+[silobasement_entrance]
+The basement beneath the silo is older than the silo itself -- stone walls instead of metal, rough-hewn and sweating with moisture. This was some kind of root storage or perhaps a storm shelter, repurposed and then sealed away. Shelves line the walls, holding jars of something dark and unidentifiable. In the center of the room, a pair of heavy leather boots sits on a stone pedestal, positioned with obvious care, as if placed here as an offering or a ward. They're worn smooth by years of use but solid as the day they were made.
+[END]
+
+[chickencoop_entrance]
+The chicken coop leans against the back of the barn like a drunk against a wall, its wood gray and splintering, its wire mesh torn in a dozen places. The door hangs by one hinge. Inside, nesting boxes line the far wall in three crooked rows, stuffed with straw that has gone gray with age. Feathers still drift in the stale air, though no chicken has lived here in decades. The floor is covered in a thick layer of dust and droppings, and in that dust, you can see tracks -- tiny, frantic claw-marks running in circles and figure-eights. Hundreds of them. Whatever lives here now is much smaller than a chicken.
+[END]
+
+[chickencoop_mouse_encounter]
+The moment you step toward the nesting boxes, the coop comes alive with sound -- a high-pitched chittering that seems to come from everywhere at once. Spectral mice pour from the nesting boxes, the walls, the floor itself -- dozens of translucent rodents with glowing pink eyes and whiskers that crackle with cursed energy. They swirl around your feet, your ankles, climbing higher with every heartbeat. You need to stay calm, keep your composure, speak softly and slowly. Panic will only make them swarm faster...
+[END]
+
+[chickencoop_mouse_success]
+You take a slow, deliberate breath and let your shoulders drop. "Easy," you murmur, keeping your voice low and musical, the way you might soothe a frightened animal. "Easy now. I'm not here to bother you." The spectral mice slow their frantic circling, whiskers twitching as they consider you. One by one, they release their grip on your clothes and flow back into the nesting boxes like water draining from a tub. The chittering fades to a soft, almost contented hum.
+[END]
+
+[chickencoop_mouse_failure]
+You flinch. That's all it takes. The mice sense your fear like a spark in dry tinder, and the swarm surges upward -- over your boots, up your legs, across your stomach. Their tiny spectral claws prickle against your skin, and where they touch, you feel yourself shrinking, condensing. Your nose twitches involuntarily. Your ears itch. When the swarm finally retreats, you're on your hands and knees, and your hands look... smaller. The fingernails are darker. More like claws...
+[END]
+
+[chickencoop_explore]
+Searching the nesting boxes carefully, you find the remnants of old eggs, feathers, and mouse droppings. But two items stand out from the decay. In one box, nestled in a bed of straw, is a tiny copper thimble etched with faded runes -- it was probably left here by a farmhand's wife as a protective charm against the vermin. In another box, partially buried, sits a single black egg, cold as stone and heavy for its size. Something shifts inside it when you turn it over. It doesn't feel right.
+[END]

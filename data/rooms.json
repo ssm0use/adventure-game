@@ -1,7 +1,7 @@
 {
   "farmhouse": {
     "name": "Farmhouse",
-    "connections": ["garden", "barn"],
+    "connections": ["garden", "barn", "smokehouse"],
     "hiddenArea": {
       "name": "rootcellar",
       "keenEyeRequired": 3,
@@ -66,7 +66,7 @@
   },
   "barn": {
     "name": "Barn",
-    "connections": ["farmhouse", "milkingStation", "pasture"],
+    "connections": ["farmhouse", "milkingStation", "pasture", "chickenCoop"],
     "hiddenArea": {
       "name": "hayloft",
       "keenEyeRequired": 3,
@@ -175,7 +175,7 @@
   },
   "pasture": {
     "name": "Pasture",
-    "connections": ["barn", "garden"],
+    "connections": ["barn", "garden", "cornfield"],
     "hiddenArea": {
       "name": "oldwell",
       "keenEyeRequired": 4,
@@ -310,6 +310,184 @@
         "id": "search_beehives",
         "storyKey": "beehive_explore",
         "items": ["beeVeil", "stickyHoneycomb"],
+        "oneTime": true
+      }
+    ]
+  },
+  "smokehouse": {
+    "name": "Smokehouse",
+    "connections": ["farmhouse"],
+    "events": [
+      {
+        "id": "enter_smokehouse",
+        "trigger": "firstVisit",
+        "storyKey": "smokehouse_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "smokehouse_ghost",
+        "trigger": "action",
+        "storyKey": "smokehouse_ghost_encounter",
+        "actionText": "Peer Into the Smoke",
+        "check": {
+          "stat": "charm",
+          "difficulty": 14,
+          "successStory": "smokehouse_ghost_success",
+          "failureStory": "smokehouse_ghost_failure",
+          "failureEffect": {
+            "curse": "ghost"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_smokehouse",
+        "storyKey": "smokehouse_explore",
+        "items": ["smokedJerky"],
+        "oneTime": true
+      }
+    ]
+  },
+  "cornfield": {
+    "name": "Cornfield",
+    "connections": ["pasture", "grainSilo"],
+    "events": [
+      {
+        "id": "enter_cornfield",
+        "trigger": "firstVisit",
+        "storyKey": "cornfield_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "cornfield_scarecrow",
+        "trigger": "action",
+        "storyKey": "cornfield_scarecrow_encounter",
+        "actionText": "Push Deeper Into the Rows",
+        "check": {
+          "stat": "keenEye",
+          "difficulty": 15,
+          "successStory": "cornfield_scarecrow_success",
+          "failureStory": "cornfield_scarecrow_failure",
+          "failureEffect": {
+            "curse": "scarecrow"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_cornfield",
+        "storyKey": "cornfield_explore",
+        "items": ["tarnishedCompass", "strawDoll"],
+        "oneTime": true
+      }
+    ]
+  },
+  "grainSilo": {
+    "name": "Grain Silo",
+    "connections": ["cornfield"],
+    "hiddenArea": {
+      "name": "siloBasement",
+      "keenEyeRequired": 4,
+      "luckThreshold": 17,
+      "description": "A sealed chamber beneath the grain silo"
+    },
+    "events": [
+      {
+        "id": "enter_grainsilo",
+        "trigger": "firstVisit",
+        "storyKey": "grainsilo_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "silo_cow_encounter",
+        "trigger": "action",
+        "storyKey": "grainsilo_cow_encounter",
+        "actionText": "Confront the Shadow in the Grain",
+        "check": {
+          "stat": "grit",
+          "difficulty": 16,
+          "successStory": "grainsilo_cow_success",
+          "failureStory": "grainsilo_cow_failure",
+          "failureEffect": {
+            "curse": "cow"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_grainsilo",
+        "storyKey": "grainsilo_explore",
+        "items": ["ironLantern"],
+        "oneTime": true
+      }
+    ]
+  },
+  "siloBasement": {
+    "name": "Silo Basement",
+    "connections": ["grainSilo"],
+    "events": [
+      {
+        "id": "enter_silobasement",
+        "trigger": "firstVisit",
+        "storyKey": "silobasement_entrance",
+        "oneTime": true
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_silobasement",
+        "storyKey": "silobasement_entrance",
+        "items": ["wellWornBoots"],
+        "oneTime": true
+      }
+    ]
+  },
+  "chickenCoop": {
+    "name": "Chicken Coop",
+    "connections": ["barn"],
+    "events": [
+      {
+        "id": "enter_chickencoop",
+        "trigger": "firstVisit",
+        "storyKey": "chickencoop_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "coop_mouse_encounter",
+        "trigger": "action",
+        "storyKey": "chickencoop_mouse_encounter",
+        "actionText": "Investigate the Nesting Boxes",
+        "check": {
+          "stat": "charm",
+          "difficulty": 13,
+          "successStory": "chickencoop_mouse_success",
+          "failureStory": "chickencoop_mouse_failure",
+          "failureEffect": {
+            "curse": "mouse"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_chickencoop",
+        "storyKey": "chickencoop_explore",
+        "items": ["copperThimble", "dustyEgg"],
         "oneTime": true
       }
     ]

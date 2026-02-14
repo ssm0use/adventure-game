@@ -177,5 +177,102 @@
     "canEquip": false,
     "canUse": false,
     "warning": "The honeycomb thrums with strange energy. Probably cursed."
+  },
+  "smokedJerky": {
+    "id": "smokedJerky",
+    "name": "Smoked Jerky Pouch",
+    "description": "A leather pouch of impossibly well-preserved jerky. Each bite fills you with a stubborn, iron-willed resolve.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "grit",
+      "amount": 1
+    },
+    "equipSlot": "body",
+    "canEquip": true,
+    "canUse": false
+  },
+  "tarnishedCompass": {
+    "id": "tarnishedCompass",
+    "name": "Tarnished Compass",
+    "description": "A battered brass compass that doesn't point north. Instead, the needle swings toward whatever is most important nearby.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "keenEye",
+      "amount": 1
+    },
+    "equipSlot": "pocket",
+    "canEquip": true,
+    "canUse": false
+  },
+  "strawDoll": {
+    "id": "strawDoll",
+    "name": "Straw Poppet",
+    "description": "A crude doll woven from dried corn husks and straw, with black button eyes. Your joints ache when you hold it.",
+    "type": "cursed",
+    "statPenalty": {
+      "stat": "charm",
+      "amount": 1
+    },
+    "curseEffect": {
+      "curse": "scarecrow"
+    },
+    "canEquip": false,
+    "canUse": false,
+    "warning": "The doll's button eyes seem to follow you. This thing is definitely cursed."
+  },
+  "ironLantern": {
+    "id": "ironLantern",
+    "name": "Iron Lantern",
+    "description": "A heavy wrought-iron lantern with a flame that never quite dies. Its warm glow makes you look compelling and trustworthy.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "charm",
+      "amount": 1
+    },
+    "equipSlot": "hands",
+    "canEquip": true,
+    "canUse": false
+  },
+  "wellWornBoots": {
+    "id": "wellWornBoots",
+    "name": "Well-Worn Boots",
+    "description": "Heavy leather boots worn smooth by years of farm work. They grip the earth like roots and make you feel unshakeable.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "grit",
+      "amount": 1
+    },
+    "equipSlot": "pocket",
+    "canEquip": true,
+    "canUse": false
+  },
+  "copperThimble": {
+    "id": "copperThimble",
+    "name": "Copper Thimble",
+    "description": "A tiny copper thimble etched with protective runes. A wave of calm confidence washes over you when you slip it on.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "charm",
+      "amount": 1
+    },
+    "equipSlot": "pocket",
+    "canEquip": true,
+    "canUse": false
+  },
+  "dustyEgg": {
+    "id": "dustyEgg",
+    "name": "Dusty Black Egg",
+    "description": "A small egg, cold and black as coal. Something shifts inside when you tilt it. It makes your vision swim.",
+    "type": "cursed",
+    "statPenalty": {
+      "stat": "keenEye",
+      "amount": 1
+    },
+    "curseEffect": {
+      "curse": "mouse"
+    },
+    "canEquip": false,
+    "canUse": false,
+    "warning": "The egg pulses with a faint heartbeat. Nothing good can come of this."
   }
 }
