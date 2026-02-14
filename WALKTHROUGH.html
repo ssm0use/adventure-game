@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursed Farm Adventure - Complete Walkthrough</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(to bottom, #2c2416, #1a1410);
+            color: #f4e8d0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 244, 220, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #8b6f47;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #a89060;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        h2 {
+            color: #d4af37;
+            border-bottom: 2px solid #8b6f47;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #c9a85f;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #b39754;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .warning {
+            background: rgba(139, 0, 0, 0.3);
+            border-left: 4px solid #8b0000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip {
+            background: rgba(0, 100, 0, 0.3);
+            border-left: 4px solid #228b22;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .info {
+            background: rgba(70, 130, 180, 0.3);
+            border-left: 4px solid #4682b4;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .step {
+            background: rgba(139, 111, 71, 0.2);
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-left: 3px solid #8b6f47;
+            border-radius: 3px;
+        }
+
+        .step-number {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .room-section {
+            background: rgba(139, 111, 71, 0.15);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #8b6f47;
+        }
+
+        .item {
+            color: #90ee90;
+        }
+
+        .curse {
+            color: #ff6b6b;
+        }
+
+        .stat {
+            color: #87ceeb;
+        }
+
+        .hidden {
+            color: #daa520;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #8b6f47;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(139, 111, 71, 0.4);
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        td {
+            background: rgba(139, 111, 71, 0.1);
+        }
+
+        .toc {
+            background: rgba(139, 111, 71, 0.2);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 2px solid #8b6f47;
+        }
+
+        .toc a {
+            color: #87ceeb;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .toc a:hover {
+            color: #d4af37;
+            text-decoration: underline;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #90ee90;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>&#x1F3DA;&#xFE0F; Cursed Farm Adventure</h1>
+        <div class="subtitle">Complete Walkthrough &amp; Guide</div>
+
+        <div class="toc">
+            <h3>&#x1F4D1; Table of Contents</h3>
+            <a href="#quickwin">&#x1F3C6; Quick Victory Path (Spoiler-Free)</a>
+            <a href="#detailed">&#x1F4D6; Detailed Victory Guide</a>
+            <a href="#hidden">&#x1F50D; All Hidden Areas</a>
+            <a href="#items">&#x1F48E; Complete Item List</a>
+            <a href="#endings">&#x1F480; All Transformation Endings</a>
+            <a href="#maps">&#x1F5FA;&#xFE0F; Room Connections Map</a>
+            <a href="#stats">&#x1F3B2; Stat Checks &amp; Difficulty</a>
+            <a href="#tips">&#x1F4A1; Pro Tips &amp; Strategies</a>
+        </div>
+
+        <!-- IMPORTANT MECHANICS -->
+        <h2>&#x1F3AE; Important Game Mechanics</h2>
+
+        <div class="info">
+            <strong>&#x1F4CD; Location Header:</strong><br>
+            Your current location is always displayed at the top of the story area, so you always know where you are on the farm.
+        </div>
+
+        <div class="info">
+            <strong>&#x1F50D; Searching Rooms:</strong><br>
+            When you search a location, you'll see ALL items found before choosing which to take. Take items one by one, or click "Continue" to finish searching. <strong>Be careful!</strong> Some items carry hidden curses that only reveal themselves after you pick them up.
+        </div>
+
+        <div class="info">
+            <strong>&#x2705; Explored Areas:</strong><br>
+            Once you've completed all encounters and searches in an area, it will appear in the "Explored Areas" list at the bottom of the screen. This helps you track which locations still have things to discover.
+        </div>
+
+        <div class="info">
+            <strong>&#x1F6E1;&#xFE0F; Protective Items:</strong><br>
+            Protective items both <strong>PREVENT</strong> curses (if equipped before encountering them - you'll see a description of the item shielding you) and <strong>CURE</strong> curses (if equipped after being cursed). Even at Stage 2 of a curse, equipping the matching protective item will instantly cure you!
+        </div>
+
+        <div class="info">
+            <strong>&#x1F504; Retrying Encounters:</strong><br>
+            If you fail a stat check, the encounter remains available to try again! Equip stat-boosting items to improve your odds, then return to the location and attempt it once more.
+        </div>
+
+        <div class="info">
+            <strong>&#x1F504; Restarting:</strong><br>
+            If you get a Game Over, clicking "Try Again" will take you back to character creation. Your save files remain intact if you want to reload instead.
+        </div>
+
+        <!-- QUICK VICTORY PATH -->
+        <h2 id="quickwin">&#x1F3C6; Quick Victory Path</h2>
+
+        <div class="tip">
+            <strong>&#x1F3AF; Goal:</strong> Break the ancient curse binding Abigail's spirit to the farm.
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 1:</span> <strong>Character Creation</strong><br>
+            Put your bonus point in <span class="stat">Keen Eye</span> (makes finding hidden areas easier!)
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 2:</span> <strong>Farmhouse</strong><br>
+            Meet Farmer Miller. Discover the <span class="hidden">Root Cellar</span> (automatic with Keen Eye 3).
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 3:</span> <strong>Root Cellar</strong><br>
+            Search to get <span class="item">Ancestor's Journal</span> - critical for winning!
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 4:</span> <strong>Garden</strong><br>
+            Search strawberry patch to get <span class="item">Barn Key</span>. Farmer Miller hints at this if you try the barn first.
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 5:</span> <strong>Barn</strong><br>
+            Unlock with key. Discover the <span class="hidden">Hayloft</span> for stat-boosting items.
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 6:</span> <strong>Hayloft</strong><br>
+            Get <span class="item">Silk Neckerchief</span> (+1 Charm) and other stat boosters. Equip them!
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 7:</span> <strong>Milking Station</strong><br>
+            Talk to Abigail's Spirit - Pass <span class="stat">Charm DC 12</span> check to learn ritual location. If you fail, try again after boosting your Charm!
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 8:</span> <strong>Pasture</strong><br>
+            Search to find the ritual spot, then "Perform the Breaking Ritual."
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 9:</span> <strong>Victory!</strong><br>
+            <span class="emoji">&#x1F389;</span> The curse is broken! Any active curses are cured, and you find love and a new life on the farm.
+        </div>
+
+        <div class="warning">
+            <strong>&#x26A0;&#xFE0F; Critical Items for Victory:</strong>
+            <ul>
+                <li><span class="item">Ancestor's Journal</span> - Required to learn about the curse and perform the ritual</li>
+                <li><strong>Successfully talk to Abigail's Spirit</strong> - Pass the Charm check at the Milking Station to learn the ritual location</li>
+            </ul>
+        </div>
+
+        <!-- DETAILED GUIDE -->
+        <h2 id="detailed">&#x1F4D6; Detailed Victory Guide</h2>
+
+        <h3>Starting Stats</h3>
+        <p>You begin with random stats (2-5) in each category, then choose ONE bonus point:</p>
+        <ul>
+            <li><span class="stat">Grit</span> - Physical strength, resist physical challenges</li>
+            <li><span class="stat">Keen Eye</span> - Perception, find hidden areas and secrets</li>
+            <li><span class="stat">Charm</span> - Social skills, communicate with spirits</li>
+        </ul>
+
+        <div class="tip">
+            <strong>&#x1F4A1; Recommended Start:</strong> Put bonus in <span class="stat">Keen Eye</span> for automatic Root Cellar discovery, OR <span class="stat">Charm</span> to help pass the ghost conversation check.
+        </div>
+
+        <h3>The Winning Strategy</h3>
+
+        <h4>1. Farmhouse - Learn About the Curse</h4>
+        <div class="room-section">
+            <strong>First Visit:</strong> Meet Farmer Miller<br>
+            <strong>Must Do:</strong> Discover the Root Cellar<br>
+            <strong>Hidden Area:</strong> Root Cellar (Keen Eye 3 auto-discovers, or roll 2d20 vs DC 18). If you don't discover it on your first visit, keep coming back - there's a chance to find it each time you enter!<br>
+            <strong>Search:</strong> Contains <span class="item">Cracked Mirror</span> (secretly cursed - triggers Ghost Curse!)<br>
+            <strong>Optional Encounter:</strong> Investigate Cold Spot (Grit DC 15) - risky, skip unless prepared
+        </div>
+
+        <h4>2. Root Cellar - Get the Journal</h4>
+        <div class="room-section">
+            <strong>Key Item:</strong> <span class="item">Ancestor's Journal</span> - Search to obtain<br>
+            <strong>Story:</strong> Read about Ezekiel Miller's terrible bargain and how the curse began<br>
+            <strong>Importance:</strong> Required for talking to Abigail and performing the ritual
+        </div>
+
+        <h4>3. Garden - Get the Barn Key</h4>
+        <div class="room-section">
+            <strong>Key Item:</strong> <span class="item">Barn Key</span> - Search strawberries<br>
+            <strong>Other Items:</strong> Search garden for <span class="item">Magnifying Glass</span> (+1 Keen Eye), <span class="item">Blessed Straw Hat</span> (protects from scarecrow curse), <span class="item">Moldy Cheese Wheel</span> (secretly cursed - triggers Mouse Curse!)<br>
+            <strong>Connection:</strong> Can access Bee Hives from here (optional area)<br>
+            <strong>Tip:</strong> If you try the barn first, Farmer Miller will tell you the key was lost in the garden's strawberry patch
+        </div>
+
+        <h4>4. Barn - Enter with Key</h4>
+        <div class="room-section">
+            <strong>Requirement:</strong> Must have <span class="item">Barn Key</span> - the barn stays locked until you find it!<br>
+            <strong>Hidden Area:</strong> Hayloft (Keen Eye 3 auto-discovers, or roll 2d20 vs DC 16). Check each visit!<br>
+            <strong>Search:</strong> Get <span class="item">Brass Bell Collar</span> (protects from cow curse)<br>
+            <strong>Optional Encounter:</strong> Approach the Shadows (Grit DC 15) - can retry if you fail<br>
+            <strong>Connections:</strong> Milking Station, Pasture
+        </div>
+
+        <h4>5. Hayloft (Optional but Highly Recommended)</h4>
+        <div class="room-section">
+            <strong>Stat Boosters:</strong><br>
+            - <span class="item">Worn Work Gloves</span> (+1 Grit)<br>
+            - <span class="item">Silk Neckerchief</span> (+1 Charm) - <strong>Very helpful for Abigail's conversation!</strong><br>
+            - <span class="item">Lucky Horseshoe</span> (+1 Keen Eye)<br>
+            - <span class="item">Mouser's Charm</span> (protects from mouse curse)
+        </div>
+
+        <h4>6. Milking Station - Talk to Abigail</h4>
+        <div class="room-section">
+            <strong>Critical Encounter:</strong> Speak with Abigail's Spirit<br>
+            <strong>Requirement:</strong> Must have <span class="item">Ancestor's Journal</span><br>
+            <strong>Check:</strong> <span class="stat">Charm DC 12</span> (Medium difficulty)<br>
+            <strong>Success:</strong> Learn ritual location, get <code>learnedRitualLocation</code> flag<br>
+            <strong>Failure:</strong> Get <span class="curse">Ghost Curse Stage 1</span> - but the encounter remains available to retry!<br>
+            <br>
+            <strong>Charm Calculation:</strong><br>
+            - Base stat 2 = +0 modifier (need to roll 12+, 45% chance)<br>
+            - Base stat 3 = +1 modifier (need to roll 11+, 50% chance)<br>
+            - Base stat 4 = +2 modifier (need to roll 10+, 55% chance)<br>
+            - Base stat 5 = +3 modifier (need to roll 9+, 60% chance)<br>
+            <br>
+            <strong>&#x1F4A1; Pro Tip:</strong> Equip <span class="item">Silk Neckerchief</span> from Hayloft for +1 Charm before attempting this! If you fail, cure any ghost curse with the <span class="item">Salt Circle Amulet</span>, then try again.
+        </div>
+
+        <h4>7. Pasture - Perform the Ritual</h4>
+        <div class="room-section">
+            <strong>First:</strong> Search the area (requires journal) to find ritual spot<br>
+            <strong>Then:</strong> "Perform the Breaking Ritual" action appears<br>
+            <strong>Requirements:</strong><br>
+            - Must have <span class="item">Ancestor's Journal</span><br>
+            - Must have <code>learnedRitualLocation</code> flag (from Abigail)<br>
+            <br>
+            <strong>Result:</strong> <span class="emoji">&#x1F389; VICTORY!</span> The curse is broken, all active curses are cured, and you find true love with Abigail!
+        </div>
+
+        <!-- HIDDEN AREAS -->
+        <h2 id="hidden">&#x1F50D; All Hidden Areas</h2>
+
+        <p>Hidden areas can be discovered two ways:</p>
+        <ol>
+            <li><strong>Automatic:</strong> If your Keen Eye stat meets the requirement</li>
+            <li><strong>Passive Check:</strong> Roll 2d20 (with advantage, take higher roll) + Keen Eye modifier vs difficulty</li>
+        </ol>
+
+        <div class="tip">
+            <strong>&#x1F504; Repeat Discovery Attempts:</strong> Hidden area checks happen <strong>every time you enter a room</strong>, not just on the first visit! If you don't discover a hidden area, come back later - especially after equipping Keen Eye-boosting items. Each visit is a fresh roll.
+        </div>
+
+        <table>
+            <tr>
+                <th>Hidden Area</th>
+                <th>Location</th>
+                <th>Auto-Discover</th>
+                <th>Roll Difficulty</th>
+                <th>Contains</th>
+            </tr>
+            <tr>
+                <td><strong class="hidden">Root Cellar</strong></td>
+                <td>Farmhouse</td>
+                <td>Keen Eye 3+</td>
+                <td>DC 18</td>
+                <td><span class="item">Ancestor's Journal</span> (required for victory!)</td>
+            </tr>
+            <tr>
+                <td><strong class="hidden">Hayloft</strong></td>
+                <td>Barn</td>
+                <td>Keen Eye 3+</td>
+                <td>DC 16</td>
+                <td>4 items: Work Gloves, Silk Neckerchief, Lucky Horseshoe, Mouser's Charm</td>
+            </tr>
+            <tr>
+                <td><strong class="hidden">Old Well</strong></td>
+                <td>Pasture</td>
+                <td>Keen Eye 4+</td>
+                <td>DC 19</td>
+                <td><span class="item">Salt Circle Amulet</span> (ghost protection), Sturdy Overalls (+1 Grit)</td>
+            </tr>
+        </table>
+
+        <div class="info">
+            <strong>&#x1F3B2; Probability of Discovery (per visit):</strong><br>
+            With Keen Eye 2 (minimum): ~28% chance to discover DC 18 areas, ~15% for DC 19<br>
+            With Keen Eye 3: Auto-discover DC 16-18, ~50% chance for DC 19<br>
+            With Keen Eye 4+: Auto-discover all hidden areas<br>
+            <br>
+            <strong>&#x1F4A1; Tip:</strong> Equip <span class="item">Magnifying Glass</span> (+1 Keen Eye) or <span class="item">Lucky Horseshoe</span> (+1 Keen Eye) before revisiting rooms with undiscovered areas.
+        </div>
+
+        <!-- ITEMS -->
+        <h2 id="items">&#x1F48E; Complete Item List</h2>
+
+        <h3>&#x1F511; Key Items</h3>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Location</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><span class="item">Barn Key</span></td>
+                <td>Garden (strawberry patch)</td>
+                <td>Unlocks Barn entrance</td>
+            </tr>
+            <tr>
+                <td><span class="item">Ancestor's Journal</span></td>
+                <td>Root Cellar (hidden)</td>
+                <td>Required to win! Unlocks ghost conversation and ritual</td>
+            </tr>
+        </table>
+
+        <h3>&#x1F6E1;&#xFE0F; Protective Items (Prevent &amp; Cure Curses)</h3>
+        <div class="tip">
+            <strong>How Protective Items Work:</strong><br>
+            1. <strong>Prevention:</strong> If equipped BEFORE an encounter, they block the curse entirely and you'll see a description of the item shielding you<br>
+            2. <strong>Cure:</strong> If equipped AFTER you're cursed, they instantly remove the curse!<br>
+            3. Even if cursed at Stage 2, equipping the right item will cure you immediately
+        </div>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Protects/Cures</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td><span class="item">Brass Bell Collar</span></td>
+                <td><span class="curse">Cow Curse</span></td>
+                <td>Barn (search)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Beekeeper's Smoke Veil</span></td>
+                <td><span class="curse">Bee Curse</span></td>
+                <td>Bee Hives (search)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Blessed Straw Hat</span></td>
+                <td><span class="curse">Scarecrow Curse</span></td>
+                <td>Garden (search)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Salt Circle Amulet</span></td>
+                <td><span class="curse">Ghost Curse</span></td>
+                <td>Old Well (hidden in Pasture)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Mouser's Charm</span></td>
+                <td><span class="curse">Mouse Curse</span></td>
+                <td>Hayloft (hidden in Barn)</td>
+            </tr>
+        </table>
+
+        <h3>&#x2694;&#xFE0F; Equipment (Stat Boosts)</h3>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Stat Boost</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td><span class="item">Worn Work Gloves</span></td>
+                <td>+1 Grit</td>
+                <td>Hayloft (hidden in Barn)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Sturdy Overalls</span></td>
+                <td>+1 Grit</td>
+                <td>Old Well (hidden in Pasture)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Magnifying Glass</span></td>
+                <td>+1 Keen Eye</td>
+                <td>Garden (search)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Lucky Horseshoe</span></td>
+                <td>+1 Keen Eye</td>
+                <td>Hayloft (hidden in Barn)</td>
+            </tr>
+            <tr>
+                <td><span class="item">Silk Neckerchief</span></td>
+                <td>+1 Charm</td>
+                <td>Hayloft (hidden in Barn)</td>
+            </tr>
+        </table>
+
+        <h3>&#x2620;&#xFE0F; Cursed Items (Hidden Curses!)</h3>
+        <div class="warning">
+            <strong>&#x26A0;&#xFE0F; BEWARE:</strong> These items look harmless when you find them, but they carry hidden curses! The curse activates the moment you pick them up. There is no warning beforehand.<br>
+            <br>
+            <strong>Recovery:</strong> If you accidentally take a cursed item, find and equip the matching protective item as quickly as possible to cure the curse before it progresses.
+        </div>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Hidden Curse</th>
+                <th>Stat Penalty</th>
+                <th>Location</th>
+                <th>Cure</th>
+            </tr>
+            <tr>
+                <td><span class="curse">Cracked Hand Mirror</span></td>
+                <td>Ghost Curse Stage 1</td>
+                <td>-1 Charm</td>
+                <td>Farmhouse (search)</td>
+                <td><span class="item">Salt Circle Amulet</span></td>
+            </tr>
+            <tr>
+                <td><span class="curse">Moldy Cheese Wheel</span></td>
+                <td>Mouse Curse Stage 1</td>
+                <td>-1 Grit</td>
+                <td>Garden (search)</td>
+                <td><span class="item">Mouser's Charm</span></td>
+            </tr>
+            <tr>
+                <td><span class="curse">Sticky Honeycomb</span></td>
+                <td>Bee Curse Stage 1</td>
+                <td>-1 Charm</td>
+                <td>Bee Hives (search)</td>
+                <td><span class="item">Beekeeper's Smoke Veil</span></td>
+            </tr>
+        </table>
+
+        <!-- ENDINGS -->
+        <h2 id="endings">&#x1F480; All Transformation Endings</h2>
+
+        <p>There are <strong>5</strong> different transformation curses, each with 3 stages. Curses advance every 2 room transitions. Stage 3 = Game Over! The sidebar curse counter will update to show Stage 3/3 before the ending text appears.</p>
+
+        <h3>&#x1F42D; Mouse Transformation</h3>
+        <div class="room-section">
+            <strong>How to Get Cursed:</strong><br>
+            - Pick up <span class="curse">Moldy Cheese Wheel</span> in Garden (hidden curse)<br>
+            <br>
+            <strong>Cure/Prevention:</strong> <span class="item">Mouser's Charm</span> (found in Hayloft) - Equip to instantly cure at ANY stage!<br>
+            <br>
+            <strong>Progression:</strong><br>
+            <strong>Stage 1:</strong> Nose twitches constantly, crave cheese, ears feel pointed (2 rooms to Stage 2)<br>
+            <strong>Stage 2:</strong> Brown fur spreading, whiskers sprouting, shrinking, voice becomes squeaks (2 rooms to Stage 3)<br>
+            <strong>Stage 3:</strong> <span class="curse">GAME OVER</span> - Full mouse transformation<br>
+            <br>
+            <strong>Ending Description:</strong> You shrink to inches tall, a tiny mouse scurrying along the baseboard. The farm cat watches with hungry interest as the last human thought fades away.
+        </div>
+
+        <h3>&#x1F404; Cow Transformation</h3>
+        <div class="room-section">
+            <strong>How to Get Cursed:</strong><br>
+            - Fail Grit DC 15 check: "Approach the Shadows" in Barn<br>
+            <br>
+            <strong>Cure/Prevention:</strong> <span class="item">Brass Bell Collar</span> (found in Barn) - Equip to instantly cure at ANY stage!<br>
+            <br>
+            <strong>Progression:</strong><br>
+            <strong>Stage 1:</strong> Hands feel heavy, posture shifts (2 rooms to Stage 2)<br>
+            <strong>Stage 2:</strong> Black and white patches on skin, you moo when speaking (2 rooms to Stage 3)<br>
+            <strong>Stage 3:</strong> <span class="curse">GAME OVER</span> - Full bovine transformation<br>
+            <br>
+            <strong>Ending Description:</strong> You become a spectral cow, joining the ghostly herd haunting the barn forever.
+        </div>
+
+        <h3>&#x1F41D; Bee Transformation</h3>
+        <div class="room-section">
+            <strong>How to Get Cursed:</strong><br>
+            - Fail Keen Eye DC 14 check: "Examine the Hives Closely" in Bee Hives<br>
+            - Pick up <span class="curse">Sticky Honeycomb</span> in Bee Hives (hidden curse)<br>
+            <br>
+            <strong>Cure/Prevention:</strong> <span class="item">Beekeeper's Smoke Veil</span> (found in Bee Hives) - Equip to instantly cure at ANY stage!<br>
+            <br>
+            <strong>Progression:</strong><br>
+            <strong>Stage 1:</strong> Persistent buzzing in ears, crave pollen (2 rooms to Stage 2)<br>
+            <strong>Stage 2:</strong> Yellow and black stripes appear, wings begin budding (2 rooms to Stage 3)<br>
+            <strong>Stage 3:</strong> <span class="curse">GAME OVER</span> - Full bee transformation<br>
+            <br>
+            <strong>Ending Description:</strong> You shrink down and transform into a bee, joining the eternal swarm in the cursed hives.
+        </div>
+
+        <h3>&#x1F383; Scarecrow Transformation</h3>
+        <div class="room-section">
+            <strong>How to Get Cursed:</strong><br>
+            - Fail Grit DC 16 check: "Approach the Scarecrow" in Pasture<br>
+            <br>
+            <strong>Cure/Prevention:</strong> <span class="item">Blessed Straw Hat</span> (found in Garden) - Equip to instantly cure at ANY stage!<br>
+            <br>
+            <strong>Progression:</strong><br>
+            <strong>Stage 1:</strong> Joints feel stiff like wood, urge to stand still (2 rooms to Stage 2)<br>
+            <strong>Stage 2:</strong> Straw pushes through skin, face freezes in rictus grin (2 rooms to Stage 3)<br>
+            <strong>Stage 3:</strong> <span class="curse">GAME OVER</span> - Full scarecrow transformation<br>
+            <br>
+            <strong>Ending Description:</strong> You become a living scarecrow, eternally standing guard over the cursed pasture with arms spread wide. Forever.
+        </div>
+
+        <h3>&#x1F47B; Ghost Transformation</h3>
+        <div class="room-section">
+            <strong>How to Get Cursed:</strong><br>
+            - Fail Grit DC 15 check: "Investigate the Cold Spot" in Farmhouse<br>
+            - Fail Charm DC 12 check: "Speak with Abigail's Spirit" in Milking Station<br>
+            - Pick up <span class="curse">Cracked Hand Mirror</span> in Farmhouse (hidden curse)<br>
+            <br>
+            <strong>Cure/Prevention:</strong> <span class="item">Salt Circle Amulet</span> (found in Old Well) - Equip to instantly cure at ANY stage!<br>
+            <br>
+            <strong>Progression:</strong><br>
+            <strong>Stage 1:</strong> Icy chill in bones, feel less solid (2 rooms to Stage 2)<br>
+            <strong>Stage 2:</strong> Translucent, colors fade from vision (2 rooms to Stage 3)<br>
+            <strong>Stage 3:</strong> <span class="curse">GAME OVER</span> - Full ghost transformation<br>
+            <br>
+            <strong>Ending Description:</strong> Your body dissolves into mist, and you become a wailing spirit bound to the farmhouse, joining Abigail in her eternal loneliness.
+        </div>
+
+        <div class="warning">
+            <strong>&#x26A0;&#xFE0F; Important:</strong> You can have multiple curses active at once! Each progresses independently. If any curse reaches Stage 3, it's game over - and the ending screen will show the specific transformation that claimed you. <strong>However, you can cure any curse at any stage by equipping the matching protective item!</strong> Collect protective items proactively to stay safe.
+        </div>
+
+        <!-- MAP -->
+        <h2 id="maps">&#x1F5FA;&#xFE0F; Room Connections Map</h2>
+
+        <div class="info">
+            <strong>Starting Location:</strong> Farmhouse
+        </div>
+
+        <table>
+            <tr>
+                <th>Room</th>
+                <th>Connected To</th>
+                <th>Hidden Area</th>
+                <th>Requirements</th>
+            </tr>
+            <tr>
+                <td><strong>Farmhouse</strong></td>
+                <td>Garden, Barn</td>
+                <td>Root Cellar</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Root Cellar</strong></td>
+                <td>Farmhouse</td>
+                <td>-</td>
+                <td>Must discover hidden area</td>
+            </tr>
+            <tr>
+                <td><strong>Garden</strong></td>
+                <td>Farmhouse, Pasture, Bee Hives</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Bee Hives</strong></td>
+                <td>Garden</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Barn</strong></td>
+                <td>Farmhouse, Milking Station, Pasture</td>
+                <td>Hayloft</td>
+                <td>Requires Barn Key (stays locked until found!)</td>
+            </tr>
+            <tr>
+                <td><strong>Hayloft</strong></td>
+                <td>Barn</td>
+                <td>-</td>
+                <td>Must discover hidden area</td>
+            </tr>
+            <tr>
+                <td><strong>Milking Station</strong></td>
+                <td>Barn</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Pasture</strong></td>
+                <td>Barn, Garden</td>
+                <td>Old Well</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Old Well</strong></td>
+                <td>Pasture</td>
+                <td>-</td>
+                <td>Must discover hidden area</td>
+            </tr>
+        </table>
+
+        <!-- STATS -->
+        <h2 id="stats">&#x1F3B2; Stat Checks &amp; Difficulty</h2>
+
+        <h3>How Checks Work</h3>
+        <p>The game uses a d20 system:</p>
+        <ul>
+            <li>Roll 1d20 + your stat modifier</li>
+            <li>Stat modifier = (Stat Value - 2)</li>
+            <li>Success if total &ge; difficulty</li>
+        </ul>
+
+        <div class="info">
+            <strong>Difficulty Ratings:</strong><br>
+            - DC 10 or below = Easy<br>
+            - DC 11-15 = Medium<br>
+            - DC 16+ = Hard
+        </div>
+
+        <div class="info">
+            <strong>Example:</strong><br>
+            You have Charm 3 and need to pass a Charm DC 12 check (Medium).<br>
+            - Modifier = 3 - 2 = +1<br>
+            - You roll 1d20 (let's say you roll 11)<br>
+            - Total = 11 + 1 = 12<br>
+            - Success! (12 &ge; 12)
+        </div>
+
+        <h3>All Stat Checks in Game</h3>
+        <table>
+            <tr>
+                <th>Encounter</th>
+                <th>Location</th>
+                <th>Stat</th>
+                <th>DC</th>
+                <th>Rating</th>
+                <th>Failure Result</th>
+            </tr>
+            <tr>
+                <td>Speak with Abigail's Spirit</td>
+                <td>Milking Station</td>
+                <td>Charm</td>
+                <td>12</td>
+                <td>Medium</td>
+                <td>Ghost Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Examine the Hives Closely</td>
+                <td>Bee Hives</td>
+                <td>Keen Eye</td>
+                <td>14</td>
+                <td>Medium</td>
+                <td>Bee Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Investigate the Cold Spot</td>
+                <td>Farmhouse</td>
+                <td>Grit</td>
+                <td>15</td>
+                <td>Medium</td>
+                <td>Ghost Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Approach the Shadows</td>
+                <td>Barn</td>
+                <td>Grit</td>
+                <td>15</td>
+                <td>Medium</td>
+                <td>Cow Curse Stage 1</td>
+            </tr>
+            <tr>
+                <td>Approach the Scarecrow</td>
+                <td>Pasture</td>
+                <td>Grit</td>
+                <td>16</td>
+                <td>Hard</td>
+                <td>Scarecrow Curse Stage 1</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <strong>&#x1F504; Remember:</strong> Failed encounters can be retried! If you fail, equip stat-boosting items and try again. The encounter stays available until you succeed.
+        </div>
+
+        <h3>Success Probabilities</h3>
+        <table>
+            <tr>
+                <th>Your Stat</th>
+                <th>Modifier</th>
+                <th>DC 12</th>
+                <th>DC 14</th>
+                <th>DC 15</th>
+                <th>DC 16</th>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>+0</td>
+                <td>45%</td>
+                <td>35%</td>
+                <td>30%</td>
+                <td>25%</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>+1</td>
+                <td>50%</td>
+                <td>40%</td>
+                <td>35%</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>+2</td>
+                <td>55%</td>
+                <td>45%</td>
+                <td>40%</td>
+                <td>35%</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>+3</td>
+                <td>60%</td>
+                <td>50%</td>
+                <td>45%</td>
+                <td>40%</td>
+            </tr>
+        </table>
+
+        <!-- TIPS -->
+        <h2 id="tips">&#x1F4A1; Pro Tips &amp; Strategies</h2>
+
+        <h3>&#x1F3C6; Optimal Playthrough</h3>
+        <ol>
+            <li><strong>Put bonus point in Keen Eye</strong> - Auto-discover Root Cellar and Hayloft</li>
+            <li><strong>Get Root Cellar first</strong> - Contains critical Ancestor's Journal</li>
+            <li><strong>Visit Garden next</strong> - Get Barn Key and Magnifying Glass (avoid the Moldy Cheese!)</li>
+            <li><strong>Enter Barn and find Hayloft</strong> - Get Silk Neckerchief and Mouser's Charm</li>
+            <li><strong>Equip Silk Neckerchief</strong> - Improves Charm check odds</li>
+            <li><strong>Go to Milking Station</strong> - Talk to Abigail (retry if needed until you pass)</li>
+            <li><strong>Go to Pasture</strong> - Search for ritual spot, then perform ritual and win!</li>
+        </ol>
+
+        <h3>&#x26A0;&#xFE0F; What NOT to Do</h3>
+        <ul>
+            <li>&#x274C; Don't pick up every item you find - some are secretly cursed!</li>
+            <li>&#x274C; Don't attempt combat encounters without high stats or the matching protective item</li>
+            <li>&#x274C; Don't go to Milking Station without the Ancestor's Journal</li>
+            <li>&#x274C; Don't move around unnecessarily if cursed (curses advance every 2 rooms!)</li>
+        </ul>
+
+        <h3>&#x1F6E1;&#xFE0F; If Things Go Wrong</h3>
+        <div class="tip">
+            <strong>Got cursed? Don't panic!</strong><br>
+            1. Find and equip the matching protective item - it will <strong>CURE YOU INSTANTLY</strong>, even at Stage 2!<br>
+            2. Protective items:<br>
+            &nbsp;&nbsp;&nbsp;- <span class="curse">Cow Curse</span> &rarr; <span class="item">Brass Bell Collar</span> (Barn)<br>
+            &nbsp;&nbsp;&nbsp;- <span class="curse">Bee Curse</span> &rarr; <span class="item">Beekeeper's Smoke Veil</span> (Bee Hives)<br>
+            &nbsp;&nbsp;&nbsp;- <span class="curse">Scarecrow Curse</span> &rarr; <span class="item">Blessed Straw Hat</span> (Garden)<br>
+            &nbsp;&nbsp;&nbsp;- <span class="curse">Ghost Curse</span> &rarr; <span class="item">Salt Circle Amulet</span> (Old Well)<br>
+            &nbsp;&nbsp;&nbsp;- <span class="curse">Mouse Curse</span> &rarr; <span class="item">Mouser's Charm</span> (Hayloft)<br>
+            3. You have 4 room transitions before Stage 3, but the cure works at ANY stage<br>
+            4. Save frequently so you can reload if needed
+        </div>
+
+        <div class="tip">
+            <strong>Failed an important check?</strong><br>
+            1. Failed encounters remain available - you can retry them!<br>
+            2. Equip stat-boosting items to improve your modifier before trying again<br>
+            3. Cure any curse from the failed attempt, then go back and retry<br>
+            4. The Abigail conversation is CRITICAL - keep trying until you pass it
+        </div>
+
+        <h3>&#x1F3AF; Achievement Hunter Guide</h3>
+        <p>Want to see everything in one playthrough? Use multiple save slots!</p>
+        <ol>
+            <li><strong>Save Slot 1:</strong> Clean speedrun to victory</li>
+            <li><strong>Save Slot 2:</strong> Get each type of curse, see transformation stages</li>
+            <li><strong>Save Slot 3:</strong> Explore everything, collect all items including cursed ones</li>
+        </ol>
+
+        <h3>&#x1F3B2; Min-Maxing Tips</h3>
+        <ul>
+            <li>Stats are capped at 5, so plan your equipment around which checks you need to pass</li>
+            <li>Stack Keen Eye items to auto-discover the Old Well (requires Keen Eye 4)</li>
+            <li>Charm 5 gives you a 60% chance to pass Abigail's DC 12 check - and you can retry!</li>
+            <li>Protective items also function as regular equipment - equip before risky encounters</li>
+        </ul>
+
+        <h3>&#x1F4CA; Speedrun Route</h3>
+        <div class="step">
+            <strong>Fastest Path to Victory:</strong><br>
+            1. Start with Keen Eye bonus &rarr; Farmhouse (auto-discover Root Cellar)<br>
+            2. Root Cellar &rarr; Get Journal<br>
+            3. Garden &rarr; Get Barn Key (skip the second garden search to avoid cursed cheese)<br>
+            4. Barn (auto-discover Hayloft)<br>
+            5. Hayloft &rarr; Get Silk Neckerchief, equip it<br>
+            6. Milking Station &rarr; Talk to Abigail (retry until success)<br>
+            7. Pasture &rarr; Search for ritual spot<br>
+            8. Pasture &rarr; Perform ritual &rarr; WIN!
+        </div>
+
+        <h3>&#x1F3AE; For Maximum Challenge</h3>
+        <ul>
+            <li>Put bonus point in Grit instead of Keen Eye</li>
+            <li>Try to discover all hidden areas through rolls (no auto-discovery)</li>
+            <li>Complete all encounters (survive all curse checks)</li>
+            <li>Win without using any stat-boosting equipment</li>
+            <li>Win with minimum stats (all 2s + 1 bonus point)</li>
+        </ul>
+
+        <div class="warning">
+            <strong>&#x26A0;&#xFE0F; Permadeath Challenge:</strong><br>
+            Delete all saves when you get a game over. Only one life to break the curse!
+        </div>
+
+        <h3>&#x1F3A8; Roleplay Ideas</h3>
+        <ul>
+            <li><strong>The Scholar:</strong> High Keen Eye, find all hidden areas and read everything</li>
+            <li><strong>The Diplomat:</strong> High Charm, focus on talking to spirits</li>
+            <li><strong>The Survivor:</strong> High Grit, face all physical challenges head-on</li>
+            <li><strong>The Cursed One:</strong> Intentionally pick up cursed items, race to break the curse before Stage 3</li>
+            <li><strong>The Collector:</strong> Find every item in the game, including all cursed ones (equip protection first!)</li>
+        </ul>
+
+        <h2>&#x1F389; Final Notes</h2>
+        <div class="tip">
+            <strong>Remember:</strong> Save often! The game has 3 save slots for a reason. Use them to experiment, see different outcomes, and ensure you don't lose progress.
+        </div>
+
+        <div class="info">
+            <strong>Victory Rewards:</strong><br>
+            When you win, all active curses are automatically cured! The ending tells the story of how you and Abigail fall in love, get married on the very spot where the curse was broken, and start a new life together on Miller's farm with old Farmer Miller ready to welcome a new generation.
+        </div>
+
+        <div class="info">
+            <strong>Stuck or Need Help?</strong><br>
+            - Check your inventory - do you have the Ancestor's Journal?<br>
+            - Did you learn the ritual location from Abigail? (You can retry the conversation!)<br>
+            - Is the barn locked? Farmer Miller hints the key is in the garden strawberry patch<br>
+            - Can't find hidden areas? Keep revisiting rooms - each visit is a new discovery roll!<br>
+            - The winning path is always possible, even with minimum stats - just keep trying!
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; color: #a89060; font-style: italic;">
+            Good luck breaking the curse! May your rolls be high and your transformations... non-existent. &#x1F340;
+        </p>
+
+        <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #8b6f47;">
+            Created for Cursed Farm Adventure | Last Updated: February 2025
+        </p>
+    </div>
+</body>
+</html>

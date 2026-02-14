@@ -1,0 +1,181 @@
+[game_intro]
+You've been searching for work for weeks when you spotted a flyer at the general store: "FARM HELP WANTED - Room and Board Included. Good pay for hard workers. Ask for directions at Miller's Dairy Farm." The paper was yellowed and curling at the edges, but the address was clear enough. Now, as your car rattles down the long dirt driveway, you're starting to wonder if this was such a good idea after all.
+[END]
+
+[farmhouse_arrival]
+The gravel crunches under your tires as you pull up to the old Victorian farmhouse. The structure looms against the twilight sky, its white paint peeling in long strips. The porch sags slightly, and fog creeps across the yard despite it being mid-afternoon. Through a window, you catch a glimpse of movement - someone's definitely home. The job posting said to come right to the house.
+[END]
+
+[farmhouse_meet_farmer]
+The door swings open before you can knock, revealing a weathered man in his fifties. His face is lined with worry, and dark circles shadow his eyes. "You're here about the job?" he asks, hope flickering across his features. "Thank God. I'm Farmer Miller. I... I really need the help." He glances over his shoulder nervously. "Strange things have been happening around here. Workers don't tend to stay long. But I'm desperate. The pay is good, I promise. Just... be careful, alright?"
+[END]
+
+[farmhouse_explore]
+The farmhouse interior is surprisingly well-kept, though there's an unmistakable chill in the air. Family portraits line the walls - several generations of Millers staring down with stern expressions. In one corner, you notice a small shrine with candles and old photographs. The farmer's coffee sits steaming on the kitchen table, but the house feels emptier than it should.
+[END]
+
+[farmhouse_ghost_encounter]
+A cold draft sweeps through the room, extinguishing the candles. In the darkness, you see her - a translucent figure of a young woman in an old-fashioned dress. Her eyes are sad, infinitely sad, and she reaches toward you with ghostly hands. The temperature plummets. You feel drawn toward her, as if your very essence might slip away from your body and join her in eternal wandering...
+[END]
+
+[farmhouse_ghost_success]
+You steady yourself, planting your feet firmly on the ground. The chill is overwhelming, but you focus on the warmth of your own heartbeat, your own breath. "Not today," you whisper through chattering teeth. The ghost's expression shifts - is that respect? - before she fades back into the shadows.
+[END]
+
+[farmhouse_ghost_failure]
+The cold pierces through to your bones. Your fingers feel numb, then translucent. The ghost's sad smile widens as she recognizes a kindred spirit in the making. You try to cry out, but your voice echoes hollow and distant...
+[END]
+
+[rootcellar_discover]
+Your sharp eyes catch something odd - a slight depression in the floor near the pantry, and what looks like hidden hinges beneath a worn rug. A root cellar! These old farmhouses always had them. You pull back the rug to reveal a heavy wooden trapdoor with an iron ring handle.
+[END]
+
+[rootcellar_entrance]
+The wooden stairs creak ominously as you descend into darkness. The air is cool and smells of earth and old preserves. Your eyes adjust to reveal shelves lined with dusty mason jars and forgotten farm equipment. But there, on a small table illuminated by a shaft of light from a crack in the foundation, you spot something remarkable: an old leather-bound journal.
+[END]
+
+[rootcellar_journal]
+The journal's pages are brittle with age, but the handwriting is clear. It's dated 1897 and belongs to Ezekiel Miller, an ancestor. As you read, your blood runs cold:
+
+"The curse began with my greed. My daughter, sweet Abigail, fell in love with the farmhand Thomas. But I forbade the union - he had no land, no prospects. In my anger, I consulted with a traveling witch, seeking a charm to make Abigail forget him. The price seemed small: three drops of blood on the scarecrow in the pasture.
+
+But the witch deceived me. The charm did not make Abigail forget - it bound her spirit to this farm forever, neither living nor dead. Thomas fled in horror when she would not follow him. And now she wanders, lonely and cursed, while the farm itself has taken on a malevolent life. Animals transform, workers vanish, and I cannot undo what I have done.
+
+The witch told me, in cruel jest, that only true love freely given - a union blessed on this farm while Abigail watches - can break the curse. But who could fall in love in such a place? I have doomed my family for generations."
+
+The entry ends there. Abigail. The ghost in the farmhouse must be her.
+[END]
+
+[barn_locked]
+The barn door is sealed with a heavy padlock, rusted but secure. The metal is unnaturally cold to the touch, as if the barn itself rejects visitors. You'll need a key to get inside.
+
+Farmer Miller shuffles up behind you, wringing his hands. "Sorry about that, {playerName}. I lost the key ages ago - haven't been able to get in there myself. If I had to guess, I'd say it ended up somewhere in the garden. Things have a way of turning up in the strawberry patch. The soil there moves on its own sometimes, pushes things to the surface..."
+[END]
+
+[barn_entrance]
+The barn door swings open with a prolonged creak that echoes in the vast space. The interior is dimmed by dusty windows, and the smell of old hay mingles with something else - something wrong. Empty stalls line both sides, but you could swear you hear the sound of breathing, low and bovine, coming from the shadows.
+[END]
+
+[barn_cow_encounter]
+A massive spectral cow materializes from the darkness - translucent and glowing with an eerie blue light. Its eyes burn red, and ghostly vapor streams from its nostrils. It paws the ground once, twice, then lowers its head and charges straight at you! You have only seconds to brace yourself...
+[END]
+
+[barn_cow_success]
+You plant your feet wide and clench your fists, every muscle tensed. The spectral cow's charge is like a freezing wind, but you hold firm, refusing to budge. Your determination seems to surprise it - the red fades from its eyes, and it retreats back into the shadows with a mournful, otherworldly moo.
+[END]
+
+[barn_cow_failure]
+The impact of the ghost cow hits you like a wall of ice. You're thrown backward, landing hard on the hay-strewn floor. As you struggle to rise, you feel something terrible beginning - a heaviness in your limbs, a pulling sensation in your spine. Your hands look strange, thicker somehow...
+[END]
+
+[barn_explore]
+Searching the barn reveals old farming equipment, cobweb-covered tools, and bales of ancient hay. In one corner, you find a tarnished brass collar with a small bell attached. It looks like it might have belonged to a prize cow once. Despite its age, when you shake it, the bell rings with a surprisingly pure, clear tone.
+[END]
+
+[hayloft_discover]
+Your keen eyes spot something others might miss - a wooden ladder partially hidden behind some hay bales, leading up to a hayloft. The rungs look sturdy enough to climb.
+[END]
+
+[hayloft_entrance]
+You climb up into the hayloft, a cozy space beneath the barn's rafters. Afternoon light filters through gaps in the wood, creating striped shadows. This must have been a storage area. Searching through the old hay, you find some items that have been stashed up here - possibly by previous farmhands.
+[END]
+
+[milkingstation_entrance]
+The milking station is a separate room attached to the barn, lined with mechanical milking equipment from decades past. The machines are silent now, but they gleam as if recently polished. The room is spotless - eerily so, given the age of everything. You can almost hear phantom echoes of machinery humming and milk streaming into pails.
+[END]
+
+[milkingstation_ghost_talk_success]
+You approach the apparition of Abigail slowly, keeping your voice gentle and kind. "I'm not here to hurt you," you say softly. "I've read your father's journal. I know what happened." Her translucent form wavers, and for the first time, you see hope flicker in her spectral eyes. She points toward the pasture with one ghostly hand, then places her palm over her heart. The message is clear: the scarecrow in the pasture is key to breaking the curse.
+[END]
+
+[milkingstation_ghost_talk_failure]
+You try to speak, but your words come out harsh and clumsy. The ghost recoils, her expression shifting from sadness to anger. The temperature drops twenty degrees in an instant, and frost forms on the milking equipment. She lets out a wail that pierces your skull, and you feel your grip on the living world beginning to slip...
+[END]
+
+[pasture_entrance]
+The pasture stretches before you, a wide expanse of overgrown grass swaying in a wind you can't quite feel. In the center stands a scarecrow, its burlap face expressionless, arms spread wide on a wooden cross. Something about it makes your skin crawl - the way it seems to track your movement, the way shadows cling to it even in full daylight.
+[END]
+
+[pasture_scarecrow_encounter]
+As you approach the scarecrow, its head rotates with a dry rustling sound - straw shifting against cloth. The button eyes seem to fix on you with malevolent intelligence. Suddenly, its wooden frame creaks and moves, one arm reaching out toward you. Where it touches your sleeve, you feel your arm go stiff and rigid, like wood replacing flesh...
+[END]
+
+[pasture_scarecrow_success]
+You wrench your arm away with all your strength, tearing your sleeve but freeing yourself from the scarecrow's touch. The wooden figure freezes, then slumps back into its original position. You stumble backward, panting, watching to make sure it doesn't move again.
+[END]
+
+[pasture_scarecrow_failure]
+The scarecrow's grip is impossibly strong. Wooden fingers dig into your arm, and you feel the transformation spreading - your skin hardening, your joints stiffening. You try to scream, but your jaw is locked. Straw begins pushing through your pores...
+[END]
+
+[pasture_ritual_location]
+This is the place. The scarecrow stands at the center of what must have been a ritual circle - you can see the faint remnants of symbols carved into the earth around it. According to the journal, this is where Ezekiel Miller made his terrible bargain. If the curse is to be broken, it must be broken here.
+[END]
+
+[pasture_perform_ritual]
+You stand before the scarecrow, the journal's instructions memorized. You need true love blessed on this farm - but Abigail's spirit and Farmer Miller, both products of the curse, cannot fulfill it themselves. You realize the answer: YOU must bear witness and give blessing. You call out to Abigail's spirit and begin speaking the counter-charm written in the journal's final page - words Ezekiel never had the courage to speak. The air shimmers. The scarecrow begins to burn with cold fire...
+[END]
+
+[oldwell_discover]
+Your exceptionally sharp eyes catch something most would miss - an area of the pasture where the grass grows in a perfect circle, as if something beneath affects the soil. Investigating, you find old stones half-buried in earth. With some effort, you uncover an old well, long since covered over and forgotten.
+[END]
+
+[oldwell_entrance]
+The well is dry, its bottom visible twenty feet down. Using an old rope you found nearby, you carefully lower yourself down. At the bottom, you find it's not entirely dry - there's a small hollow carved into the side, and inside it, wrapped in oilcloth, is something that has been hidden here for a very long time.
+[END]
+
+[garden_entrance]
+The working garden is a riot of growth - perhaps too much growth. Strawberries the size of your fist grow in wild patches, their red fruit almost glowing. Blueberry bushes tower like small trees, heavy with fruit. Everything here is too healthy, too vibrant, as if the curse that haunts the farm has twisted nature itself into overdrive. A narrow path winds through the plants toward a small tool shed at the far end.
+[END]
+
+[garden_strawberries]
+The strawberry patch is overgrown, the plants tangled together in a green mass. As you push aside leaves the size of dinner plates, you spot something glinting in the soil - a key! It's old and rusted, but the teeth look intact. This might open the padlock on the barn.
+[END]
+
+[garden_explore]
+Searching carefully through the garden, you find various items among the plants - some useful, some decidedly odd. The soil itself seems to pulse with unnatural vitality. You get the distinct impression that anything left here too long might begin to grow roots.
+[END]
+
+[beehive_entrance]
+The bee hives sit at the edge of the garden, a row of white boxes humming with insect life. But the sound is wrong - too deep, too resonant, like a choir warming up rather than simple insects. As you approach, you see the bees are larger than normal, their bodies glinting with an iridescent sheen that has nothing to do with nature.
+[END]
+
+[beehive_encounter]
+The moment you get too close, the hive's humming shifts to an angry roar. A cloud of spectral bees erupts from the entrance - translucent, glowing insects that swirl around you in a maddening cyclone. They don't sting, but where they brush against your skin, you feel a strange tingling, a wrongness. You need to get out of this swarm before their cursed touch changes you!
+[END]
+
+[beehive_success]
+Your sharp eyes spot the pattern in the swarm's movement - there's a gap, a space where the bees don't fly. You dive through it, rolling on the ground and coming up outside the swarm's range. Behind you, the bees slowly return to their hive, their angry buzzing fading to the normal hum.
+[END]
+
+[beehive_failure]
+The swarm engulfs you completely. You can't see, can't breathe without inhaling the phantom bees. Their buzzing fills your skull, and you feel yourself shrinking, changing. Your skin prickles as yellow and black stripes begin to form...
+[END]
+
+[beehive_explore]
+Carefully keeping your distance from the main hive, you spot an old beekeeper's equipment box half-buried in weeds. Inside, you find a smoke veil - a protective hood with mesh and a small brazier for creating calming smoke. Somehow, despite decades of disuse, it still feels potent, as if blessed against the very curse that plagues this place.
+[END]
+
+[game_win]
+The counter-charm reaches its crescendo. The scarecrow erupts in spectral flames, burning away like paper. The earth trembles, and you feel something ancient and malevolent being torn from the land. The fog lifts. The sun breaks through clouds for the first time since you arrived.
+
+Abigail's spirit appears before you, but she's changing - becoming solid, gaining color. She gasps her first real breath in over a century and collapses to her knees, weeping. You rush to her side, catching her before she falls, and when your eyes meet, something passes between you - a spark, a recognition, as if your souls have known each other across the long years.
+
+Old Farmer Miller comes running from the house, tears streaming down his weathered cheeks. "The curse... it's broken. After all these generations..." He looks at you holding Abigail and a knowing smile crosses his face. "I always knew it would take someone special, {playerName}."
+
+In the weeks that follow, the farm transforms. The unnatural fog never returns. The animals are real again - warm-blooded and gentle. The garden grows abundantly but naturally. And you and Abigail are inseparable. She teaches you the old ways of the farm, and you teach her about the modern world she missed. Every evening you sit together on the porch, her hand in yours, watching fireflies dance over fields that are finally at peace.
+
+On a golden autumn day, with the maples blazing red and orange along the property line, you and Abigail are married in the pasture - the very spot where the curse began and where you ended it. Old Miller walks Abigail down the aisle, weeping openly with joy, and gives her away with trembling hands and a full heart.
+
+"This farm has waited over a hundred years for happiness," Miller says in his toast, raising a glass of cider. "Now it has a future again. Here's to {playerName} and Abigail - I can't think of two better people to carry it forward."
+
+As the seasons turn, the farmhouse fills with warmth and laughter. Miller, no longer burdened by the curse that haunted his family for generations, finds a new peace in his twilight years - content to bounce grandchildren on his knee and tell them stories by the fire. The dairy thrives. The fields bloom. And on quiet evenings, you and Abigail stand together at the window, looking out over the land that brought you together, ready to start a new generation on Miller's farm.
+
+THE END - THE CURSE IS BROKEN
+[END]
+
+[game_over]
+The curses have claimed every part of your body. What remains is no longer human — just another twisted creature of Miller's Dairy Farm, another worker who came seeking employment and was never seen again.
+
+The farm continues its dark existence, waiting for the next unfortunate soul to answer the job posting. Perhaps in another timeline, you made different choices...
+[END]

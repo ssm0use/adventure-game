@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursed Farm Adventure</title>
+    <link rel="stylesheet" href="styles.css?v=6">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Header -->
+        <header id="game-header">
+            <h1>🏚️ CURSED FARM ADVENTURE</h1>
+        </header>
+
+        <div id="game-main">
+            <!-- Left Sidebar: Character Stats and Inventory -->
+            <aside id="left-sidebar">
+                <!-- Character Name -->
+                <div id="character-section">
+                    <h2>CHARACTER</h2>
+                    <input type="text" id="character-name" placeholder="Enter your name" maxlength="20">
+                </div>
+
+                <!-- Stats Display -->
+                <div id="stats-section">
+                    <h3>STATS</h3>
+                    <div class="stat-row" data-stat="grit">
+                        <span class="stat-name" title="Physical strength and endurance. Used to resist physical challenges and transformations.">
+                            Grit
+                        </span>
+                        <span class="stat-value" id="stat-grit">
+                            <!-- Stars will be generated here -->
+                        </span>
+                    </div>
+                    <div class="stat-row" data-stat="keenEye">
+                        <span class="stat-name" title="Perception and awareness. Used to spot hidden areas, detect danger, and notice important details.">
+                            Keen Eye
+                        </span>
+                        <span class="stat-value" id="stat-keenEye">
+                            <!-- Stars will be generated here -->
+                        </span>
+                    </div>
+                    <div class="stat-row" data-stat="charm">
+                        <span class="stat-name" title="Social skills and charisma. Used to communicate with spirits, calm creatures, and build relationships.">
+                            Charm
+                        </span>
+                        <span class="stat-value" id="stat-charm">
+                            <!-- Stars will be generated here -->
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Bonus Point Assignment (shown at game start) -->
+                <div id="bonus-point-section" style="display: none;">
+                    <h3>BONUS POINT</h3>
+                    <p>Choose one stat to boost by 1 point:</p>
+                    <button class="bonus-btn" data-stat="grit">+1 Grit</button>
+                    <button class="bonus-btn" data-stat="keenEye">+1 Keen Eye</button>
+                    <button class="bonus-btn" data-stat="charm">+1 Charm</button>
+                </div>
+
+                <!-- Equipped Items -->
+                <div id="equipped-section">
+                    <h3>EQUIPPED</h3>
+                    <ul id="equipped-list">
+                        <li class="empty-state">Nothing equipped</li>
+                    </ul>
+                </div>
+
+                <!-- Inventory -->
+                <div id="inventory-section">
+                    <h3>INVENTORY</h3>
+                    <ul id="inventory-list">
+                        <li class="empty-state">Empty</li>
+                    </ul>
+                </div>
+
+                <!-- Active Curses -->
+                <div id="curses-section" style="display: none;">
+                    <h3>⚠️ CURSES</h3>
+                    <ul id="curses-list">
+                        <!-- Active curses will appear here -->
+                    </ul>
+                </div>
+
+                <!-- Save/Load Buttons -->
+                <div id="save-load-section">
+                    <button id="save-btn" class="action-btn">Save Game</button>
+                    <button id="load-btn" class="action-btn">Load Game</button>
+                    <button id="new-game-btn" class="action-btn">New Game</button>
+                </div>
+            </aside>
+
+            <!-- Main Story Area -->
+            <main id="story-area">
+                <!-- Current Location Header -->
+                <div id="location-header" style="display: none;">
+                    <span id="current-location">Unknown</span>
+                </div>
+
+                <div id="story-text">
+                    <!-- Story content will be displayed here -->
+                </div>
+
+                <div id="choices-area">
+                    <!-- Choice buttons will appear here -->
+                </div>
+
+                <!-- Encounter Results Display -->
+                <div id="encounter-results" style="display: none;">
+                    <!-- Dice roll results will appear here -->
+                </div>
+
+                <!-- Body Map / Character Transformation Status -->
+                <div id="bodymap-section" style="display: none;">
+                    <h3>Your Body</h3>
+                    <ul id="bodymap-list">
+                    </ul>
+                </div>
+
+                <!-- Explored Areas Log -->
+                <div id="explored-areas-section" style="display: none;">
+                    <h3>Explored Areas</h3>
+                    <ul id="explored-areas-list">
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal for Save/Load -->
+    <div id="modal-overlay" style="display: none;">
+        <div id="modal-content">
+            <h2 id="modal-title">Save Game</h2>
+            <div id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+            <button id="modal-close" class="action-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Load all JavaScript modules -->
+    <script src="js/story-loader.js?v=6"></script>
+    <script src="js/game-state.js?v=6"></script>
+    <script src="js/encounters.js?v=6"></script>
+    <script src="js/save-load.js?v=6"></script>
+    <script src="js/ui.js?v=6"></script>
+    <script src="js/main.js?v=6"></script>
+</body>
+</html>

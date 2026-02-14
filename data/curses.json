@@ -1,0 +1,67 @@
+{
+  "cow": {
+    "name": "Bovine Transformation",
+    "protectiveItem": "brassCollar",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your face has elongated into a bovine muzzle. Large, dark eyes with horizontal pupils stare back when you catch your reflection, and two small horns are pushing through your scalp.",
+      "arms": "Your hands have thickened and hardened, fingers fusing into clumsy hoof-like appendages. Black and white patches spread up your forearms, and your grip is nearly gone.",
+      "body": "Your torso has broadened unnaturally, spine curving forward. Black and white cowhide patterns cover your chest and stomach, and your clothes strain against the shifting bulk.",
+      "legs": "Your knees have reversed their bend, and your feet have hardened into heavy, cloven hooves. Walking upright is a constant struggle."
+    },
+    "advanceText": "A wave of wrongness ripples through you. The Bovine Transformation tightens its grip, claiming more of your body.",
+    "overwriteText": "The Bovine Transformation surges with new strength, overwhelming another curse's hold on part of your body."
+  },
+  "bee": {
+    "name": "Bee Transformation",
+    "protectiveItem": "beeVeil",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your eyes have fragmented into hundreds of facets, giving you dizzying compound vision. Stubby antennae sprout from your forehead, twitching at every scent.",
+      "arms": "Your arms have thinned and hardened into chitinous limbs, joints bending at wrong angles. Fine hairs coat them, and your fingers have fused into pointed appendages.",
+      "body": "Bold yellow and black stripes band your torso like war paint. Translucent wings have budded from your shoulder blades, buzzing faintly when you move.",
+      "legs": "Your legs have segmented into insectoid limbs, thin and angular. They end in barbed hooks instead of feet, and they move with a twitchy, alien rhythm."
+    },
+    "advanceText": "A maddening buzz fills your skull. The Bee Transformation spreads further, reshaping more of your body.",
+    "overwriteText": "The Bee Transformation swarms over another curse's territory, reclaiming part of your body with its droning hunger."
+  },
+  "scarecrow": {
+    "name": "Scarecrow Transformation",
+    "protectiveItem": "blessedHat",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your face has frozen into a stitched burlap rictus. Button eyes sit where yours used to be, and straw pokes out from beneath a battered hat that has fused to your scalp.",
+      "arms": "Your arms are wooden poles lashed with twine. Straw stuffing bulges from tears in your sleeves, and your fingers are brittle sticks that clatter when you move.",
+      "body": "Your torso is a canvas sack stretched over a wooden cross-frame. Straw bursts from every seam, and birds have started landing on your shoulders, mistaking you for the real thing.",
+      "legs": "Your legs are rough wooden posts, stiff and creaking. They move in jerky, puppet-like motions, and dry straw trails behind you with every step."
+    },
+    "advanceText": "Your joints seize with a wooden creak. The Scarecrow Transformation spreads, turning more of you into straw and timber.",
+    "overwriteText": "The Scarecrow Transformation pushes outward with rigid force, replacing another curse's mark with its own hollow stillness."
+  },
+  "ghost": {
+    "name": "Ghost Transformation",
+    "protectiveItem": "saltAmulet",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your head is translucent, features flickering like a candle in the wind. Your voice echoes from far away, and your eyes glow with a faint, spectral blue light.",
+      "arms": "Your arms phase in and out of visibility. Objects sometimes pass through your hands before you can grip them. A permanent chill radiates from your translucent fingers.",
+      "body": "Your torso is see-through, ribs and spine visible as faint outlines. Colors have drained away, leaving you in shades of gray and spectral blue. You feel weightless and hollow.",
+      "legs": "Your legs fade to mist below the knee, and you drift slightly above the ground. Frost forms on the floor where you pass, and your footsteps make no sound."
+    },
+    "advanceText": "An icy chill pierces your core. The Ghost Transformation seeps deeper, pulling more of you into the spirit world.",
+    "overwriteText": "The Ghost Transformation washes over another curse's hold like a cold tide, claiming more of your fading form."
+  },
+  "mouse": {
+    "name": "Mouse Transformation",
+    "protectiveItem": "mouserCharm",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your nose has stretched into a twitching pink snout, and your ears have grown large, round, and covered in fine fur. Long whiskers sprout from your cheeks, constantly quivering.",
+      "arms": "Your arms have shrunk, covered in soft brown fur. Your hands are tiny paws with delicate claws, barely able to grip anything larger than a seed.",
+      "body": "Your torso has compressed and rounded, covered in sleek brown fur. A long, naked pink tail extends from the base of your spine, curling and uncurling nervously.",
+      "legs": "Your legs have shortened into small, powerful haunches. Your feet are tiny pink paws that patter rapidly. You find yourself crouching low, ready to scurry at any noise."
+    },
+    "advanceText": "Your body twitches and shrinks. The Mouse Transformation gnaws at you, reducing more of your human form.",
+    "overwriteText": "The Mouse Transformation scurries over another curse's claim, small but relentless, replacing it with fur and whiskers."
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "barnKey": {
+    "id": "barnKey",
+    "name": "Rusty Barn Key",
+    "description": "An old iron key, rusted but still functional. Unnaturally cold to the touch.",
+    "type": "key",
+    "canEquip": false,
+    "canUse": false
+  },
+  "ancestorJournal": {
+    "id": "ancestorJournal",
+    "name": "Ancestor's Journal",
+    "description": "A leather-bound journal from 1897 belonging to Ezekiel Miller. It details the origin of the curse and hints at how to break it.",
+    "type": "quest",
+    "canEquip": false,
+    "canUse": false
+  },
+  "brassCollar": {
+    "id": "brassCollar",
+    "name": "Brass Bell Collar",
+    "description": "A tarnished brass collar with a small bell. Rings with a pure, clear tone that seems to ward off bovine spirits.",
+    "type": "protective",
+    "protectsFrom": "cow",
+    "equipSlot": "neck",
+    "canEquip": true,
+    "canUse": false
+  },
+  "beeVeil": {
+    "id": "beeVeil",
+    "name": "Beekeeper's Smoke Veil",
+    "description": "An old beekeeper's protective hood with mesh and a small smoke brazier. Still potent despite its age.",
+    "type": "protective",
+    "protectsFrom": "bee",
+    "equipSlot": "head",
+    "canEquip": true,
+    "canUse": false
+  },
+  "blessedHat": {
+    "id": "blessedHat",
+    "name": "Blessed Straw Hat",
+    "description": "A wide-brimmed hat woven from blessed straw. Feels warm and alive in your hands.",
+    "type": "protective",
+    "protectsFrom": "scarecrow",
+    "equipSlot": "head",
+    "canEquip": true,
+    "canUse": false
+  },
+  "saltAmulet": {
+    "id": "saltAmulet",
+    "name": "Salt Circle Amulet",
+    "description": "A small amulet containing blessed salt in a glass vial. The salt glows faintly with inner light.",
+    "type": "protective",
+    "protectsFrom": "ghost",
+    "equipSlot": "neck",
+    "canEquip": true,
+    "canUse": false
+  },
+  "workGloves": {
+    "id": "workGloves",
+    "name": "Worn Work Gloves",
+    "description": "Sturdy leather work gloves, worn smooth by years of labor. They make you feel stronger.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "grit",
+      "amount": 1
+    },
+    "equipSlot": "hands",
+    "canEquip": true,
+    "canUse": false
+  },
+  "magnifyingGlass": {
+    "id": "magnifyingGlass",
+    "name": "Magnifying Glass",
+    "description": "A brass-handled magnifying glass with a crystal-clear lens. Everything looks sharper through it.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "keenEye",
+      "amount": 1
+    },
+    "equipSlot": "hands",
+    "canEquip": true,
+    "canUse": false
+  },
+  "silkNeckerchief": {
+    "id": "silkNeckerchief",
+    "name": "Silk Neckerchief",
+    "description": "A fine silk neckerchief in a fetching color. Makes you look more presentable.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "charm",
+      "amount": 1
+    },
+    "equipSlot": "neck",
+    "canEquip": true,
+    "canUse": false
+  },
+  "sturdyOveralls": {
+    "id": "sturdyOveralls",
+    "name": "Sturdy Overalls",
+    "description": "Heavy-duty denim overalls with reinforced knees. Makes you feel ready for anything.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "grit",
+      "amount": 1
+    },
+    "equipSlot": "body",
+    "canEquip": true,
+    "canUse": false
+  },
+  "luckyHorseshoe": {
+    "id": "luckyHorseshoe",
+    "name": "Lucky Horseshoe",
+    "description": "An old iron horseshoe, supposedly blessed by a traveling priest. Your perception feels heightened.",
+    "type": "equipment",
+    "statBoost": {
+      "stat": "keenEye",
+      "amount": 1
+    },
+    "equipSlot": "pocket",
+    "canEquip": true,
+    "canUse": false
+  },
+  "crackedMirror": {
+    "id": "crackedMirror",
+    "name": "Cracked Hand Mirror",
+    "description": "A small hand mirror with a long crack across its surface. Your reflection looks wrong in it.",
+    "type": "cursed",
+    "statPenalty": {
+      "stat": "keenEye",
+      "amount": 1
+    },
+    "curseEffect": {
+      "curse": "ghost"
+    },
+    "canEquip": false,
+    "canUse": false,
+    "warning": "This item feels wrong. Taking it might have consequences."
+  },
+  "moldyCheese": {
+    "id": "moldyCheese",
+    "name": "Moldy Cheese Wheel",
+    "description": "A wheel of cheese covered in greenish mold. It smells terrible and radiates wrongness.",
+    "type": "cursed",
+    "statPenalty": {
+      "stat": "grit",
+      "amount": 1
+    },
+    "curseEffect": {
+      "curse": "mouse"
+    },
+    "canEquip": false,
+    "canUse": false,
+    "warning": "This item reeks of curse magic. Best left alone."
+  },
+  "mouserCharm": {
+    "id": "mouserCharm",
+    "name": "Mouser's Charm",
+    "description": "A small carved wooden cat with amber eyes. It radiates warmth and faintly purrs when held. Farm cats have always kept the mice at bay.",
+    "type": "protective",
+    "protectsFrom": "mouse",
+    "equipSlot": "pocket",
+    "canEquip": true,
+    "canUse": false
+  },
+  "stickyHoneycomb": {
+    "id": "stickyHoneycomb",
+    "name": "Sticky Honeycomb",
+    "description": "A piece of honeycomb still dripping with honey. It buzzes softly in your hand.",
+    "type": "cursed",
+    "statPenalty": {
+      "stat": "charm",
+      "amount": 1
+    },
+    "curseEffect": {
+      "curse": "bee"
+    },
+    "canEquip": false,
+    "canUse": false,
+    "warning": "The honeycomb thrums with strange energy. Probably cursed."
+  }
+}

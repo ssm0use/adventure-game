@@ -1,0 +1,317 @@
+{
+  "farmhouse": {
+    "name": "Farmhouse",
+    "connections": ["garden", "barn"],
+    "hiddenArea": {
+      "name": "rootcellar",
+      "keenEyeRequired": 3,
+      "luckThreshold": 18,
+      "description": "A hidden root cellar beneath the farmhouse"
+    },
+    "events": [
+      {
+        "id": "meet_farmer",
+        "trigger": "firstVisit",
+        "storyKey": "farmhouse_meet_farmer",
+        "oneTime": true
+      },
+      {
+        "id": "ghost_encounter",
+        "trigger": "action",
+        "storyKey": "farmhouse_ghost_encounter",
+        "actionText": "Investigate the Cold Spot",
+        "check": {
+          "stat": "grit",
+          "difficulty": 15,
+          "successStory": "farmhouse_ghost_success",
+          "failureStory": "farmhouse_ghost_failure",
+          "failureEffect": {
+            "curse": "ghost"
+          }
+        },
+        "requirements": {
+          "visitCount": 2
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "explore_farmhouse",
+        "storyKey": "farmhouse_explore",
+        "items": ["crackedMirror"],
+        "oneTime": true
+      }
+    ]
+  },
+  "rootcellar": {
+    "name": "Root Cellar",
+    "connections": ["farmhouse"],
+    "events": [
+      {
+        "id": "find_journal",
+        "trigger": "firstVisit",
+        "storyKey": "rootcellar_entrance",
+        "oneTime": true
+      }
+    ],
+    "searches": [
+      {
+        "id": "get_journal",
+        "storyKey": "rootcellar_journal",
+        "items": ["ancestorJournal"],
+        "oneTime": true,
+        "searchText": "Pick Up and Read the Journal"
+      }
+    ]
+  },
+  "barn": {
+    "name": "Barn",
+    "connections": ["farmhouse", "milkingStation", "pasture"],
+    "hiddenArea": {
+      "name": "hayloft",
+      "keenEyeRequired": 3,
+      "luckThreshold": 16,
+      "description": "A hayloft above the main barn"
+    },
+    "events": [
+      {
+        "id": "barn_locked",
+        "trigger": "firstVisit",
+        "storyKey": "barn_locked",
+        "requirements": {
+          "missingItem": "barnKey"
+        },
+        "blocksEntry": true
+      },
+      {
+        "id": "barn_enter",
+        "trigger": "firstVisit",
+        "storyKey": "barn_entrance",
+        "requirements": {
+          "hasItem": "barnKey"
+        },
+        "oneTime": true
+      },
+      {
+        "id": "cow_encounter",
+        "trigger": "action",
+        "storyKey": "barn_cow_encounter",
+        "actionText": "Approach the Shadows",
+        "check": {
+          "stat": "grit",
+          "difficulty": 15,
+          "successStory": "barn_cow_success",
+          "failureStory": "barn_cow_failure",
+          "failureEffect": {
+            "curse": "cow"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_barn",
+        "storyKey": "barn_explore",
+        "items": ["brassCollar"],
+        "oneTime": true
+      }
+    ]
+  },
+  "hayloft": {
+    "name": "Hayloft",
+    "connections": ["barn"],
+    "events": [
+      {
+        "id": "enter_hayloft",
+        "trigger": "firstVisit",
+        "storyKey": "hayloft_entrance",
+        "oneTime": true
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_hayloft",
+        "storyKey": "hayloft_entrance",
+        "items": ["workGloves", "silkNeckerchief", "luckyHorseshoe", "mouserCharm"],
+        "oneTime": true
+      }
+    ]
+  },
+  "milkingStation": {
+    "name": "Milking Station",
+    "connections": ["barn"],
+    "events": [
+      {
+        "id": "enter_station",
+        "trigger": "firstVisit",
+        "storyKey": "milkingstation_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "talk_to_ghost",
+        "trigger": "action",
+        "storyKey": "milkingstation_ghost_talk_success",
+        "actionText": "Speak with Abigail's Spirit",
+        "check": {
+          "stat": "charm",
+          "difficulty": 12,
+          "successStory": "milkingstation_ghost_talk_success",
+          "failureStory": "milkingstation_ghost_talk_failure",
+          "successEffect": {
+            "flag": "learnedRitualLocation"
+          },
+          "failureEffect": {
+            "curse": "ghost"
+          }
+        },
+        "requirements": {
+          "hasItem": "ancestorJournal"
+        }
+      }
+    ]
+  },
+  "pasture": {
+    "name": "Pasture",
+    "connections": ["barn", "garden"],
+    "hiddenArea": {
+      "name": "oldwell",
+      "keenEyeRequired": 4,
+      "luckThreshold": 19,
+      "description": "An ancient well, long forgotten"
+    },
+    "events": [
+      {
+        "id": "enter_pasture",
+        "trigger": "firstVisit",
+        "storyKey": "pasture_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "scarecrow_encounter",
+        "trigger": "action",
+        "storyKey": "pasture_scarecrow_encounter",
+        "actionText": "Approach the Scarecrow",
+        "check": {
+          "stat": "grit",
+          "difficulty": 16,
+          "successStory": "pasture_scarecrow_success",
+          "failureStory": "pasture_scarecrow_failure",
+          "failureEffect": {
+            "curse": "scarecrow"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      },
+      {
+        "id": "perform_ritual",
+        "trigger": "action",
+        "storyKey": "pasture_perform_ritual",
+        "actionText": "Perform the Breaking Ritual",
+        "requirements": {
+          "hasItem": "ancestorJournal",
+          "hasFlag": "learnedRitualLocation"
+        },
+        "winCondition": true
+      }
+    ],
+    "searches": [
+      {
+        "id": "find_ritual_spot",
+        "storyKey": "pasture_ritual_location",
+        "requirements": {
+          "hasItem": "ancestorJournal"
+        },
+        "oneTime": true
+      }
+    ]
+  },
+  "oldwell": {
+    "name": "Old Well",
+    "connections": ["pasture"],
+    "events": [
+      {
+        "id": "enter_well",
+        "trigger": "firstVisit",
+        "storyKey": "oldwell_entrance",
+        "oneTime": true
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_well",
+        "storyKey": "oldwell_entrance",
+        "items": ["saltAmulet", "sturdyOveralls"],
+        "oneTime": true
+      }
+    ]
+  },
+  "garden": {
+    "name": "Working Garden",
+    "connections": ["farmhouse", "pasture", "beeHives"],
+    "events": [
+      {
+        "id": "enter_garden",
+        "trigger": "firstVisit",
+        "storyKey": "garden_entrance",
+        "oneTime": true
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_strawberries",
+        "storyKey": "garden_strawberries",
+        "items": ["barnKey"],
+        "oneTime": true
+      },
+      {
+        "id": "search_garden",
+        "storyKey": "garden_explore",
+        "items": ["magnifyingGlass", "blessedHat", "moldyCheese"],
+        "oneTime": true
+      }
+    ]
+  },
+  "beeHives": {
+    "name": "Bee Hives",
+    "connections": ["garden"],
+    "events": [
+      {
+        "id": "enter_beehives",
+        "trigger": "firstVisit",
+        "storyKey": "beehive_entrance",
+        "oneTime": true
+      },
+      {
+        "id": "bee_encounter",
+        "trigger": "action",
+        "storyKey": "beehive_encounter",
+        "actionText": "Examine the Hives Closely",
+        "check": {
+          "stat": "keenEye",
+          "difficulty": 14,
+          "successStory": "beehive_success",
+          "failureStory": "beehive_failure",
+          "failureEffect": {
+            "curse": "bee"
+          }
+        },
+        "requirements": {
+          "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_beehives",
+        "storyKey": "beehive_explore",
+        "items": ["beeVeil", "stickyHoneycomb"],
+        "oneTime": true
+      }
+    ]
+  }
+}
