@@ -230,24 +230,40 @@ function equipItem(itemId) {
         GameState.equipped.push(itemId);
         console.log(`Equipped ${itemId}`);
 
-        // Check if this is a protective item that can reduce an active curse
+        // Check if this is a protective item that can affect an active curse
         if (item.type === 'protective' && item.protectsFrom) {
             const curseType = item.protectsFrom;
             if (GameState.activeCurses[curseType] && !GameState.activeCurses[curseType].stopped) {
-                // Free one body part held by this curse
-                freeOneBodyPart(curseType);
+                // Only free a body part the FIRST time this item is used against this curse
+                const alreadyReduced = GameState.activeCurses[curseType].reducedBy &&
+                    GameState.activeCurses[curseType].reducedBy.includes(itemId);
 
-                // Stop the curse from advancing further
-                GameState.activeCurses[curseType].stopped = true;
+                if (!alreadyReduced) {
+                    // Free one body part held by this curse
+                    freeOneBodyPart(curseType);
 
-                // If curse now has 0 body parts, remove it entirely
-                if (getCurseStage(curseType) === 0) {
-                    delete GameState.activeCurses[curseType];
-                    console.log(`${item.name} fully cured ${curseType} curse!`);
-                    alert(`${item.name} purges the last trace of the ${CursesData[curseType].name}! You are completely free of it.`);
+                    // Track that this item has already reduced this curse
+                    if (!GameState.activeCurses[curseType].reducedBy) {
+                        GameState.activeCurses[curseType].reducedBy = [];
+                    }
+                    GameState.activeCurses[curseType].reducedBy.push(itemId);
+
+                    // If curse now has 0 body parts, remove it entirely
+                    if (getCurseStage(curseType) === 0) {
+                        delete GameState.activeCurses[curseType];
+                        console.log(`${item.name} fully cured ${curseType} curse!`);
+                        alert(`${item.name} purges the last trace of the ${CursesData[curseType].name}! You are completely free of it.`);
+                    } else {
+                        // Stop the curse from advancing further
+                        GameState.activeCurses[curseType].stopped = true;
+                        console.log(`${item.name} reduced and stopped ${curseType} curse.`);
+                        alert(`${item.name} weakens the ${CursesData[curseType].name} and prevents it from spreading further. But traces remain...`);
+                    }
                 } else {
-                    console.log(`${item.name} reduced and stopped ${curseType} curse.`);
-                    alert(`${item.name} weakens the ${CursesData[curseType].name} and prevents it from spreading further. But traces remain...`);
+                    // Re-equipping: just halt the curse again, no stage reduction
+                    GameState.activeCurses[curseType].stopped = true;
+                    console.log(`${item.name} halted ${curseType} curse again (no further reduction).`);
+                    alert(`${item.name} holds the ${CursesData[curseType].name} at bay once more, but cannot weaken it further.`);
                 }
             }
         }
