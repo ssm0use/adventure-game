@@ -234,6 +234,9 @@ function renderRoomContent(roomId) {
         if (event.oneTime) {
             completeEvent(event.id);
         }
+    } else {
+        // No first-visit events — show return-visit description for this room
+        displayStoryText(roomId + '_return');
     }
 
     // Show all available actions for this room

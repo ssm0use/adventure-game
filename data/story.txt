@@ -267,3 +267,59 @@ You flinch. That's all it takes. The mice sense your fear like a spark in dry ti
 [chickencoop_explore]
 Searching the nesting boxes carefully, you find the remnants of old eggs, feathers, and mouse droppings. But two items stand out from the decay. In one box, nestled in a bed of straw, is a tiny copper thimble etched with faded runes -- it was probably left here by a farmhand's wife as a protective charm against the vermin. In another box, partially buried, sits a single black egg, cold as stone and heavy for its size. Something shifts inside it when you turn it over. It doesn't feel right.
 [END]
+
+[farmhouse_return]
+The old farmhouse creaks and settles around you as you step back inside. Farmer Miller's coffee has gone cold on the kitchen table, but the portraits on the walls still watch you with those stern Miller eyes. The chill in the air hasn't faded.
+[END]
+
+[rootcellar_return]
+You descend the creaking stairs back into the root cellar. The air is cool and earthy, the shelves of dusty mason jars undisturbed. The small table sits in its shaft of light, quiet and still.
+[END]
+
+[barn_return]
+The barn door groans as you push it open again. The smell of old hay and that lingering wrongness greet you. The empty stalls stretch into shadow on either side, and the faint sound of spectral breathing drifts from somewhere in the dark.
+[END]
+
+[hayloft_return]
+You climb back up into the hayloft. Afternoon light still filters through the gaps in the wood, striping the old hay with gold. It's quiet up here, almost peaceful.
+[END]
+
+[milkingStation_return]
+The milking station is just as eerily spotless as before. The old machines gleam in the dim light, and you can still hear the phantom echoes of equipment that hasn't run in decades.
+[END]
+
+[pasture_return]
+The pasture spreads before you again, its overgrown grass swaying in that unfelt wind. The scarecrow stands sentinel in the center, arms spread wide, shadows clinging to its burlap form.
+[END]
+
+[oldwell_return]
+You lower yourself back down into the dry well. The small hollow in the wall is empty now, but the stones still feel ancient and heavy with purpose.
+[END]
+
+[garden_return]
+The garden is still a riot of impossible growth. Oversized strawberries glow red among the tangled vines, and blueberry bushes tower like small trees. The air hums with unnatural vitality.
+[END]
+
+[beeHives_return]
+The bee hives hum with their deep, unsettling chorus. The unnaturally large bees drift between the white boxes, their iridescent bodies glinting in the light. You keep your distance.
+[END]
+
+[smokehouse_return]
+The smokehouse is just as you left it -- thick with spectral haze, the iron hooks dangling from the ceiling, the stone walls black with soot. The air is warm despite the dead fire pit.
+[END]
+
+[cornfield_return]
+The corn towers over you as you step between the stalks again. The rows curve inward like a closing fist, and the light dims around you. Something rustles deeper in the field with slow, deliberate rhythm.
+[END]
+
+[grainSilo_return]
+The grain silo looms above you, rust-streaked and ancient. Inside, the desiccated grain still shifts and whispers in the dark. The smell of rot and fermentation hangs heavy in the air.
+[END]
+
+[siloBasement_return]
+You descend the narrow ladder back into the stone basement beneath the silo. The sweating walls and unidentifiable jars are unchanged. It's cold and silent down here.
+[END]
+
+[chickenCoop_return]
+The chicken coop leans and creaks as you step back inside. Feathers drift in the stale air, and the frantic claw-marks in the dust cover the floor in their endless circles and figure-eights. The nesting boxes are quiet -- for now.
+[END]
