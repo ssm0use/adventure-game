@@ -52,6 +52,20 @@ function startNewGame() {
     // Initialize game state with random stats
     initializeNewGame();
 
+    // Restore name input if it was replaced with display
+    const nameDisplay = document.getElementById('character-name-display');
+    if (nameDisplay) {
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.id = 'character-name';
+        nameInput.placeholder = 'Enter your name';
+        nameInput.maxLength = 20;
+        nameInput.addEventListener('input', (e) => {
+            GameState.characterName = e.target.value.trim() || 'Adventurer';
+        });
+        nameDisplay.parentNode.replaceChild(nameInput, nameDisplay);
+    }
+
     // Reset bonus point buttons (they may be disabled from previous game)
     const bonusBtns = document.querySelectorAll('.bonus-btn');
     bonusBtns.forEach(btn => {
@@ -103,6 +117,12 @@ function beginAdventure() {
     console.log('Entering farmhouse...');
 
     hideBonusPointUI();
+
+    // Replace name input with signature-style display
+    const nameDisplay = document.createElement('div');
+    nameDisplay.id = 'character-name-display';
+    nameDisplay.textContent = GameState.characterName;
+    nameInput.parentNode.replaceChild(nameDisplay, nameInput);
 
     // Start at the farmhouse
     enterRoom('farmhouse');
@@ -705,7 +725,7 @@ function renderNavigationChoices(roomId, backOnly = false) {
 
     // Render visible connections
     visibleConnections.forEach(connectedRoomId => {
-        addChoice(`Go to ${RoomsData[connectedRoomId].name}`, () => {
+        addChoice(RoomsData[connectedRoomId].name, () => {
             enterRoom(connectedRoomId);
         });
     });

@@ -727,6 +727,10 @@ function renderAllUI() {
     if (nameInput) {
         nameInput.value = GameState.characterName;
     }
+    const nameDisplay = document.getElementById('character-name-display');
+    if (nameDisplay) {
+        nameDisplay.textContent = GameState.characterName;
+    }
 }
 
 /**

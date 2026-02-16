@@ -123,6 +123,16 @@ body {
     background: #fff;
 }
 
+/* Character Name Signature Display (replaces input after submission) */
+#character-name-display {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #3d2817;
+    padding: 4px 0;
+    text-align: center;
+}
+
 /* Stats Display */
 .stat-row {
     display: flex;
@@ -557,33 +567,11 @@ body {
     cursor: pointer;
     text-align: left;
     transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.choice-btn::before {
-    content: '▶';
-    position: absolute;
-    left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-    color: #8b6f47;
-    transition: left 0.3s;
 }
 
 .choice-btn:hover {
     background: linear-gradient(to right, #e8dcc0, #d4c5a0);
-    transform: translateX(5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.choice-btn:hover::before {
-    left: 10px;
-}
-
-.choice-btn:active {
-    transform: translateX(3px);
 }
 
 /* Disabled choice button */
@@ -594,11 +582,8 @@ body {
 }
 
 .choice-btn:disabled:hover {
-    transform: none;
-}
-
-.choice-btn:disabled::before {
-    display: none;
+    background: #999;
+    box-shadow: none;
 }
 
 /* ===================================
