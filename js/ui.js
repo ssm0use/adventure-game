@@ -139,7 +139,7 @@ function renderInventory() {
                 renderEquipped();
                 renderStats();
                 renderCurses();
-                renderBodyMap();
+                renderCurseStatus();
             };
             actions.appendChild(equipBtn);
         }
@@ -198,7 +198,7 @@ function renderEquipped() {
             renderEquipped();
             renderStats();
             renderCurses();
-            renderBodyMap();
+            renderCurseStatus();
         };
         actions.appendChild(unequipBtn);
 
@@ -317,102 +317,47 @@ function displayProtectionText(curseName, itemName) {
 }
 
 /**
- * Renders the body map display showing curse effects on each body part
+ * Renders the inline curse status paragraph at the top of the story area.
+ * Combines vivid body-part descriptions into a flowing second-person paragraph.
  */
-function renderBodyMap() {
-    const bodyMapSection = document.getElementById('bodymap-section');
-    const bodyMapList = document.getElementById('bodymap-list');
-
+function renderCurseStatus() {
+    const statusDiv = document.getElementById('curse-status');
     const occupiedCount = getBodyMapOccupiedCount();
 
-    // Hide section when all body parts are normal
     if (occupiedCount === 0) {
-        bodyMapSection.style.display = 'none';
+        statusDiv.style.display = 'none';
         return;
     }
 
-    bodyMapSection.style.display = 'block';
-    bodyMapList.innerHTML = '';
+    statusDiv.style.display = 'block';
 
-    // Update header to show severity
-    const header = bodyMapSection.querySelector('h3');
-    if (header) {
-        header.textContent = `Your Body (${occupiedCount}/4 Cursed)`;
-        if (occupiedCount >= 3) {
-            header.style.color = '#8b0000';
-        } else {
-            header.style.color = '#cc0000';
-        }
-    }
-
-    const partLabels = { head: 'Head', arms: 'Arms', body: 'Body', legs: 'Legs' };
-
+    // Collect descriptions for each cursed body part
+    const descriptions = [];
     for (const part in GameState.bodyMap) {
         const curseType = GameState.bodyMap[part];
-        const li = document.createElement('li');
-
         if (curseType) {
-            li.className = 'bodymap-entry bodymap-cursed';
             const curseData = CursesData[curseType];
-            const description = curseData ? curseData.bodyPartDescriptions[part] : 'Unknown curse';
-
-            li.innerHTML = `
-                <div class="bodymap-part-header">
-                    <span class="bodymap-part-name">${partLabels[part]}</span>
-                    <span class="bodymap-curse-tag">${curseData ? curseData.name : curseType}</span>
-                </div>
-                <div class="bodymap-description">${description}</div>
-            `;
-        } else {
-            li.className = 'bodymap-entry bodymap-normal';
-            li.innerHTML = `
-                <div class="bodymap-part-header">
-                    <span class="bodymap-part-name">${partLabels[part]}</span>
-                    <span class="bodymap-status-normal">Normal</span>
-                </div>
-            `;
-        }
-
-        bodyMapList.appendChild(li);
-    }
-}
-
-/**
- * Displays curse progression messages in the story area
- * @param {Array} progressions - Array of { curseType, bodyPart, overwrittenCurse, stage }
- */
-function displayCurseProgressions(progressions) {
-    const storyArea = document.getElementById('story-text');
-    let html = '';
-
-    const partLabels = { head: 'Head', arms: 'Arms', body: 'Body', legs: 'Legs' };
-
-    progressions.forEach(prog => {
-        const curseData = CursesData[prog.curseType];
-        const partDesc = curseData.bodyPartDescriptions[prog.bodyPart];
-        const partLabel = partLabels[prog.bodyPart];
-
-        html += '<div class="curse-progression">';
-        html += `<h3>${curseData.name} -- Stage ${prog.stage}/4</h3>`;
-
-        if (prog.overwrittenCurse && prog.overwrittenCurse !== prog.curseType) {
-            const otherCurse = CursesData[prog.overwrittenCurse];
-            html += `<p>${curseData.overwriteText}</p>`;
-            html += `<p><strong>${partLabel}:</strong> ${partDesc}</p>`;
-            if (otherCurse) {
-                html += `<p><em>The ${otherCurse.name}'s grip on your ${partLabel.toLowerCase()} has been displaced.</em></p>`;
+            if (curseData && curseData.bodyPartDescriptions[part]) {
+                descriptions.push(curseData.bodyPartDescriptions[part]);
             }
-        } else {
-            html += `<p>${curseData.advanceText}</p>`;
-            html += `<p><strong>${partLabel}:</strong> ${partDesc}</p>`;
         }
+    }
 
-        html += '</div>';
-        html += '<hr style="margin: 20px 0; border: 1px solid #a89060;">';
-    });
+    // Severity label and styling
+    let severityLabel, severityClass;
+    if (occupiedCount === 1) {
+        severityLabel = 'Something is wrong...';
+        severityClass = 'curse-severity-low';
+    } else if (occupiedCount === 2) {
+        severityLabel = 'The curses are spreading...';
+        severityClass = 'curse-severity-medium';
+    } else {
+        severityLabel = 'Your body is failing you...';
+        severityClass = 'curse-severity-high';
+    }
 
-    storyArea.innerHTML = html;
-    storyArea.scrollTop = 0;
+    statusDiv.className = `curse-status-box ${severityClass}`;
+    statusDiv.innerHTML = `<strong>${severityLabel}</strong> ${descriptions.join(' ')}`;
 }
 
 /**
@@ -719,7 +664,8 @@ function renderAllUI() {
     renderInventory();
     renderEquipped();
     renderCurses();
-    renderBodyMap();
+    renderCurseStatus();
+    renderExploredAreas();
     renderLocation();
 
     // Update character name display if it exists

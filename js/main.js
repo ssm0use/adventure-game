@@ -159,10 +159,17 @@ function enterRoom(roomId) {
         // Check if any curse caused game over
         if (GameState.gameStatus === 'gameOver') {
             renderCurses();
-            renderBodyMap();
+            renderCurseStatus();
 
             if (curseProgressions.length > 0) {
-                displayCurseProgressions(curseProgressions);
+                // Brief flash before game over
+                const storyArea = document.getElementById('story-text');
+                let html = '';
+                curseProgressions.forEach(prog => {
+                    const curseData = CursesData[prog.curseType];
+                    html += `<div class="curse-applied-warning"><strong>⚠ ${curseData.name}</strong> — the curse claims the last of you.</div>`;
+                });
+                storyArea.innerHTML = html;
                 setTimeout(() => {
                     displayBodyMapGameOver();
                 }, 3000);
@@ -172,9 +179,16 @@ function enterRoom(roomId) {
             return;
         }
 
-        // Display curse progression messages
+        // Display brief curse advance notification, then let inline status handle details
         if (curseProgressions.length > 0) {
-            displayCurseProgressions(curseProgressions);
+            const storyArea = document.getElementById('story-text');
+            let html = '';
+            curseProgressions.forEach(prog => {
+                const curseData = CursesData[prog.curseType];
+                html += `<div class="curse-applied-warning"><strong>⚠ ${curseData.name}</strong> — the curse spreads further, claiming more of your body.</div>`;
+            });
+            storyArea.innerHTML = html;
+            storyArea.scrollTop = 0;
 
             clearChoices();
             addChoice('Continue...', () => {
@@ -182,7 +196,7 @@ function enterRoom(roomId) {
             });
 
             renderCurses();
-            renderBodyMap();
+            renderCurseStatus();
             return;
         }
     }
@@ -208,7 +222,7 @@ function renderRoom(roomId, isFirstVisit) {
     console.log('Room data:', room);
     hideEncounterResult();
     renderCurses();
-    renderBodyMap();
+    renderCurseStatus();
 
     // Check for hidden area discovery (small chance each visit)
     const hiddenAreas = getHiddenAreas(room);
@@ -241,7 +255,7 @@ function renderRoomContent(roomId) {
 
     // Refresh curse displays
     renderCurses();
-    renderBodyMap();
+    renderCurseStatus();
 
     // Find first-visit events
     const firstVisitEvents = room.events?.filter(e =>
@@ -411,7 +425,7 @@ function renderRoomActions(roomId) {
 
     // Always refresh curse displays when re-rendering room actions
     renderCurses();
-    renderBodyMap();
+    renderCurseStatus();
 
     clearChoices();
 
@@ -464,7 +478,7 @@ function renderRoomActions(roomId) {
                         addItemToInventory(itemId);
                         renderInventory();
                         renderCurses();
-                        renderBodyMap();
+                        renderCurseStatus();
 
                         // Check if picking up a cursed item caused game over
                         if (GameState.gameStatus === 'gameOver') {
@@ -502,7 +516,7 @@ function performWinAction(event) {
     }
     GameState.bodyMap = { head: null, arms: null, body: null, legs: null };
     renderCurses();
-    renderBodyMap();
+    renderCurseStatus();
 
     setTimeout(() => {
         displayWinScreen();
@@ -614,7 +628,7 @@ function executeEncounterRoll(event) {
 
     // Re-render UI in case curse was applied
     renderCurses();
-    renderBodyMap();
+    renderCurseStatus();
 
     // Check if encounter caused game over (body map full from curse item pickup or encounter)
     if (GameState.gameStatus === 'gameOver') {
@@ -664,7 +678,7 @@ function performSearchAction(roomId, searches) {
                     itemsTakenThisSearch.add(itemId);
                     renderInventory();
                     renderCurses();
-                    renderBodyMap();
+                    renderCurseStatus();
 
                     // Check if picking up a cursed item caused game over
                     if (GameState.gameStatus === 'gameOver') {

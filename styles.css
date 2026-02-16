@@ -301,84 +301,36 @@ body {
 }
 
 /* ===================================
-   BODY MAP SECTION (main story area)
+   INLINE CURSE STATUS (above story text)
    =================================== */
 
-#bodymap-section {
-    margin-top: 25px;
-    padding: 15px;
-    background: rgba(204, 0, 0, 0.06);
-    border: 2px solid rgba(204, 0, 0, 0.3);
-    border-radius: 8px;
-    position: relative;
-    z-index: 1;
-}
-
-#bodymap-section h3 {
-    color: #cc0000;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(204, 0, 0, 0.3);
-    padding-bottom: 5px;
-}
-
-#bodymap-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-}
-
-.bodymap-entry {
-    padding: 10px 12px;
+/* Inline Curse Status (persistent paragraph above story text) */
+.curse-status-box {
+    margin-bottom: 20px;
+    padding: 14px 18px;
     border-radius: 6px;
-    border: 1px solid #a89060;
-}
-
-.bodymap-normal {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-.bodymap-cursed {
-    background: rgba(255, 100, 100, 0.15);
-    border-color: #cc0000;
-}
-
-.bodymap-part-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 2px;
-}
-
-.bodymap-part-name {
-    font-weight: bold;
-    color: #3d2817;
-    font-size: 1em;
-}
-
-.bodymap-curse-tag {
-    margin-left: auto;
-    font-size: 0.8em;
-    color: #cc0000;
-    font-weight: bold;
-}
-
-.bodymap-status-normal {
-    margin-left: auto;
-    font-size: 0.85em;
-    color: #4caf50;
     font-style: italic;
+    line-height: 1.6;
+    font-size: 0.95em;
 }
 
-.bodymap-description {
-    font-size: 0.9em;
-    color: #555;
-    font-style: italic;
-    padding-left: 4px;
-    margin-top: 4px;
-    line-height: 1.4;
+.curse-severity-low {
+    background: rgba(107, 86, 56, 0.08);
+    border: 2px solid #6b5638;
+    color: #4a3520;
+}
+
+.curse-severity-medium {
+    background: rgba(139, 0, 0, 0.08);
+    border: 2px solid #8b0000;
+    color: #6b1010;
+}
+
+.curse-severity-high {
+    background: rgba(139, 0, 0, 0.14);
+    border: 2px solid #8b0000;
+    color: #8b0000;
+    font-weight: 500;
 }
 
 /* Curse Applied Warning (shown after failing an encounter) */
