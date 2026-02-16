@@ -10,20 +10,24 @@ The gravel crunches under your tires as you pull up to the old Victorian farmhou
 The door swings open before you can knock, revealing a weathered man in his fifties. His face is lined with worry, and dark circles shadow his eyes. "You're here about the job?" he asks, hope flickering across his features. "Thank God. I'm Farmer Miller. I... I really need the help." He ushers you inside and lowers his voice. "I'll be honest with you - this farm is cursed. Has been for generations. Strange things happen here. Workers change... become something else. I can't get a lick of work done until it's broken." He wrings his hands. "I know that sounds crazy, but if you're willing to help break the curse, I'll make it worth your while. Good pay, room and board, all of it." He leans in closer. "There's a journal - belonged to my ancestor Ezekiel Miller. It holds the key to understanding what happened here and how to undo it. I lost track of it years ago, but I'm pretty sure it ended up in the old root cellar near the barn. The entrance is hidden, overgrown with weeds and such, but it's there. Find that journal, and we'll have a place to start."
 [END]
 
-[farmhouse_explore]
-The farmhouse interior is surprisingly well-kept, though there's an unmistakable chill in the air. Family portraits line the walls - several generations of Millers staring down with stern expressions. In one corner, you notice a small shrine with candles and old photographs. The farmer's coffee sits steaming on the kitchen table, but the house feels emptier than it should.
-[END]
-
 [farmhouse_ghost_encounter]
-A cold draft sweeps through the room, extinguishing the candles. In the darkness, you see her - a translucent figure of a young woman in an old-fashioned dress. Her eyes are sad, infinitely sad, and she reaches toward you with ghostly hands. The temperature plummets. You feel drawn toward her, as if your very essence might slip away from your body and join her in eternal wandering...
+You follow the chill to a back hallway where the cold is strongest. There, sitting on a dusty shelf, you find the source - a cracked hand mirror, its surface fogged with unnatural frost. The moment you pick it up, your reflection stares back at you wrong. The crack in the glass seems to widen, and a pale hand reaches through from the other side. The mirror shatters in your grip as a translucent figure of a young woman in an old-fashioned dress rises from the shards. Her eyes are sad, infinitely sad, and she reaches toward you with ghostly hands. The temperature plummets. You feel drawn toward her, as if your very essence might slip away from your body and join her in eternal wandering...
 [END]
 
 [farmhouse_ghost_success]
-You steady yourself, planting your feet firmly on the ground. The chill is overwhelming, but you focus on the warmth of your own heartbeat, your own breath. "Not today," you whisper through chattering teeth. The ghost's expression shifts - is that respect? - before she fades back into the shadows.
+You steady yourself, planting your feet firmly on the ground. The chill is overwhelming, but you focus on the warmth of your own heartbeat, your own breath. "Not today," you whisper through chattering teeth. The ghost's expression shifts - the sadness lifts, replaced by something like gratitude. "Thank you," she breathes, her voice barely a whisper. "I was trapped in that wretched mirror for so long." As her form begins to dissolve into warm light, she presses something into your hands - a delicate silk neckerchief, embroidered with the initials "A.M." in faded gold thread. "It was a gift from the man I loved," she murmurs. "Perhaps it will bring you better fortune than it brought me." Her gaze drifts toward the family portraits on the wall - the stern faces of generations of Millers - and for just a moment, you see the resemblance. Then she is gone, and the chill lifts from the farmhouse at last.
 [END]
 
 [farmhouse_ghost_failure]
-The cold pierces through to your bones. Your fingers feel numb, then translucent. The ghost's sad smile widens as she recognizes a kindred spirit in the making. You try to cry out, but your voice echoes hollow and distant...
+The cold pierces through to your bones. Your fingers feel numb, then translucent. The ghost's sad smile widens as she recognizes a kindred spirit in the making. As your vision blurs, her voice echoes in your mind - not cruel, but sorrowful. "Now you carry the same chill I do," she whispers. "You'll fade like me... unless you find protection. There is an old amulet, a circle of salt bound in silver. It was lost long ago, dropped into the depths where the cattle used to drink." Her form flickers, then retreats deeper into the farmhouse, disappearing through a wall into the back rooms. "Find it before the cold takes you completely."
+[END]
+
+[farmhouse_ghost_deeper]
+You make your way through the back hallways of the farmhouse, following the faint chill that lingers in the air. Past the pantry and through a narrow corridor, you find her in a small room that must have once been a bedroom. She hovers near the window, staring out at the farm with those sad, luminous eyes. The temperature drops as she notices you, and she turns to face you. This time there's recognition in her gaze - and a desperate hope. She reaches out again with ghostly hands, testing your resolve...
+[END]
+
+[farmhouse_ghost_failure_retry]
+The cold overwhelms you again, and you feel yourself slipping. The ghost watches you with those mournful eyes as the chill sinks deeper. "Not strong enough," she whispers sadly. "Not yet. But you came back... that takes courage." She retreats to her window, waiting. You stumble back to the warmth of the kitchen, shaken but alive. Perhaps with better preparation, you can face her again.
 [END]
 
 [rootcellar_discover]
@@ -268,8 +272,12 @@ You flinch. That's all it takes. The mice sense your fear like a spark in dry ti
 Searching the nesting boxes carefully, you find the remnants of old eggs, feathers, and mouse droppings. But two items stand out from the decay. In one box, nestled in a bed of straw, is a tiny copper thimble etched with faded runes -- it was probably left here by a farmhand's wife as a protective charm against the vermin. In another box, partially buried, sits a single black egg, cold as stone and heavy for its size. Something shifts inside it when you turn it over. It doesn't feel right.
 [END]
 
+[farmhouse_farmer_ghost_reaction]
+Farmer Miller nearly drops his coffee when you tell him what happened. "You freed her? The ghost in the mirror?" He sits down heavily, running a hand through his thinning hair. "That spirit has haunted this house since before I was born. My grandmother used to say she was a young woman who got trapped by the curse long ago - maybe one of the hired girls from the old days, or..." He pauses, glancing at the family portraits. "Or maybe someone closer to the family than we ever knew. A.M. - those initials on that neckerchief. Could be an Abigail Miller. There's been more than a few of those in this family." He shakes his head in wonder. "Well, the house already feels warmer. Thank you for that. Now, about that journal - any luck finding it yet?"
+[END]
+
 [farmhouse_return]
-The old farmhouse creaks and settles around you as you step back inside. Farmer Miller's coffee has gone cold on the kitchen table, but the portraits on the walls still watch you with those stern Miller eyes. The chill in the air hasn't faded.
+Farmer Miller is at the kitchen table, nursing a fresh cup of coffee. He looks up as you enter. "How's the search going out there? Found anything useful yet?" He glances toward the window, worry creasing his brow. "Be careful - the curse runs deeper than just this house. But I'm glad you're still here. Most folks would've run off by now."
 [END]
 
 [rootcellar_return]

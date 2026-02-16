@@ -640,6 +640,31 @@ body {
     background: #ffebee;
 }
 
+.encounter-preview {
+    font-size: 1.1em;
+    margin: 10px 0;
+    padding: 15px;
+    background: #f5f0e0;
+    border-radius: 5px;
+    border-left: 4px solid #4682b4;
+    line-height: 1.6;
+}
+
+.encounter-preview p {
+    margin: 6px 0;
+}
+
+.encounter-preview .preview-difficulty {
+    font-size: 1.1em;
+    color: #3d2817;
+}
+
+.encounter-preview .preview-chance {
+    margin-top: 10px;
+    font-size: 1.15em;
+    color: #2e5090;
+}
+
 /* ===================================
    MODAL
    =================================== */

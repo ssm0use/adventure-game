@@ -544,6 +544,16 @@ function addChoice(text, callback, enabled = true) {
 }
 
 /**
+ * Displays the encounter preview before rolling
+ * @param {string} html - The formatted preview HTML
+ */
+function displayEncounterPreview(html) {
+    const encounterResults = document.getElementById('encounter-results');
+    encounterResults.style.display = 'block';
+    encounterResults.innerHTML = html;
+}
+
+/**
  * Displays an encounter result with dice roll info
  * @param {Object} result - The encounter result object
  */

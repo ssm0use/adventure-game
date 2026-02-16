@@ -10,15 +10,28 @@
         "oneTime": true
       },
       {
+        "id": "farmer_ghost_reaction",
+        "trigger": "firstVisit",
+        "storyKey": "farmhouse_farmer_ghost_reaction",
+        "oneTime": true,
+        "requirements": {
+          "hasItem": "silkNeckerchief"
+        }
+      },
+      {
         "id": "ghost_encounter",
         "trigger": "action",
         "storyKey": "farmhouse_ghost_encounter",
         "actionText": "Investigate the Cold Spot",
+        "completesOnFailure": true,
         "check": {
           "stat": "grit",
           "difficulty": 15,
           "successStory": "farmhouse_ghost_success",
           "failureStory": "farmhouse_ghost_failure",
+          "successEffect": {
+            "items": ["silkNeckerchief"]
+          },
           "failureEffect": {
             "curse": "ghost"
           }
@@ -26,14 +39,28 @@
         "requirements": {
           "visitCount": 2
         }
-      }
-    ],
-    "searches": [
+      },
       {
-        "id": "explore_farmhouse",
-        "storyKey": "farmhouse_explore",
-        "items": ["crackedMirror"],
-        "oneTime": true
+        "id": "confront_ghost",
+        "trigger": "action",
+        "storyKey": "farmhouse_ghost_deeper",
+        "actionText": "Search for the Ghost",
+        "check": {
+          "stat": "grit",
+          "difficulty": 15,
+          "successStory": "farmhouse_ghost_success",
+          "failureStory": "farmhouse_ghost_failure_retry",
+          "successEffect": {
+            "items": ["silkNeckerchief"]
+          },
+          "failureEffect": {
+            "curse": "ghost"
+          }
+        },
+        "requirements": {
+          "completedEvent": "ghost_encounter",
+          "missingItem": "silkNeckerchief"
+        }
       }
     ]
   },
@@ -137,7 +164,7 @@
       {
         "id": "search_hayloft",
         "storyKey": "hayloft_entrance",
-        "items": ["workGloves", "silkNeckerchief", "luckyHorseshoe", "mouserCharm"],
+        "items": ["workGloves", "luckyHorseshoe", "mouserCharm"],
         "oneTime": true
       }
     ]

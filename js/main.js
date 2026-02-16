@@ -490,10 +490,63 @@ function performWinAction(event) {
 }
 
 /**
- * Performs an encounter action with a stat check
+ * Shows the encounter preview before the player commits to rolling
  * @param {Object} event - The event object
  */
 function performEncounterAction(event) {
+    // Check if this encounter has a dedicated story description
+    // (not the same as the success/failure story keys)
+    const hasEncounterDescription = event.storyKey &&
+        event.storyKey !== event.check.successStory &&
+        event.storyKey !== event.check.failureStory;
+
+    if (hasEncounterDescription) {
+        // Phase 1: Show the encounter story, then transition to combat
+        displayStoryText(event.storyKey);
+        clearChoices();
+        addChoice('Brace Yourself...', () => {
+            showEncounterPreview(event);
+        });
+        addChoice('Back Away', () => {
+            hideEncounterResult();
+            renderRoomActions(GameState.currentRoom);
+        });
+    } else {
+        // No separate story - go straight to the combat preview
+        showEncounterPreview(event);
+    }
+}
+
+/**
+ * Shows the combat preview with stats, odds, and roll/flee buttons
+ * @param {Object} event - The event object
+ */
+function showEncounterPreview(event) {
+    // Update story area with a combat transition message
+    const storyArea = document.getElementById('story-text');
+    storyArea.innerHTML = '<p><em>You steel yourself for what comes next...</em></p>';
+    storyArea.scrollTop = 0;
+
+    // Show the pre-roll preview with stats and odds
+    displayEncounterPreview(formatEncounterPreview(event));
+
+    // Give the player a choice: roll or flee
+    clearChoices();
+    addChoice('Roll the Dice!', () => {
+        executeEncounterRoll(event);
+    });
+    addChoice('Back Away', () => {
+        hideEncounterResult();
+        renderRoomActions(GameState.currentRoom);
+    });
+}
+
+/**
+ * Executes the actual dice roll and resolves the encounter
+ * Called after the player chooses to proceed from the preview
+ * @param {Object} event - The event object
+ */
+function executeEncounterRoll(event) {
     const result = resolveEncounter(event);
 
     // Check if a curse was blocked by a protective item
@@ -513,9 +566,17 @@ function performEncounterAction(event) {
     // Show the dice roll result
     displayEncounterResult(result);
 
-    // Only mark event as completed on success - failed encounters can be retried
-    if (result.success) {
+    // Mark event as completed on success, or on failure if completesOnFailure is set
+    if (result.success || event.completesOnFailure) {
         completeEvent(event.id);
+    }
+
+    // Grant reward items on success
+    if (result.success && result.rewardItems) {
+        result.rewardItems.forEach(itemId => {
+            addItemToInventory(itemId);
+        });
+        renderInventory();
     }
 
     // Re-render UI in case curse was applied
@@ -530,10 +591,11 @@ function performEncounterAction(event) {
         return;
     }
 
-    // Add continue button
+    // Add continue button - return to full room view to clear encounter display
     clearChoices();
     addChoice('Continue...', () => {
-        renderRoomActions(GameState.currentRoom);
+        hideEncounterResult();
+        renderRoomContent(GameState.currentRoom);
     });
 }
 

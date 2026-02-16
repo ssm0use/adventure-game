@@ -160,6 +160,11 @@ function checkEventRequirements(event) {
         return false;
     }
 
+    // Check if a specific event must have been completed
+    if (req.completedEvent && !isEventCompleted(req.completedEvent)) {
+        return false;
+    }
+
     // All requirements met
     return true;
 }
@@ -213,6 +218,9 @@ function resolveEncounter(event) {
             setFlag(check.successEffect.flag);
             result.flagSet = check.successEffect.flag;
         }
+        if (check.successEffect.items) {
+            result.rewardItems = check.successEffect.items;
+        }
     }
 
     // Apply failure effects if any
@@ -224,6 +232,59 @@ function resolveEncounter(event) {
     }
 
     return result;
+}
+
+/**
+ * Formats an encounter preview showing the player what they're up against
+ * before they commit to rolling the dice.
+ * @param {Object} event - The event object containing the check
+ * @returns {string} HTML formatted preview string
+ */
+function formatEncounterPreview(event) {
+    const check = event.check;
+    const statDisplayNames = {
+        grit: 'Grit',
+        keenEye: 'Keen Eye',
+        charm: 'Charm'
+    };
+
+    const statDisplay = statDisplayNames[check.stat] || check.stat;
+    const statValue = getEffectiveStat(check.stat);
+    const modifier = statValue - 2;
+    const stars = '\u2605'.repeat(statValue);
+    const difficultyName = getDifficultyName(check.difficulty);
+    const minRollNeeded = check.difficulty - modifier;
+
+    // Calculate success chance (d20 range is 1-20)
+    let successChance;
+    if (minRollNeeded <= 1) {
+        successChance = 95; // Only a natural 1 fails (we treat nat 1 as always fail for flavor)
+    } else if (minRollNeeded > 20) {
+        successChance = 0; // Impossible even with nat 20
+    } else {
+        successChance = Math.round((21 - minRollNeeded) / 20 * 100);
+    }
+
+    const modifierSign = modifier >= 0 ? '+' : '';
+
+    let html = `<h3>\uD83C\uDFB2 ${statDisplay.toUpperCase()} CHECK</h3>`;
+    html += `<div class="encounter-preview">`;
+    html += `<p class="preview-difficulty">This is a <strong>${difficultyName}</strong> challenge (DC ${check.difficulty}).</p>`;
+    html += `<p class="preview-stat"><strong>Your ${statDisplay}:</strong> ${stars} (${modifierSign}${modifier} modifier)</p>`;
+    html += `<p class="preview-mechanic">You'll roll a <strong>20-sided die</strong> and add your ${statDisplay} modifier to the result.</p>`;
+
+    if (minRollNeeded > 20) {
+        html += `<p class="preview-needed"><strong>You need:</strong> Impossible with your current stats!</p>`;
+    } else if (minRollNeeded <= 1) {
+        html += `<p class="preview-needed"><strong>You need:</strong> Any roll will do - you've got this!</p>`;
+    } else {
+        html += `<p class="preview-needed"><strong>You need:</strong> A ${minRollNeeded} or higher on the die to succeed.</p>`;
+    }
+
+    html += `<p class="preview-chance"><strong>Chance of success:</strong> ${successChance}%</p>`;
+    html += `</div>`;
+
+    return html;
 }
 
 /**
