@@ -57,19 +57,19 @@ Farmer Miller shuffles up behind you, wringing his hands. "Sorry about that, {pl
 [END]
 
 [barn_entrance]
-The barn door swings open with a prolonged creak that echoes in the vast space. The interior is dimmed by dusty windows, and the smell of old hay mingles with something else - something wrong. Empty stalls line both sides, but you could swear you hear the sound of breathing, low and bovine, coming from the shadows.
+The barn door swings open with a prolonged creak that echoes in the vast space. The interior is dimmed by dusty windows, and the smell of old hay mingles with something else — something faintly floral, like lavender left to dry for a hundred years. Empty stalls line both sides, and for just a moment you catch a flicker of movement in the far corner — a pale shape, there and gone, like a girl ducking behind a post. The air feels heavy with waiting.
 [END]
 
-[barn_cow_encounter]
-A massive spectral cow materializes from the darkness - translucent and glowing with an eerie blue light. Its eyes burn red, and ghostly vapor streams from its nostrils. It paws the ground once, twice, then lowers its head and charges straight at you! You have only seconds to brace yourself...
+[barn_abigail_hint]
+You move toward the flickering shadow between the stalls, but the closer you get, the more it retreats — always just out of reach, always slipping behind the next post. For a heartbeat you see her clearly: a young woman in an old-fashioned dress, her face pale and luminous, her dark eyes wide with a mixture of longing and fear. She presses a translucent finger to her lips, then shakes her head slowly, as if to say "not yet." She seems to be waiting for something — some proof that you understand, that you know her story. Then she's gone, dissolving into the dusty light like morning mist.
 [END]
 
-[barn_cow_success]
-You plant your feet wide and clench your fists, every muscle tensed. The spectral cow's charge is like a freezing wind, but you hold firm, refusing to budge. Your determination seems to surprise it - the red fades from its eyes, and it retreats back into the shadows with a mournful, otherworldly moo.
+[barn_ghost_talk_success]
+You step between the stalls, holding the journal open so she can see it. "Abigail," you say gently. "I know what your father did. I know about the curse." She materializes slowly — not retreating this time, but drifting closer, her spectral eyes fixed on the familiar handwriting. A trembling hand reaches out and brushes the page, and the air fills with the scent of lavender. For the first time, hope flickers across her ghostly features. She points through the barn wall toward the pasture, then places her palm over her heart. The message is clear: the scarecrow in the pasture is the key to breaking the curse.
 [END]
 
-[barn_cow_failure]
-The impact of the ghost cow hits you like a wall of ice. You're thrown backward, landing hard on the hay-strewn floor. As you struggle to rise, you feel something terrible beginning - a heaviness in your limbs, a pulling sensation in your spine. Your hands look strange, thicker somehow...
+[barn_ghost_talk_failure]
+You hold out the journal, but your words come out wrong — too loud, too clumsy in the stillness of the barn. Abigail's form flares bright with alarm, her expression shifting from hope to anguish. The temperature plummets. Frost crawls across the stall doors and the hay crackles underfoot. She lets out a wail that echoes through the rafters, and you feel your grip on the living world beginning to slip, the warmth draining from your bones...
 [END]
 
 [barn_explore]
@@ -85,15 +85,19 @@ You climb up into the hayloft, a cozy space beneath the barn's rafters. Afternoo
 [END]
 
 [milkingstation_entrance]
-The milking station is a separate room attached to the barn, lined with mechanical milking equipment from decades past. The machines are silent now, but they gleam as if recently polished. The room is spotless - eerily so, given the age of everything. You can almost hear phantom echoes of machinery humming and milk streaming into pails.
+The milking station is a separate room attached to the barn, lined with mechanical milking equipment from decades past. The machines are silent now, but something has disturbed the dust — wide, cloven hoofprints track across the floor, glowing faintly blue before fading. The air is frigid, and you can hear the sound of heavy breathing, low and bovine, echoing off the tile walls. A chain on one of the stanchions swings slowly back and forth, as if something large just brushed past it.
 [END]
 
-[milkingstation_ghost_talk_success]
-You approach the apparition of Abigail slowly, keeping your voice gentle and kind. "I'm not here to hurt you," you say softly. "I've read your father's journal. I know what happened." Her translucent form wavers, and for the first time, you see hope flicker in her spectral eyes. She points toward the pasture with one ghostly hand, then places her palm over her heart. The message is clear: the scarecrow in the pasture is key to breaking the curse.
+[milkingstation_cow_encounter]
+A massive spectral cow materializes from behind the milking stanchions — translucent and glowing with an eerie blue light. Its eyes burn red, and ghostly vapor streams from its nostrils, fogging the cold metal of the equipment. It paws the tile floor once, twice, the sound ringing hollow through the room, then lowers its head and charges straight at you! The narrow space between the machines gives you nowhere to run. You have only seconds to brace yourself...
 [END]
 
-[milkingstation_ghost_talk_failure]
-You try to speak, but your words come out harsh and clumsy. The ghost recoils, her expression shifting from sadness to anger. The temperature drops twenty degrees in an instant, and frost forms on the milking equipment. She lets out a wail that pierces your skull, and you feel your grip on the living world beginning to slip...
+[milkingstation_cow_success]
+You plant your feet wide and clench your fists, every muscle tensed. The spectral cow's charge is like a freezing wind funneled through the narrow room, but you hold firm, refusing to budge. Your determination seems to surprise it — the red fades from its eyes, replaced by something almost gentle. It retreats between the stanchions with a mournful, otherworldly moo, and the milking machines rattle once before falling still.
+[END]
+
+[milkingstation_cow_failure]
+The impact of the ghost cow hits you like a wall of ice, slamming you back against the milking equipment. Metal clangs and chains rattle as you crash to the tile floor. As you struggle to rise, you feel something terrible beginning — a heaviness in your limbs, a pulling sensation in your spine. Your hands look strange, thicker somehow...
 [END]
 
 [pasture_entrance]
@@ -229,7 +233,7 @@ The grain silo rises from the edge of the cornfield like a sentinel tower, its c
 [END]
 
 [grainsilo_cow_encounter]
-The grain erupts. A massive shape surges upward from the desiccated sea -- a spectral bull, bigger than any living animal, its translucent hide rippling with pale blue fire. Unlike the ghost cow in the barn, this one is no docile creature. Its horns are wide and sharp, its eyes blaze crimson, and it snorts vapor that smells of copper and old blood. It lowers its enormous head and charges through the grain, sending up a wave of rotting kernels. The silo shakes with the force of its hooves. You have to stand your ground or be trampled and changed...
+The grain erupts. A massive shape surges upward from the desiccated sea -- a spectral bull, bigger than any living animal, its translucent hide rippling with pale blue fire. Unlike the ghost cow in the milking station, this one is no docile creature. Its horns are wide and sharp, its eyes blaze crimson, and it snorts vapor that smells of copper and old blood. It lowers its enormous head and charges through the grain, sending up a wave of rotting kernels. The silo shakes with the force of its hooves. You have to stand your ground or be trampled and changed...
 [END]
 
 [grainsilo_cow_success]
@@ -285,7 +289,7 @@ You descend the creaking stairs back into the root cellar. The air is cool and e
 [END]
 
 [barn_return]
-The barn door groans as you push it open again. The smell of old hay and that lingering wrongness greet you. The empty stalls stretch into shadow on either side, and the faint sound of spectral breathing drifts from somewhere in the dark.
+The barn door groans as you push it open again. The smell of old hay and that faint trace of dried lavender greet you. The empty stalls stretch into shadow on either side, and you could swear the dust motes are drifting in a shape — almost like a girl, watching from a distance.
 [END]
 
 [hayloft_return]
@@ -293,7 +297,7 @@ You climb back up into the hayloft. Afternoon light still filters through the ga
 [END]
 
 [milkingStation_return]
-The milking station is just as eerily spotless as before. The old machines gleam in the dim light, and you can still hear the phantom echoes of equipment that hasn't run in decades.
+The milking station is just as cold as before. The old machines gleam in the dim light, and those faint cloven hoofprints still glow blue on the tile floor. A chain on one of the stanchions sways gently, though nothing visible has touched it.
 [END]
 
 [pasture_return]

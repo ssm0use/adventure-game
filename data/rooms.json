@@ -122,21 +122,33 @@
         "oneTime": true
       },
       {
-        "id": "cow_encounter",
+        "id": "abigail_hint",
         "trigger": "action",
-        "storyKey": "barn_cow_encounter",
-        "actionText": "Approach the Shadows",
+        "storyKey": "barn_abigail_hint",
+        "actionText": "Investigate the Flickering Shadow",
+        "requirements": {
+          "missingItem": "ancestorJournal"
+        }
+      },
+      {
+        "id": "talk_to_ghost",
+        "trigger": "action",
+        "storyKey": "barn_ghost_talk_success",
+        "actionText": "Speak with Abigail's Spirit",
         "check": {
-          "stat": "grit",
-          "difficulty": 15,
-          "successStory": "barn_cow_success",
-          "failureStory": "barn_cow_failure",
+          "stat": "charm",
+          "difficulty": 12,
+          "successStory": "barn_ghost_talk_success",
+          "failureStory": "barn_ghost_talk_failure",
+          "successEffect": {
+            "flag": "learnedRitualLocation"
+          },
           "failureEffect": {
-            "curse": "cow"
+            "curse": "ghost"
           }
         },
         "requirements": {
-          "visitCount": 1
+          "hasItem": "ancestorJournal"
         }
       }
     ],
@@ -180,24 +192,21 @@
         "oneTime": true
       },
       {
-        "id": "talk_to_ghost",
+        "id": "cow_encounter",
         "trigger": "action",
-        "storyKey": "milkingstation_ghost_talk_success",
-        "actionText": "Speak with Abigail's Spirit",
+        "storyKey": "milkingstation_cow_encounter",
+        "actionText": "Approach the Shadows",
         "check": {
-          "stat": "charm",
-          "difficulty": 12,
-          "successStory": "milkingstation_ghost_talk_success",
-          "failureStory": "milkingstation_ghost_talk_failure",
-          "successEffect": {
-            "flag": "learnedRitualLocation"
-          },
+          "stat": "grit",
+          "difficulty": 15,
+          "successStory": "milkingstation_cow_success",
+          "failureStory": "milkingstation_cow_failure",
           "failureEffect": {
-            "curse": "ghost"
+            "curse": "cow"
           }
         },
         "requirements": {
-          "hasItem": "ancestorJournal"
+          "visitCount": 1
         }
       }
     ]
