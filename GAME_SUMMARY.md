@@ -14,8 +14,8 @@ All files have been created and the game is fully functional.
 ## 📊 Game Statistics
 
 ### Locations
-- **8 Main Rooms**: Farmhouse, Barn, Milking Station, Pasture, Garden, Bee Hives
-- **3 Hidden Areas**: Root Cellar, Hayloft, Old Well (requires Keen Eye to discover)
+- **10 Main Rooms**: Farmhouse, Barn, Milking Station, Pasture, Garden, Bee Hives, Smokehouse, Cornfield, Grain Silo, Chicken Coop
+- **4 Hidden Areas**: Root Cellar (near Barn), Hayloft (in Barn), Old Well (in Pasture), Silo Basement (in Grain Silo) - require Keen Eye to discover
 
 ### Items
 - **1 Key Item**: Rusty Barn Key (unlocks the barn)
@@ -88,11 +88,16 @@ All files have been created and the game is fully functional.
                          |
     [Pasture]* ───── [Garden] ────── [Farmhouse]
         |                                 |
-        |                            [Root Cellar]*
+        |                            [Smokehouse]
         |
      [Barn] ────── [Milking Station]
+        |    \
+        |  [Chicken Coop]
         |
+   [Root Cellar]*
    [Hayloft]*
+
+[Pasture] ────── [Cornfield] ────── [Grain Silo]*
 
 * = Hidden areas requiring Keen Eye
 ```
@@ -109,11 +114,11 @@ All files have been created and the game is fully functional.
 
 ## 🏆 Win Path (Spoiler-Free)
 
-1. Explore the farmhouse thoroughly
-2. Find and read an important historical document
-3. Communicate with the supernatural entities
-4. Discover the ritual location
-5. Perform the curse-breaking ritual
+1. Meet Farmer Miller and learn about the curse
+2. Find the hidden root cellar near the barn
+3. Read the Ancestor's Journal to understand the curse
+4. Communicate with Abigail's spirit
+5. Discover the ritual location and perform the curse-breaking ritual
 
 ## ⚠️ Transformation Types
 
