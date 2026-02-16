@@ -10,6 +10,55 @@
 let gameInitialized = false;
 
 /**
+ * MAP_DIRECTIONS — hex direction for each neighbor, keyed by [currentRoom][neighborRoom].
+ * Directions are flat-top hex compass positions: N, NE, SE, S, SW, NW.
+ *
+ * Farm layout:
+ *
+ *              [Bee Hives]
+ *                  |
+ *   [Smokehouse] [Garden]
+ *         \     /       \
+ *      [FARMHOUSE]    [Pasture]--[Cornfield]--[Grain Silo]
+ *            |       /     |                       |
+ *          [Barn]---    [Old Well]*         [Silo Basement]*
+ *         /  |   \
+ *  [Chicken][Milk][Hayloft]*
+ *   [Coop]  [Stn]    |
+ *               [Root Cellar]*
+ */
+const MAP_DIRECTIONS = {
+    farmhouse:      { barn: 'N',  garden: 'NE', smokehouse: 'NW' },
+    barn:           { farmhouse: 'S', pasture: 'NE', milkingStation: 'SE', chickenCoop: 'SW', hayloft: 'N', rootcellar: 'NW' },
+    garden:         { farmhouse: 'SW', pasture: 'SE', beeHives: 'N' },
+    pasture:        { barn: 'SW', garden: 'NW', cornfield: 'NE', oldwell: 'SE' },
+    cornfield:      { pasture: 'SW', grainSilo: 'NE' },
+    grainSilo:      { cornfield: 'SW', siloBasement: 'SE' },
+    smokehouse:     { farmhouse: 'SE' },
+    milkingStation: { barn: 'NW' },
+    chickenCoop:    { barn: 'NE' },
+    beeHives:       { garden: 'S' },
+    rootcellar:     { barn: 'SE' },
+    hayloft:        { barn: 'S' },
+    oldwell:        { pasture: 'NW' },
+    siloBasement:   { grainSilo: 'NW' }
+};
+
+// Hex tile dimensions (flat-top hexagon, width:height ≈ 2:√3)
+const HEX_W = 130;
+const HEX_H = 113;
+
+// Pixel offsets from center hex for each compass direction (flat-top hex geometry)
+const HEX_OFFSETS = {
+    N:  { x: 0,    y: -121 },
+    S:  { x: 0,    y:  121 },
+    NE: { x: 102,  y: -61  },
+    SE: { x: 102,  y:  61  },
+    NW: { x: -102, y: -61  },
+    SW: { x: -102, y:  61  }
+};
+
+/**
  * Returns all hidden areas for a room as an array.
  * Supports both singular hiddenArea and plural hiddenAreas formats.
  */
@@ -710,6 +759,104 @@ function performSearchAction(roomId, searches) {
 }
 
 /**
+ * Collects the list of visible neighbor destinations for a room.
+ * Uses the same filtering logic as the old button-based navigation
+ * (shouldHideFromNavigation + discovered hidden areas + safety fallback).
+ * @param {string} roomId - Current room ID
+ * @returns {Array<{id: string, name: string}>} Visible neighbor rooms
+ */
+function getVisibleNeighbors(roomId) {
+    const room = RoomsData[roomId];
+    if (!room) return [];
+
+    const visibleConnections = room.connections.filter(connId => {
+        const connRoom = RoomsData[connId];
+        return connRoom && !shouldHideFromNavigation(connId, roomId);
+    });
+
+    const visibleHidden = [];
+    for (const area of getHiddenAreas(room)) {
+        if (isHiddenAreaDiscovered(area.name)) {
+            const hiddenRoomId = area.name;
+            const hiddenRoom = RoomsData[hiddenRoomId];
+            if (hiddenRoom && !shouldHideFromNavigation(hiddenRoomId, roomId)) {
+                visibleHidden.push(hiddenRoomId);
+            }
+        }
+    }
+
+    // Safety: if nothing is visible, show all connections to prevent getting stuck
+    if (visibleConnections.length === 0 && visibleHidden.length === 0) {
+        room.connections.forEach(connId => {
+            if (RoomsData[connId] && !visibleConnections.includes(connId)) {
+                visibleConnections.push(connId);
+            }
+        });
+    }
+
+    const neighbors = [];
+    visibleConnections.forEach(id => {
+        neighbors.push({ id, name: RoomsData[id].name });
+    });
+    visibleHidden.forEach(id => {
+        neighbors.push({ id, name: RoomsData[id].name });
+    });
+    return neighbors;
+}
+
+/**
+ * Renders the hexagonal navigation map for a room.
+ * Current room is center hex; visible neighbors are positioned by compass direction.
+ * @param {string} roomId - Current room ID
+ */
+function renderHexMap(roomId) {
+    const hexMap = document.getElementById('hex-map');
+    hexMap.innerHTML = '';
+
+    const room = RoomsData[roomId];
+    if (!room) return;
+
+    const neighbors = getVisibleNeighbors(roomId);
+    if (neighbors.length === 0) return;
+
+    const directions = MAP_DIRECTIONS[roomId] || {};
+
+    // Grid container — sized to hold center hex + one ring of neighbors
+    const grid = document.createElement('div');
+    grid.className = 'hex-grid';
+
+    // Center hex (current room)
+    const centerHex = document.createElement('div');
+    centerHex.className = 'hex hex-current';
+    centerHex.textContent = room.name;
+    // Position at center of grid
+    centerHex.style.left = '50%';
+    centerHex.style.top = '50%';
+    centerHex.style.transform = 'translate(-50%, -50%)';
+    grid.appendChild(centerHex);
+
+    // Neighbor hexes
+    neighbors.forEach(neighbor => {
+        const dir = directions[neighbor.id];
+        if (!dir || !HEX_OFFSETS[dir]) return; // skip if no direction mapping
+
+        const offset = HEX_OFFSETS[dir];
+        const hex = document.createElement('div');
+        hex.className = 'hex hex-neighbor';
+        hex.textContent = neighbor.name;
+        hex.style.left = `calc(50% + ${offset.x}px)`;
+        hex.style.top = `calc(50% + ${offset.y}px)`;
+        hex.style.transform = 'translate(-50%, -50%)';
+        hex.addEventListener('click', () => {
+            enterRoom(neighbor.id);
+        });
+        grid.appendChild(hex);
+    });
+
+    hexMap.appendChild(grid);
+}
+
+/**
  * Renders navigation choices (moving to connected rooms)
  * @param {string} roomId - Current room
  * @param {boolean} backOnly - Only show back option (for blocked rooms)
@@ -718,52 +865,16 @@ function renderNavigationChoices(roomId, backOnly = false) {
     const room = RoomsData[roomId];
 
     if (backOnly) {
-        // Just show a "Go Back" option
+        // Just show a "Go Back" option (plain button, no hex map)
         addChoice('Go Back', () => {
-            // Go back to first connected room (usually where we came from)
             const previousRoom = room.connections[0];
             enterRoom(previousRoom);
         });
         return;
     }
 
-    // Filter connected rooms - hide fully explored subtrees
-    const visibleConnections = room.connections.filter(connId => {
-        const connRoom = RoomsData[connId];
-        return connRoom && !shouldHideFromNavigation(connId, roomId);
-    });
-
-    // Check discovered hidden areas
-    const visibleHiddenList = [];
-    for (const area of getHiddenAreas(room)) {
-        if (isHiddenAreaDiscovered(area.name)) {
-            const hiddenRoomId = area.name;
-            const hiddenRoom = RoomsData[hiddenRoomId];
-            if (hiddenRoom && !shouldHideFromNavigation(hiddenRoomId, roomId)) {
-                visibleHiddenList.push({ id: hiddenRoomId, room: hiddenRoom });
-            }
-        }
-    }
-    // Safety: if nothing is visible, show all connections to prevent getting stuck
-    if (visibleConnections.length === 0 && visibleHiddenList.length === 0) {
-        room.connections.forEach(connId => {
-            if (RoomsData[connId]) visibleConnections.push(connId);
-        });
-    }
-
-    // Render visible connections
-    visibleConnections.forEach(connectedRoomId => {
-        addChoice(RoomsData[connectedRoomId].name, () => {
-            enterRoom(connectedRoomId);
-        });
-    });
-
-    // Render visible hidden areas
-    visibleHiddenList.forEach(hidden => {
-        addChoice(`Enter ${hidden.room.name}`, () => {
-            enterRoom(hidden.id);
-        });
-    });
+    // Use hex map for normal navigation
+    renderHexMap(roomId);
 }
 
 /**

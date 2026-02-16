@@ -817,6 +817,59 @@ body {
 }
 
 /* ===================================
+   HEXAGONAL NAVIGATION MAP
+   =================================== */
+
+#hex-map {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.hex-grid {
+    position: relative;
+    width: 360px;
+    height: 380px;
+}
+
+.hex {
+    position: absolute;
+    width: 130px;
+    height: 113px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 0.85em;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 10px 20px;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+.hex-current {
+    background: linear-gradient(135deg, #8b6f47, #6b5638);
+    color: #f4e8d0;
+    filter: drop-shadow(0 0 8px rgba(139, 111, 71, 0.6)) drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+.hex-neighbor {
+    background: linear-gradient(135deg, #d4c5a0, #c4b590);
+    color: #2a2520;
+    cursor: pointer;
+    transition: filter 0.2s, background 0.2s;
+}
+
+.hex-neighbor:hover {
+    background: linear-gradient(135deg, #e8dcc0, #d4c5a0);
+    filter: drop-shadow(0 0 6px rgba(139, 111, 71, 0.4)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+}
+
+/* ===================================
    RESPONSIVE DESIGN
    =================================== */
 
@@ -845,5 +898,17 @@ body {
 
     #story-text {
         font-size: 1em;
+    }
+
+    .hex-grid {
+        width: 280px;
+        height: 300px;
+    }
+
+    .hex {
+        width: 106px;
+        height: 92px;
+        font-size: 0.75em;
+        padding: 8px 16px;
     }
 }

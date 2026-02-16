@@ -494,6 +494,7 @@ function renderExploredAreas() {
 function clearChoices() {
     const choicesArea = document.getElementById('choices-area');
     choicesArea.innerHTML = '';
+    document.getElementById('hex-map').innerHTML = '';
 }
 
 /**

@@ -290,7 +290,7 @@ The bull hits you like a wall of frozen wind. You're lifted off your feet and th
 Climbing the metal rungs to the catwalk, you find a maintenance platform overlooking the grain below. Someone lived up here once -- there's a bedroll, a tin cup, and scratches on the wall counting days. Hundreds of scratches. Among the meager belongings is a wrought-iron lantern, its glass panes miraculously intact. When you pick it up, a tiny flame flickers to life inside it, warm and steady, casting your shadow in dramatic angles across the silo wall.
 [END]
 
-[silobasement_discover]
+[siloBasement_discover]
 Your keen eyes notice something the rust and grain almost hide -- a seam in the metal floor beneath the catwalk, and a recessed handle covered in corroded bolts. Someone sealed this shut on purpose. With effort, you wrench the hatch open, revealing a narrow ladder descending into darkness below the silo's foundation.
 [END]
 
