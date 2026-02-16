@@ -209,14 +209,16 @@ function renderEquipped() {
 }
 
 /**
- * Renders the active curses list
+ * Renders the active curses list with master clock timer
  */
 function renderCurses() {
     const cursesSection = document.getElementById('curses-section');
     const cursesList = document.getElementById('curses-list');
 
+    const activeCurseTypes = Object.keys(GameState.activeCurses);
+
     // If no curses, hide the section
-    if (Object.keys(GameState.activeCurses).length === 0) {
+    if (activeCurseTypes.length === 0) {
         cursesSection.style.display = 'none';
         return;
     }
@@ -226,8 +228,7 @@ function renderCurses() {
 
     const partLabels = { head: 'Head', arms: 'Arms', body: 'Body', legs: 'Legs' };
 
-    for (const curseType in GameState.activeCurses) {
-        const curseState = GameState.activeCurses[curseType];
+    for (const curseType of activeCurseTypes) {
         const curseData = CursesData[curseType];
         if (!curseData) continue;
 
@@ -253,16 +254,19 @@ function renderCurses() {
         if (affectedParts.length > 0) {
             stageText += ` — ${affectedParts.join(', ')}`;
         }
-        if (curseState.stopped) {
-            stageText += ' (Halted)';
-        } else {
-            stageText += ` (advances in ${curseState.roomsUntilNextAdvance} move${curseState.roomsUntilNextAdvance !== 1 ? 's' : ''})`;
-        }
         curseStage.textContent = stageText;
 
         li.appendChild(curseName);
         li.appendChild(curseStage);
         cursesList.appendChild(li);
+    }
+
+    // Master clock timer (shared across all curses)
+    if (GameState.curseClock > 0) {
+        const clockLi = document.createElement('li');
+        clockLi.style.cssText = 'background: rgba(139, 0, 0, 0.1); border-color: #8b0000; text-align: center; font-size: 0.85em; color: #6b1010;';
+        clockLi.innerHTML = `Curse clock: spreads in <strong>${GameState.curseClock}</strong> move${GameState.curseClock !== 1 ? 's' : ''}`;
+        cursesList.appendChild(clockLi);
     }
 }
 
@@ -361,38 +365,60 @@ function renderCurseStatus() {
 }
 
 /**
- * Displays the game over screen based on body map being fully cursed
+ * Displays the game over screen based on body map being fully cursed.
+ * If a single curse type claimed all 4 body parts, shows a curse-specific ending.
+ * Otherwise shows the generic mixed-curse ending with body part descriptions.
  */
 function displayBodyMapGameOver() {
     const storyArea = document.getElementById('story-text');
 
-    // Build description of the player's final cursed state
-    let curseDescHTML = '<div class="curse-ending">';
-    curseDescHTML += '<h3>Your Transformation</h3>';
+    // Check if all 4 body parts are claimed by the same curse
+    const curseTypes = new Set(Object.values(GameState.bodyMap).filter(c => c !== null));
+    const isSingleCurse = curseTypes.size === 1;
+    const dominantCurse = isSingleCurse ? [...curseTypes][0] : null;
 
-    const partLabels = { head: 'Head', arms: 'Arms', body: 'Body', legs: 'Legs' };
-    for (const part in GameState.bodyMap) {
-        const curseType = GameState.bodyMap[part];
-        if (curseType) {
-            const curseData = CursesData[curseType];
-            if (curseData) {
-                curseDescHTML += `<p><strong>${partLabels[part]}:</strong> ${curseData.bodyPartDescriptions[part]}</p>`;
+    let subtitle, curseDescHTML, gameOverHTML;
+
+    if (isSingleCurse && dominantCurse) {
+        // Single curse takeover — use curse-specific ending
+        const curseData = CursesData[dominantCurse];
+        subtitle = curseData ? `The ${curseData.name} is complete.` : 'The curse has consumed your body entirely.';
+
+        curseDescHTML = ''; // No body-part breakdown needed — the story covers it
+
+        const specificKey = `game_over_${dominantCurse}`;
+        const specificText = substituteStoryVariables(getStoryText(specificKey));
+        const paragraphs = specificText.split('\n\n').filter(p => p.trim().length > 0);
+        gameOverHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+    } else {
+        // Mixed curses — show body part descriptions + generic ending
+        subtitle = 'The curses have consumed your body entirely.';
+
+        curseDescHTML = '<div class="curse-ending">';
+        curseDescHTML += '<h3>Your Transformation</h3>';
+        const partLabels = { head: 'Head', arms: 'Arms', body: 'Body', legs: 'Legs' };
+        for (const part in GameState.bodyMap) {
+            const curseType = GameState.bodyMap[part];
+            if (curseType) {
+                const curseData = CursesData[curseType];
+                if (curseData) {
+                    curseDescHTML += `<p><strong>${partLabels[part]}:</strong> ${curseData.bodyPartDescriptions[part]}</p>`;
+                }
             }
         }
-    }
-    curseDescHTML += '</div>';
+        curseDescHTML += '</div>';
 
-    // Generic game over text
-    const gameOverText = substituteStoryVariables(getStoryText('game_over'));
-    const paragraphs = gameOverText.split('\n\n').filter(p => p.trim().length > 0);
-    const formattedGameOver = paragraphs.map(p => `<p>${p}</p>`).join('');
+        const gameOverText = substituteStoryVariables(getStoryText('game_over'));
+        const paragraphs = gameOverText.split('\n\n').filter(p => p.trim().length > 0);
+        gameOverHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+    }
 
     storyArea.innerHTML = `
         <div class="game-end-screen lose">
             <h2>GAME OVER</h2>
-            <p class="game-over-subtitle">The curses have consumed your body entirely.</p>
+            <p class="game-over-subtitle">${subtitle}</p>
             ${curseDescHTML}
-            ${formattedGameOver}
+            ${gameOverHTML}
             <button class="restart-btn" onclick="restartGame()">Try Again</button>
         </div>
     `;

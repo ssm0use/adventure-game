@@ -70,8 +70,14 @@ const GameState = {
         legs: null
     },
 
-    // Active curses (object mapping curse type to advance timer and stopped status)
+    // Active curses (object mapping curse type to true — simple set)
     activeCurses: {},
+
+    // Master curse clock: rooms until next curse tick (0 = no active clock)
+    curseClock: 0,
+
+    // How many room transitions between curse ticks
+    curseClockInterval: 4,
 
     // Game flags for tracking story progress
     flags: {},
@@ -133,6 +139,8 @@ function initializeNewGame() {
     GameState.discoveredHiddenAreas = [];
     GameState.bodyMap = { head: null, arms: null, body: null, legs: null };
     GameState.activeCurses = {};
+    GameState.curseClock = 0;
+    GameState.curseClockInterval = 4;
     GameState.flags = {};
     GameState.completedEvents = [];
     GameState.roomTransitions = 0;
@@ -335,49 +343,21 @@ function getBodyMapOccupiedCount() {
 }
 
 /**
- * Claims one body part for the given curse
- * Picks a random part NOT already held by this curse
+ * Claims one CLEAR (unoccupied) body zone for the given curse type
  * @param {string} curseType
- * @returns {Object|null} { bodyPart, overwrittenCurse } or null if impossible
+ * @returns {Object|null} { bodyPart } or null if no clear zones
  */
-function advanceCurseOneStep(curseType) {
+function claimClearZone(curseType) {
     const parts = ['head', 'arms', 'body', 'legs'];
-    const candidates = parts.filter(p => GameState.bodyMap[p] !== curseType);
+    const clearZones = parts.filter(p => GameState.bodyMap[p] === null);
 
-    if (candidates.length === 0) return null;
+    if (clearZones.length === 0) return null;
 
-    const chosen = candidates[Math.floor(Math.random() * candidates.length)];
-    const previousOccupant = GameState.bodyMap[chosen];
-
+    const chosen = clearZones[Math.floor(Math.random() * clearZones.length)];
     GameState.bodyMap[chosen] = curseType;
 
-    // If we overwrote another curse, check if it still has any parts
-    if (previousOccupant && previousOccupant !== curseType) {
-        const otherStage = getCurseStage(previousOccupant);
-        if (otherStage === 0) {
-            delete GameState.activeCurses[previousOccupant];
-            console.log(`Curse ${previousOccupant} fully displaced by ${curseType}`);
-        }
-    }
-
-    console.log(`Curse ${curseType} claimed ${chosen}` + (previousOccupant ? ` (overwrote ${previousOccupant})` : ''));
-    return { bodyPart: chosen, overwrittenCurse: previousOccupant };
-}
-
-/**
- * Frees one random body part from a specific curse
- * @param {string} curseType
- * @returns {string|null} The body part freed, or null
- */
-function freeOneBodyPart(curseType) {
-    const parts = ['head', 'arms', 'body', 'legs'];
-    const occupied = parts.filter(p => GameState.bodyMap[p] === curseType);
-    if (occupied.length === 0) return null;
-
-    const chosen = occupied[Math.floor(Math.random() * occupied.length)];
-    GameState.bodyMap[chosen] = null;
-    console.log(`Freed ${chosen} from ${curseType} curse`);
-    return chosen;
+    console.log(`Curse ${curseType} claimed ${chosen} (${clearZones.length - 1} clear zones remaining)`);
+    return { bodyPart: chosen };
 }
 
 /**
@@ -393,8 +373,8 @@ function checkBodyMapGameOver() {
 }
 
 /**
- * Applies a curse to the player, claiming one body part
- * @param {string} curseType - The type of curse ('cow', 'bee', 'scarecrow', 'ghost', 'mouse')
+ * Applies a curse to the player, claiming one body part and starting the master clock
+ * @param {string} curseType - The type of curse ('cow', 'bee', 'scarecrow', 'ghost', 'mouse', 'zombie', 'spider')
  * @returns {Object} Result with success/blocked/alreadyActive status
  */
 function applyCurse(curseType) {
@@ -404,7 +384,7 @@ function applyCurse(curseType) {
         return { blocked: true };
     }
 
-    // If curse already exists (active or stopped), don't restart it
+    // If curse is already active, don't double-apply
     if (GameState.activeCurses[curseType]) {
         console.log(`Curse ${curseType} already active`);
         return { alreadyActive: true };
@@ -413,59 +393,62 @@ function applyCurse(curseType) {
     const curseData = CursesData[curseType];
     if (!curseData) return { error: 'Curse not found' };
 
-    // Create the curse entry
-    GameState.activeCurses[curseType] = {
-        roomsUntilNextAdvance: curseData.roomsUntilAdvance,
-        stopped: false
-    };
+    // Mark curse as active (simple boolean — master clock handles timing)
+    GameState.activeCurses[curseType] = true;
 
-    // Immediately claim one body part
-    const advanceResult = advanceCurseOneStep(curseType);
+    // Immediately claim one clear body zone
+    const claimResult = claimClearZone(curseType);
+
+    // Start the master curse clock if not already running
+    if (GameState.curseClock <= 0) {
+        GameState.curseClock = GameState.curseClockInterval;
+    }
 
     console.log(`Applied curse: ${curseType}`);
     return {
         success: true,
-        bodyPart: advanceResult ? advanceResult.bodyPart : null,
-        overwrittenCurse: advanceResult ? advanceResult.overwrittenCurse : null
+        bodyPart: claimResult ? claimResult.bodyPart : null
     };
 }
 
 /**
- * Progresses all active curses when moving to a new room
- * Each non-stopped curse decrements its timer and claims a body part when it fires
+ * Progresses curses via the master curse clock when moving to a new room.
+ * A single shared timer decrements each room transition. When it fires,
+ * a random active curse claims one random clear body zone.
  * @returns {Array} Array of curse progression results
  */
 function progressCurses() {
     const results = [];
-    const curseTypes = Object.keys(GameState.activeCurses);
+    const activeCurseTypes = Object.keys(GameState.activeCurses);
 
-    for (const curseType of curseTypes) {
-        const curseState = GameState.activeCurses[curseType];
-        if (!curseState || curseState.stopped) continue;
+    // No active curses = no progression
+    if (activeCurseTypes.length === 0) return results;
 
-        curseState.roomsUntilNextAdvance--;
+    // Decrement the master clock
+    GameState.curseClock--;
 
-        if (curseState.roomsUntilNextAdvance <= 0) {
-            const advanceResult = advanceCurseOneStep(curseType);
+    if (GameState.curseClock <= 0) {
+        // Clock fired — pick a random active curse and claim a clear zone
+        const randomCurse = activeCurseTypes[Math.floor(Math.random() * activeCurseTypes.length)];
+        const claimResult = claimClearZone(randomCurse);
 
-            if (advanceResult) {
-                curseState.roomsUntilNextAdvance = CursesData[curseType].roomsUntilAdvance;
-
-                results.push({
-                    curseType,
-                    bodyPart: advanceResult.bodyPart,
-                    overwrittenCurse: advanceResult.overwrittenCurse,
-                    stage: getCurseStage(curseType)
-                });
-            }
+        if (claimResult) {
+            results.push({
+                curseType: randomCurse,
+                bodyPart: claimResult.bodyPart,
+                stage: getCurseStage(randomCurse)
+            });
         }
-    }
 
-    // Check game over after all curses have advanced
-    if (getBodyMapOccupiedCount() >= 4) {
-        GameState.gameStatus = 'gameOver';
-        if (results.length > 0) {
-            results[results.length - 1].gameOver = true;
+        // Reset the clock
+        GameState.curseClock = GameState.curseClockInterval;
+
+        // Check game over
+        if (getBodyMapOccupiedCount() >= 4) {
+            GameState.gameStatus = 'gameOver';
+            if (results.length > 0) {
+                results[results.length - 1].gameOver = true;
+            }
         }
     }
 
@@ -484,6 +467,10 @@ function removeCurse(curseType) {
             if (GameState.bodyMap[part] === curseType) {
                 GameState.bodyMap[part] = null;
             }
+        }
+        // If no curses remain, stop the master clock
+        if (Object.keys(GameState.activeCurses).length === 0) {
+            GameState.curseClock = 0;
         }
         console.log(`Removed curse: ${curseType}`);
         return true;

@@ -515,6 +515,7 @@ function performWinAction(event) {
         delete GameState.activeCurses[curseType];
     }
     GameState.bodyMap = { head: null, arms: null, body: null, legs: null };
+    GameState.curseClock = 0;
     renderCurses();
     renderCurseStatus();
 

@@ -188,6 +188,48 @@ The curses have claimed every part of your body. What remains is no longer human
 The farm continues its dark existence, waiting for the next unfortunate soul to answer the job posting. Perhaps in another timeline, you made different choices...
 [END]
 
+[game_over_cow]
+The last of your humanity slips away as your spine locks into its new curve. You drop forward onto four heavy hooves, tail swishing behind you. The clothes that once fit a person split and fall away like shed skin. Your mouth opens to scream, but what comes out is a long, mournful moo that echoes across the empty pasture.
+
+By morning you have forgotten your name. By noon you have forgotten what names are. You stand at the fence beside the other cattle, chewing cud in the pale light, and when the next farmhand arrives you watch them with large, dull eyes that hold no recognition -- only a faint, bovine sadness that will fade with the seasons.
+[END]
+
+[game_over_bee]
+The buzzing is no longer outside you -- it is you. Your body contracts one final, agonizing time, and then you are airborne, wings blurring in a pitch only you can hear. The world explodes into a kaleidoscope of ultraviolet and pollen trails. The ground is impossibly far below, and the farmhouse is a distant mountain.
+
+You find the hive by smell. The others accept you without question -- another worker, another drone, another set of wings serving the colony. Deep inside what was once your mind, a tiny voice screams for a very long time. Then even that goes quiet, replaced by the simple, endless rhythm of gather, return, gather, return.
+[END]
+
+[game_over_scarecrow]
+Your last breath leaves you with the dry rattle of straw shifting inside a canvas sack. Your arms stiffen outward, locked to the crossbeam that has replaced your spine. The field stretches in every direction, golden and indifferent. A crow lands on your shoulder and cocks its head, studying the button where your eye used to be.
+
+You cannot blink. You cannot sleep. You can only watch as the seasons turn -- the corn growing tall, the harvest, the snow, the thaw -- year after year, a silent sentinel no one remembers was once a person. Sometimes a farmhand passes and tips their hat to you out of habit. You would nod back if you could. You cannot.
+[END]
+
+[game_over_ghost]
+The last solid thing about you -- a fingertip, a tooth, the faint weight of your own heartbeat -- dissolves into cold light. You drift upward through the ceiling, through the roof, into a sky you can no longer feel. The farm spreads out below you like a painting, beautiful and utterly unreachable.
+
+You haunt the farmhouse now, drifting through walls you once opened with your hands. The living feel you as a chill, a creak in the floorboards, a candle that gutters for no reason. You try to speak but your voice is only wind. You try to touch but your hands pass through everything. The other ghosts of Miller's Farm nod to you in the moonlight. Welcome home, they seem to say. Welcome home.
+[END]
+
+[game_over_mouse]
+You shrink and shrink until the world is a cathedral of enormous, terrifying things. The floorboards are highways. A breadcrumb is a boulder. Your heart hammers at three hundred beats a minute, and every sound -- a distant footstep, the creak of a beam -- sends you scurrying for the nearest shadow.
+
+You make your nest behind the kitchen wall with shredded newspaper and stolen cotton. At night you creep out to nibble at whatever crumbs the farmhands leave behind. You know there is something you have forgotten -- something vast and important -- but the thought is too big for your tiny skull, and it slips away like water through your small pink paws.
+[END]
+
+[game_over_zombie]
+The rot finishes what it started. Your last clear thought disintegrates like wet paper, replaced by a single, wordless hunger. Your jaw hangs open. Your arms reach forward. One foot drags behind the other in a lurching shuffle that will never stop and never quicken.
+
+You join the others in the smokehouse -- the previous workers who never left. You stand among them in the dark, swaying gently, waiting for the door to open. When it does, when the next poor soul steps inside looking for cured meat and answers, you will reach for them with bloated fingers. Not out of malice. You don't remember malice. You don't remember anything at all.
+[END]
+
+[game_over_spider]
+The last of your human skin splits along the back and something dark and glistening pulls itself free. Eight legs unfold where two once stood. Eight eyes blink open in a face that no longer has a name. Silk spools from your abdomen in long, sticky threads, and you begin to climb.
+
+You find your corner in the highest rafter of the barn and begin to spin. The web grows wider each night -- an intricate, terrible architecture that glitters with dew each morning. Flies come. Moths come. Eventually, larger things come. You wrap them carefully, patiently, and wait. The farm has a new spider, and she is very, very patient.
+[END]
+
 [smokehouse_entrance]
 The smokehouse is a squat stone building, barely taller than you, with a single heavy door and no windows. Inside, the air is thick with the ghost of old smoke -- not real smoke, but a spectral haze that clings to your skin and stings your eyes. Iron hooks dangle from the ceiling like the fingers of some vast, hidden hand. Slabs of something dark hang from a few of them, though you can't tell if it's ancient meat or something worse. The walls are black with decades of soot, and in the far corner, a stone fire pit sits cold and dead. Despite this, the room feels warm -- too warm -- as if a fire burned here moments ago.
 [END]

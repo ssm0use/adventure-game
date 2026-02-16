@@ -59,22 +59,36 @@ function loadGame(slotNumber) {
         if (!GameState.bodyMap) {
             GameState.bodyMap = { head: null, arms: null, body: null, legs: null };
 
-            // Convert old-format curses (with currentStage) to new format
+            // Convert old-format curses (with currentStage) to body map claims
             for (const curseType in GameState.activeCurses) {
                 const curse = GameState.activeCurses[curseType];
                 if (curse.currentStage !== undefined) {
-                    // Old format had currentStage; assign that many random body parts
                     const stage = curse.currentStage || 1;
                     for (let i = 0; i < stage; i++) {
-                        advanceCurseOneStep(curseType);
+                        claimClearZone(curseType);
                     }
-                    // Convert to new format
-                    const curseData = CursesData[curseType];
-                    GameState.activeCurses[curseType] = {
-                        roomsUntilNextAdvance: curseData ? curseData.roomsUntilAdvance : 4,
-                        stopped: false
-                    };
                 }
+            }
+        }
+
+        // Migration: old per-curse timer format to master clock format
+        if (GameState.curseClock === undefined) {
+            GameState.curseClock = 0;
+            GameState.curseClockInterval = 4;
+
+            let hasActiveCurse = false;
+            for (const curseType in GameState.activeCurses) {
+                const curse = GameState.activeCurses[curseType];
+                if (typeof curse === 'object') {
+                    // Convert old object format {roomsUntilNextAdvance, stopped} to simple boolean
+                    GameState.activeCurses[curseType] = true;
+                }
+                hasActiveCurse = true;
+            }
+
+            // Start master clock if there are active curses
+            if (hasActiveCurse) {
+                GameState.curseClock = GameState.curseClockInterval;
             }
         }
 
