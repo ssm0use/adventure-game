@@ -184,7 +184,7 @@
       {
         "id": "search_hayloft",
         "storyKey": "hayloft_entrance",
-        "items": ["workGloves", "luckyHorseshoe", "mouserCharm"],
+        "items": ["mouserCharm"],
         "oneTime": true
       }
     ]
@@ -209,6 +209,9 @@
           "difficulty": 15,
           "successStory": "milkingstation_cow_success",
           "failureStory": "milkingstation_cow_failure",
+          "successEffect": {
+            "items": ["workGloves"]
+          },
           "failureEffect": {
             "curse": "cow"
           }
@@ -245,6 +248,9 @@
           "difficulty": 16,
           "successStory": "pasture_scarecrow_success",
           "failureStory": "pasture_scarecrow_failure",
+          "successEffect": {
+            "items": ["sturdyOveralls"]
+          },
           "failureEffect": {
             "curse": "scarecrow"
           }
@@ -291,7 +297,7 @@
       {
         "id": "search_well",
         "storyKey": "oldwell_entrance",
-        "items": ["saltAmulet", "sturdyOveralls"],
+        "items": ["saltAmulet"],
         "oneTime": true
       }
     ]
@@ -342,6 +348,9 @@
           "difficulty": 14,
           "successStory": "beehive_success",
           "failureStory": "beehive_failure",
+          "successEffect": {
+            "items": ["luckyHorseshoe"]
+          },
           "failureEffect": {
             "curse": "bee"
           }
@@ -380,6 +389,9 @@
           "difficulty": 14,
           "successStory": "smokehouse_zombie_success",
           "failureStory": "smokehouse_zombie_failure",
+          "successEffect": {
+            "items": ["smokedJerky"]
+          },
           "failureEffect": {
             "curse": "zombie"
           }
@@ -387,14 +399,6 @@
         "requirements": {
           "visitCount": 1
         }
-      }
-    ],
-    "searches": [
-      {
-        "id": "search_smokehouse",
-        "storyKey": "smokehouse_explore",
-        "items": ["smokedJerky"],
-        "oneTime": true
       }
     ]
   },
@@ -418,6 +422,9 @@
           "difficulty": 15,
           "successStory": "cornfield_scarecrow_success",
           "failureStory": "cornfield_scarecrow_failure",
+          "successEffect": {
+            "items": ["wellWornBoots"]
+          },
           "failureEffect": {
             "curse": "scarecrow"
           }
@@ -462,6 +469,9 @@
           "difficulty": 16,
           "successStory": "grainsilo_cow_success",
           "failureStory": "grainsilo_cow_failure",
+          "successEffect": {
+            "items": ["ironLantern"]
+          },
           "failureEffect": {
             "curse": "cow"
           }
@@ -469,14 +479,6 @@
         "requirements": {
           "visitCount": 1
         }
-      }
-    ],
-    "searches": [
-      {
-        "id": "search_grainsilo",
-        "storyKey": "grainsilo_explore",
-        "items": ["ironLantern"],
-        "oneTime": true
       }
     ]
   },
@@ -494,8 +496,8 @@
     "searches": [
       {
         "id": "search_silobasement",
-        "storyKey": "silobasement_entrance",
-        "items": ["wellWornBoots"],
+        "storyKey": "silobasement_explore",
+        "items": ["spidersilkBracelet"],
         "oneTime": true
       }
     ]
@@ -520,6 +522,9 @@
           "difficulty": 13,
           "successStory": "chickencoop_mouse_success",
           "failureStory": "chickencoop_mouse_failure",
+          "successEffect": {
+            "items": ["copperThimble"]
+          },
           "failureEffect": {
             "curse": "mouse"
           }
@@ -533,7 +538,7 @@
       {
         "id": "search_chickencoop",
         "storyKey": "chickencoop_explore",
-        "items": ["copperThimble", "dustyEgg", "spidersilkBracelet"],
+        "items": ["dustyEgg"],
         "oneTime": true
       }
     ]

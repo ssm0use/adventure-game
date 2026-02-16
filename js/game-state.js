@@ -15,7 +15,24 @@
  *   ghost    → saltAmulet         (Salt Circle Amulet)      — found in Old Well search
  *   mouse    → mouserCharm        (Mouser's Charm)          — found in Hayloft search
  *   zombie   → boneCharm          (Bone Charm)              — found in Farmhouse search
- *   spider   → spidersilkBracelet (Spidersilk Bracelet)     — found in Chicken Coop search
+ *   spider   → spidersilkBracelet (Spidersilk Bracelet)     — found in Silo Basement search
+ *
+ * ENCOUNTER → REWARD MAPPING:
+ *   Farmhouse ghost     → silkNeckerchief  (+1 Charm)
+ *   Milking station cow → workGloves       (+1 Grit)
+ *   Pasture scarecrow   → sturdyOveralls   (+1 Grit)
+ *   Bee hives           → luckyHorseshoe   (+1 Keen Eye)
+ *   Smokehouse zombie   → smokedJerky      (+1 Grit)
+ *   Cornfield scarecrow → wellWornBoots    (+1 Grit)
+ *   Grain silo cow      → ironLantern      (+1 Charm)
+ *   Chicken coop mouse  → copperThimble    (+1 Charm)
+ *   Barn Abigail        → learnedRitualLocation flag
+ *
+ * HIDDEN AREAS → CLUES:
+ *   Root cellar  (barn)       — Farmer Miller dialogue mentions it directly
+ *   Hayloft      (barn)       — barn_entrance mentions ladder behind hay bales
+ *   Old well     (pasture)    — pasture_entrance mentions circular grass pattern
+ *   Silo basement(grain silo) — grainsilo_entrance mentions cold draft from below
  */
 
 // Main game state object
