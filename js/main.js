@@ -10,6 +10,17 @@
 let gameInitialized = false;
 
 /**
+ * Returns all hidden areas for a room as an array.
+ * Supports both singular hiddenArea and plural hiddenAreas formats.
+ */
+function getHiddenAreas(room) {
+    if (!room) return [];
+    if (room.hiddenAreas) return room.hiddenAreas;
+    if (room.hiddenArea) return [room.hiddenArea];
+    return [];
+}
+
+/**
  * Initializes the entire game
  * Called when the page loads
  */
@@ -180,18 +191,21 @@ function renderRoom(roomId, isFirstVisit) {
     renderBodyMap();
 
     // Check for hidden area discovery (small chance each visit)
-    if (room.hiddenArea && !isHiddenAreaDiscovered(room.hiddenArea.name)) {
-        const checkResult = performPassiveKeenEyeCheck(room.hiddenArea.luckThreshold);
+    const hiddenAreas = getHiddenAreas(room);
+    for (const area of hiddenAreas) {
+        if (!isHiddenAreaDiscovered(area.name)) {
+            const checkResult = performPassiveKeenEyeCheck(area.luckThreshold);
 
-        if (checkResult.success) {
-            discoverHiddenArea(room.hiddenArea.name);
-            displayStoryText(room.hiddenArea.name + '_discover');
+            if (checkResult.success) {
+                discoverHiddenArea(area.name);
+                displayStoryText(area.name + '_discover');
 
-            clearChoices();
-            addChoice('Continue...', () => {
-                renderRoomContent(roomId);
-            });
-            return;
+                clearChoices();
+                addChoice('Continue...', () => {
+                    renderRoomContent(roomId);
+                });
+                return;
+            }
         }
     }
 
@@ -314,11 +328,13 @@ function shouldHideFromNavigation(destRoomId, currentRoomId) {
             }
         });
 
-        if (room.hiddenArea && isHiddenAreaDiscovered(room.hiddenArea.name)) {
-            const hiddenId = room.hiddenArea.name;
-            if (hiddenId !== destRoomId && !reachableWithout.has(hiddenId)) {
-                reachableWithout.add(hiddenId);
-                queue.push(hiddenId);
+        for (const area of getHiddenAreas(room)) {
+            if (isHiddenAreaDiscovered(area.name)) {
+                const hiddenId = area.name;
+                if (hiddenId !== destRoomId && !reachableWithout.has(hiddenId)) {
+                    reachableWithout.add(hiddenId);
+                    queue.push(hiddenId);
+                }
             }
         }
     }
@@ -340,11 +356,13 @@ function shouldHideFromNavigation(destRoomId, currentRoomId) {
             }
         });
 
-        if (room.hiddenArea && isHiddenAreaDiscovered(room.hiddenArea.name)) {
-            const hiddenId = room.hiddenArea.name;
-            if (!roomsOnlyThroughDest.has(hiddenId) && !reachableWithout.has(hiddenId)) {
-                roomsOnlyThroughDest.add(hiddenId);
-                destQueue.push(hiddenId);
+        for (const area of getHiddenAreas(room)) {
+            if (isHiddenAreaDiscovered(area.name)) {
+                const hiddenId = area.name;
+                if (!roomsOnlyThroughDest.has(hiddenId) && !reachableWithout.has(hiddenId)) {
+                    roomsOnlyThroughDest.add(hiddenId);
+                    destQueue.push(hiddenId);
+                }
             }
         }
     }
@@ -354,8 +372,10 @@ function shouldHideFromNavigation(destRoomId, currentRoomId) {
         if (!isRoomContentDone(roomId)) return false;
 
         const room = RoomsData[roomId];
-        if (room && room.hiddenArea && !isHiddenAreaDiscovered(room.hiddenArea.name)) {
-            return false;
+        for (const area of getHiddenAreas(room)) {
+            if (!isHiddenAreaDiscovered(area.name)) {
+                return false;
+            }
         }
     }
 
@@ -604,17 +624,18 @@ function renderNavigationChoices(roomId, backOnly = false) {
     });
 
     // Check discovered hidden areas
-    let visibleHidden = null;
-    if (room.hiddenArea && isHiddenAreaDiscovered(room.hiddenArea.name)) {
-        const hiddenRoomId = room.hiddenArea.name;
-        const hiddenRoom = RoomsData[hiddenRoomId];
-        if (hiddenRoom && !shouldHideFromNavigation(hiddenRoomId, roomId)) {
-            visibleHidden = { id: hiddenRoomId, room: hiddenRoom };
+    const visibleHiddenList = [];
+    for (const area of getHiddenAreas(room)) {
+        if (isHiddenAreaDiscovered(area.name)) {
+            const hiddenRoomId = area.name;
+            const hiddenRoom = RoomsData[hiddenRoomId];
+            if (hiddenRoom && !shouldHideFromNavigation(hiddenRoomId, roomId)) {
+                visibleHiddenList.push({ id: hiddenRoomId, room: hiddenRoom });
+            }
         }
     }
-
     // Safety: if nothing is visible, show all connections to prevent getting stuck
-    if (visibleConnections.length === 0 && !visibleHidden) {
+    if (visibleConnections.length === 0 && visibleHiddenList.length === 0) {
         room.connections.forEach(connId => {
             if (RoomsData[connId]) visibleConnections.push(connId);
         });
@@ -627,12 +648,12 @@ function renderNavigationChoices(roomId, backOnly = false) {
         });
     });
 
-    // Render visible hidden area
-    if (visibleHidden) {
-        addChoice(`Enter ${visibleHidden.room.name}`, () => {
-            enterRoom(visibleHidden.id);
+    // Render visible hidden areas
+    visibleHiddenList.forEach(hidden => {
+        addChoice(`Enter ${hidden.room.name}`, () => {
+            enterRoom(hidden.id);
         });
-    }
+    });
 }
 
 /**

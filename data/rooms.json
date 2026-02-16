@@ -2,12 +2,6 @@
   "farmhouse": {
     "name": "Farmhouse",
     "connections": ["garden", "barn", "smokehouse"],
-    "hiddenArea": {
-      "name": "rootcellar",
-      "keenEyeRequired": 3,
-      "luckThreshold": 18,
-      "description": "A hidden root cellar beneath the farmhouse"
-    },
     "events": [
       {
         "id": "meet_farmer",
@@ -45,7 +39,7 @@
   },
   "rootcellar": {
     "name": "Root Cellar",
-    "connections": ["farmhouse"],
+    "connections": ["barn"],
     "events": [
       {
         "id": "find_journal",
@@ -67,12 +61,20 @@
   "barn": {
     "name": "Barn",
     "connections": ["farmhouse", "milkingStation", "pasture", "chickenCoop"],
-    "hiddenArea": {
-      "name": "hayloft",
-      "keenEyeRequired": 3,
-      "luckThreshold": 16,
-      "description": "A hayloft above the main barn"
-    },
+    "hiddenAreas": [
+      {
+        "name": "rootcellar",
+        "keenEyeRequired": 3,
+        "luckThreshold": 18,
+        "description": "A hidden root cellar near the barn"
+      },
+      {
+        "name": "hayloft",
+        "keenEyeRequired": 3,
+        "luckThreshold": 16,
+        "description": "A hayloft above the main barn"
+      }
+    ],
     "events": [
       {
         "id": "barn_locked",

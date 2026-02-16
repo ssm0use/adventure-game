@@ -7,7 +7,7 @@ The gravel crunches under your tires as you pull up to the old Victorian farmhou
 [END]
 
 [farmhouse_meet_farmer]
-The door swings open before you can knock, revealing a weathered man in his fifties. His face is lined with worry, and dark circles shadow his eyes. "You're here about the job?" he asks, hope flickering across his features. "Thank God. I'm Farmer Miller. I... I really need the help." He glances over his shoulder nervously. "Strange things have been happening around here. Workers don't tend to stay long. But I'm desperate. The pay is good, I promise. Just... be careful, alright?"
+The door swings open before you can knock, revealing a weathered man in his fifties. His face is lined with worry, and dark circles shadow his eyes. "You're here about the job?" he asks, hope flickering across his features. "Thank God. I'm Farmer Miller. I... I really need the help." He ushers you inside and lowers his voice. "I'll be honest with you - this farm is cursed. Has been for generations. Strange things happen here. Workers change... become something else. I can't get a lick of work done until it's broken." He wrings his hands. "I know that sounds crazy, but if you're willing to help break the curse, I'll make it worth your while. Good pay, room and board, all of it." He leans in closer. "There's a journal - belonged to my ancestor Ezekiel Miller. It holds the key to understanding what happened here and how to undo it. I lost track of it years ago, but I'm pretty sure it ended up in the old root cellar near the barn. The entrance is hidden, overgrown with weeds and such, but it's there. Find that journal, and we'll have a place to start."
 [END]
 
 [farmhouse_explore]
@@ -27,7 +27,7 @@ The cold pierces through to your bones. Your fingers feel numb, then translucent
 [END]
 
 [rootcellar_discover]
-Your sharp eyes catch something odd - a slight depression in the floor near the pantry, and what looks like hidden hinges beneath a worn rug. A root cellar! These old farmhouses always had them. You pull back the rug to reveal a heavy wooden trapdoor with an iron ring handle.
+Poking around the side of the barn, you notice something half-buried in the weeds - the outline of old wooden doors set into the ground at an angle, the kind that leads down to a root cellar. Vines and dirt have nearly swallowed them whole, but you manage to wrench the rusted handles free and haul the doors open, revealing a set of stone steps descending into darkness below.
 [END]
 
 [rootcellar_entrance]
