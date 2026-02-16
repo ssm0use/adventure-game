@@ -381,6 +381,18 @@ body {
     line-height: 1.4;
 }
 
+/* Curse Applied Warning (shown after failing an encounter) */
+.curse-applied-warning {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: rgba(139, 0, 0, 0.1);
+    border: 2px solid #8b0000;
+    border-radius: 6px;
+    color: #8b0000;
+    font-size: 1.05em;
+    line-height: 1.5;
+}
+
 /* Curse Progression Display (story area) */
 .curse-progression {
     margin-bottom: 15px;

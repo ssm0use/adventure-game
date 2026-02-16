@@ -62,6 +62,14 @@
           "missingItem": "silkNeckerchief"
         }
       }
+    ],
+    "searches": [
+      {
+        "id": "search_farmhouse",
+        "storyKey": "farmhouse_explore",
+        "items": ["boneCharm"],
+        "oneTime": true
+      }
     ]
   },
   "rootcellar": {
@@ -363,17 +371,17 @@
         "oneTime": true
       },
       {
-        "id": "smokehouse_ghost",
+        "id": "smokehouse_zombie",
         "trigger": "action",
-        "storyKey": "smokehouse_ghost_encounter",
+        "storyKey": "smokehouse_zombie_encounter",
         "actionText": "Peer Into the Smoke",
         "check": {
           "stat": "charm",
           "difficulty": 14,
-          "successStory": "smokehouse_ghost_success",
-          "failureStory": "smokehouse_ghost_failure",
+          "successStory": "smokehouse_zombie_success",
+          "failureStory": "smokehouse_zombie_failure",
           "failureEffect": {
-            "curse": "ghost"
+            "curse": "zombie"
           }
         },
         "requirements": {

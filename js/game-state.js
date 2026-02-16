@@ -7,6 +7,15 @@
  * - Current location and visited rooms
  * - Active curses and transformations
  * - Game flags and progress
+ *
+ * CURSE → CURE ITEM MAPPING (1:1, non-equippable, auto-cure on pickup):
+ *   cow      → brassCollar        (Brass Bell Collar)       — found in Barn search
+ *   bee      → beeVeil            (Beekeeper's Smoke Veil)  — found in Bee Hives search
+ *   scarecrow→ blessedHat         (Blessed Straw Hat)       — found in Garden search
+ *   ghost    → saltAmulet         (Salt Circle Amulet)      — found in Old Well search
+ *   mouse    → mouserCharm        (Mouser's Charm)          — found in Hayloft search
+ *   zombie   → boneCharm          (Bone Charm)              — found in Farmhouse search
+ *   spider   → spidersilkBracelet (Spidersilk Bracelet)     — found in Chicken Coop search
  */
 
 // Main game state object
@@ -127,7 +136,7 @@ function initializeNewGame() {
  * @returns {number} Random stat value
  */
 function getRandomStatValue() {
-    return Math.floor(Math.random() * 4) + 2; // Random number from 2 to 5
+    return Math.floor(Math.random() * 3) + 2; // Random number from 2 to 4
 }
 
 /**
@@ -181,11 +190,23 @@ function addItemToInventory(itemId) {
         GameState.inventory.push(itemId);
         console.log(`Added ${itemId} to inventory`);
 
-        // If it's a cursed item, apply the curse effect
         const item = ItemsData[itemId];
+
+        // If it's a cursed item, apply the curse effect
         if (item && item.curseEffect) {
             applyCurse(item.curseEffect.curse);
             checkBodyMapGameOver();
+        }
+
+        // If it's a protective item and the matching curse is active, fully cure it
+        if (item && item.type === 'protective' && item.protectsFrom) {
+            const curseType = item.protectsFrom;
+            if (GameState.activeCurses[curseType]) {
+                removeCurse(curseType);
+                const curseName = CursesData[curseType] ? CursesData[curseType].name : curseType;
+                console.log(`${item.name} fully cured ${curseName}!`);
+                alert(`The ${item.name} flares with protective energy! The ${curseName} is purged from your body completely.`);
+            }
         }
     }
 }
@@ -229,45 +250,6 @@ function equipItem(itemId) {
     if (!GameState.equipped.includes(itemId)) {
         GameState.equipped.push(itemId);
         console.log(`Equipped ${itemId}`);
-
-        // Check if this is a protective item that can affect an active curse
-        if (item.type === 'protective' && item.protectsFrom) {
-            const curseType = item.protectsFrom;
-            if (GameState.activeCurses[curseType] && !GameState.activeCurses[curseType].stopped) {
-                // Only free a body part the FIRST time this item is used against this curse
-                const alreadyReduced = GameState.activeCurses[curseType].reducedBy &&
-                    GameState.activeCurses[curseType].reducedBy.includes(itemId);
-
-                if (!alreadyReduced) {
-                    // Free one body part held by this curse
-                    freeOneBodyPart(curseType);
-
-                    // Track that this item has already reduced this curse
-                    if (!GameState.activeCurses[curseType].reducedBy) {
-                        GameState.activeCurses[curseType].reducedBy = [];
-                    }
-                    GameState.activeCurses[curseType].reducedBy.push(itemId);
-
-                    // If curse now has 0 body parts, remove it entirely
-                    if (getCurseStage(curseType) === 0) {
-                        delete GameState.activeCurses[curseType];
-                        console.log(`${item.name} fully cured ${curseType} curse!`);
-                        alert(`${item.name} purges the last trace of the ${CursesData[curseType].name}! You are completely free of it.`);
-                    } else {
-                        // Stop the curse from advancing further
-                        GameState.activeCurses[curseType].stopped = true;
-                        console.log(`${item.name} reduced and stopped ${curseType} curse.`);
-                        alert(`${item.name} weakens the ${CursesData[curseType].name} and prevents it from spreading further. But traces remain...`);
-                    }
-                } else {
-                    // Re-equipping: just halt the curse again, no stage reduction
-                    GameState.activeCurses[curseType].stopped = true;
-                    console.log(`${item.name} halted ${curseType} curse again (no further reduction).`);
-                    alert(`${item.name} holds the ${CursesData[curseType].name} at bay once more, but cannot weaken it further.`);
-                }
-            }
-        }
-
         return true;
     }
     return false;
@@ -281,19 +263,6 @@ function unequipItem(itemId) {
     const index = GameState.equipped.indexOf(itemId);
     if (index > -1) {
         GameState.equipped.splice(index, 1);
-
-        // Check if this was a protective item keeping a curse halted
-        const item = ItemsData[itemId];
-        if (item && item.type === 'protective' && item.protectsFrom) {
-            const curseType = item.protectsFrom;
-            if (GameState.activeCurses[curseType] && GameState.activeCurses[curseType].stopped) {
-                GameState.activeCurses[curseType].stopped = false;
-                GameState.activeCurses[curseType].roomsUntilNextAdvance = CursesData[curseType].roomsUntilAdvance;
-                console.log(`Curse ${curseType} resumed after unequipping ${item.name}`);
-                alert(`Without the ${item.name}, the ${CursesData[curseType].name} stirs again. The transformation resumes its advance...`);
-            }
-        }
-
         addItemToInventory(itemId);
         console.log(`Unequipped ${itemId}`);
         return true;
@@ -311,16 +280,16 @@ function hasItem(itemId) {
 }
 
 /**
- * Checks if player has a protective item equipped for a curse type
+ * Checks if player has a protective item for a curse type (in inventory or equipped)
  * @param {string} curseType - The curse type to check protection for
  * @returns {boolean} True if protected
  */
-function hasProtectionEquipped(curseType) {
+function hasProtection(curseType) {
     const curse = CursesData[curseType];
     if (!curse) return false;
 
     const protectiveItemId = curse.protectiveItem;
-    return GameState.equipped.includes(protectiveItemId);
+    return GameState.inventory.includes(protectiveItemId) || GameState.equipped.includes(protectiveItemId);
 }
 
 /**
@@ -412,8 +381,8 @@ function checkBodyMapGameOver() {
  * @returns {Object} Result with success/blocked/alreadyActive status
  */
 function applyCurse(curseType) {
-    // Check if player has protection equipped
-    if (hasProtectionEquipped(curseType)) {
+    // Check if player has protection (in inventory or equipped)
+    if (hasProtection(curseType)) {
         console.log(`Curse ${curseType} blocked by protective item`);
         return { blocked: true };
     }

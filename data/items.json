@@ -21,8 +21,7 @@
     "description": "A tarnished brass collar with a small bell. Rings with a pure, clear tone that seems to ward off bovine spirits.",
     "type": "protective",
     "protectsFrom": "cow",
-    "equipSlot": "neck",
-    "canEquip": true,
+    "canEquip": false,
     "canUse": false
   },
   "beeVeil": {
@@ -31,8 +30,7 @@
     "description": "An old beekeeper's protective hood with mesh and a small smoke brazier. Still potent despite its age.",
     "type": "protective",
     "protectsFrom": "bee",
-    "equipSlot": "head",
-    "canEquip": true,
+    "canEquip": false,
     "canUse": false
   },
   "blessedHat": {
@@ -41,8 +39,7 @@
     "description": "A wide-brimmed hat woven from blessed straw. Feels warm and alive in your hands.",
     "type": "protective",
     "protectsFrom": "scarecrow",
-    "equipSlot": "head",
-    "canEquip": true,
+    "canEquip": false,
     "canUse": false
   },
   "saltAmulet": {
@@ -51,8 +48,7 @@
     "description": "A small amulet containing blessed salt in a glass vial. The salt glows faintly with inner light.",
     "type": "protective",
     "protectsFrom": "ghost",
-    "equipSlot": "neck",
-    "canEquip": true,
+    "canEquip": false,
     "canUse": false
   },
   "workGloves": {
@@ -158,8 +154,7 @@
     "description": "A small carved wooden cat with amber eyes. It radiates warmth and faintly purrs when held. Farm cats have always kept the mice at bay.",
     "type": "protective",
     "protectsFrom": "mouse",
-    "equipSlot": "pocket",
-    "canEquip": true,
+    "canEquip": false,
     "canUse": false
   },
   "stickyHoneycomb": {
@@ -275,14 +270,22 @@
     "canUse": false,
     "warning": "The egg pulses with a faint heartbeat. Nothing good can come of this."
   },
+  "boneCharm": {
+    "id": "boneCharm",
+    "name": "Bone Charm",
+    "description": "A small bundle of animal bones lashed together with sinew and dried herbs. It rattles softly and smells of sage. Something about it repels the stench of decay.",
+    "type": "protective",
+    "protectsFrom": "zombie",
+    "canEquip": false,
+    "canUse": false
+  },
   "spidersilkBracelet": {
     "id": "spidersilkBracelet",
     "name": "Spidersilk Bracelet",
     "description": "A delicate bracelet woven from impossibly fine spider silk. It shimmers faintly and feels warm against your skin, as though warding something away.",
     "type": "protective",
     "protectsFrom": "spider",
-    "equipSlot": "hands",
-    "canEquip": true,
+    "canEquip": false,
     "canUse": false
   }
 }

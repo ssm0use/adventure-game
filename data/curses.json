@@ -64,6 +64,19 @@
     "advanceText": "Your body twitches and shrinks. The Mouse Transformation gnaws at you, reducing more of your human form.",
     "overwriteText": "The Mouse Transformation scurries over another curse's claim, small but relentless, replacing it with fur and whiskers."
   },
+  "zombie": {
+    "name": "Zombie Transformation",
+    "protectiveItem": "boneCharm",
+    "roomsUntilAdvance": 4,
+    "bodyPartDescriptions": {
+      "head": "Your skin has gone gray and slack, hanging loosely from your skull. One eye drifts lazily, and your jaw keeps unhinging with a wet click. You groan instead of speaking.",
+      "arms": "Your arms are bloated and stiff, the color of rotten meat. Fingers curl into clumsy claws, and something green oozes from a split in your forearm. You can still move them, but they smell terrible.",
+      "body": "Your torso has swollen and gone the color of a bruised plum. Your shirt strains over distended ribs, and a persistent stench of spoiled pork follows you everywhere. Flies circle.",
+      "legs": "Your legs have gone rigid and waterlogged, bending at wrong angles with each lurching step. Your gait is a shambling shuffle, and one knee keeps trying to bend backward."
+    },
+    "advanceText": "A wave of rot washes through you. The Zombie Transformation creeps further, claiming more of your body with its putrid grip.",
+    "overwriteText": "The Zombie Transformation oozes over another curse's hold, replacing it with bloated, shambling decay."
+  },
   "spider": {
     "name": "Spider Transformation",
     "protectiveItem": "spidersilkBracelet",

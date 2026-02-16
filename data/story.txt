@@ -192,16 +192,16 @@ The farm continues its dark existence, waiting for the next unfortunate soul to 
 The smokehouse is a squat stone building, barely taller than you, with a single heavy door and no windows. Inside, the air is thick with the ghost of old smoke -- not real smoke, but a spectral haze that clings to your skin and stings your eyes. Iron hooks dangle from the ceiling like the fingers of some vast, hidden hand. Slabs of something dark hang from a few of them, though you can't tell if it's ancient meat or something worse. The walls are black with decades of soot, and in the far corner, a stone fire pit sits cold and dead. Despite this, the room feels warm -- too warm -- as if a fire burned here moments ago.
 [END]
 
-[smokehouse_ghost_encounter]
-The haze in the smokehouse thickens without warning, swirling into a dense column of gray. From within the smoke, a figure takes shape -- a young man in work clothes, his face gaunt and hollow-eyed. He opens his mouth and a sound comes out that is half-scream, half-sob, reverberating off the stone walls. This was a farmhand once, someone like you, someone who came here for honest work. His translucent hands reach for you, not with malice but with desperate loneliness. He wants company in the smoke. You need to find the right words, the right tone, before his grief pulls you in...
+[smokehouse_zombie_encounter]
+The haze in the smokehouse thickens without warning, and with it comes a smell -- sweet, cloying, unmistakably rotten. From behind the hanging slabs of ancient meat, a figure lurches into view. It was a farmhand once, someone like you. Now its skin hangs gray and loose, its jaw works up and down with a wet clicking sound, and it shuffles forward with arms outstretched, groaning with a hunger that has nothing to do with food. Its overalls are stained with something you don't want to identify. You need to calm it down, talk it back to whatever rest it came from, before its grasping hands find you...
 [END]
 
-[smokehouse_ghost_success]
-You hold up your hands slowly, keeping your voice low and steady. "Easy now. I see you. I know you're hurting." The words feel inadequate, but it's not the words that matter -- it's the warmth behind them, the genuine sympathy in your voice. The ghostly farmhand hesitates, his hollow eyes searching your face. Then, slowly, the tension drains from his spectral form. He nods once, a gesture of recognition, and dissolves back into the haze. The smoke thins. You can breathe again.
+[smokehouse_zombie_success]
+You hold your ground and speak slowly, clearly, the way you'd talk to a confused old-timer at a county fair. "Hey now. Easy, big fella. Nobody's going to hurt you." The shambling farmhand hesitates, its jaw still working, one milky eye rolling toward your face. Something flickers behind that dead gaze -- recognition, maybe, or the memory of what it felt like to be spoken to kindly. It lets out one last rattling groan, almost sad, and then slumps against the wall, sliding down until it's just a pile of old clothes and dust. The smell lingers. But the danger has passed.
 [END]
 
-[smokehouse_ghost_failure]
-You stumble backward, words catching in your throat. The ghost's wailing intensifies, a sound like wind through a hollow tree, and the smoke rushes at you like a living thing. It fills your lungs, your eyes, your thoughts. For a terrible moment you feel what he feels -- the loneliness of decades, the cold of a body that no longer exists. When the smoke finally releases you, something has changed. Your hands look pale. Too pale. Almost transparent...
+[smokehouse_zombie_failure]
+You gag and stumble backward, but the shambling farmhand is faster than it looks. Its swollen fingers close around your wrist with a grip like a cold ham, and the smell hits you full in the face -- smoke and rot and something sickeningly sweet. Your vision swims. Your stomach lurches. When it finally lets go and shuffles back into the haze, something feels deeply wrong. Your skin looks... grayish. There's a stiffness in your joints that wasn't there before, and you keep groaning involuntarily. This can't be good.
 [END]
 
 [smokehouse_explore]
@@ -274,6 +274,10 @@ You flinch. That's all it takes. The mice sense your fear like a spark in dry ti
 
 [chickencoop_explore]
 Searching the nesting boxes carefully, you find the remnants of old eggs, feathers, and mouse droppings. But two items stand out from the decay. In one box, nestled in a bed of straw, is a tiny copper thimble etched with faded runes -- it was probably left here by a farmhand's wife as a protective charm against the vermin. In another box, partially buried, sits a single black egg, cold as stone and heavy for its size. Something shifts inside it when you turn it over. It doesn't feel right.
+[END]
+
+[farmhouse_explore]
+You poke around the farmhouse, opening cupboards and peering behind furniture. In the back hallway, above a door frame, you find something odd: a small bundle of animal bones tied together with dried sinew and wrapped in sage leaves. It's hung there deliberately, like a ward. When you take it down, it rattles softly in your hand, and the air around it smells clean and sharp -- the exact opposite of rot. Whatever this is, someone put it here to keep something dead from getting any ideas.
 [END]
 
 [farmhouse_farmer_ghost_reaction]

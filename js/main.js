@@ -581,6 +581,19 @@ function executeEncounterRoll(event) {
     } else {
         // Normal path: display the encounter story
         displayStoryText(result.storyKey);
+
+        // If a curse was applied, append a prominent warning to the story text
+        if (result.curseApplied && result.curseApplied.success) {
+            const curseType = event.check.failureEffect.curse;
+            const curseData = CursesData[curseType];
+            if (curseData) {
+                const storyArea = document.getElementById('story-text');
+                const warning = document.createElement('div');
+                warning.className = 'curse-applied-warning';
+                warning.innerHTML = `<strong>⚠ ${curseData.name}!</strong> A curse has taken hold. It will spread further with each place you visit unless you find a cure.`;
+                storyArea.appendChild(warning);
+            }
+        }
     }
 
     // Show the dice roll result
