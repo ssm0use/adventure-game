@@ -687,6 +687,18 @@ function executeEncounterRoll(event) {
             addItemToInventory(itemId);
         });
         renderInventory();
+
+        // Announce discovered items in the story area
+        const storyArea = document.getElementById('story-text');
+        result.rewardItems.forEach(itemId => {
+            const item = ItemsData[itemId];
+            if (item) {
+                const rewardDiv = document.createElement('div');
+                rewardDiv.className = 'item-reward-announcement';
+                rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
+                storyArea.appendChild(rewardDiv);
+            }
+        });
     }
 
     // Re-render UI in case curse was applied

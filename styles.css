@@ -345,6 +345,17 @@ body {
     line-height: 1.5;
 }
 
+.item-reward-announcement {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: rgba(74, 153, 74, 0.1);
+    border: 2px solid #4a7a4a;
+    border-radius: 6px;
+    color: #3a6a3a;
+    font-size: 1.05em;
+    line-height: 1.5;
+}
+
 /* Curse Progression Display (story area) */
 .curse-progression {
     margin-bottom: 15px;
