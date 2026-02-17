@@ -91,6 +91,9 @@ const GameState = {
     // Game status
     gameStatus: 'playing', // 'playing', 'won', 'gameOver'
 
+    // Search attempt counters per room (for cumulative bonus)
+    searchAttempts: {},
+
     // Bonus point assigned flag
     bonusPointAssigned: false
 };
@@ -137,6 +140,7 @@ function initializeNewGame() {
     GameState.currentRoom = 'farmhouse';
     GameState.visitedRooms = {};
     GameState.discoveredHiddenAreas = [];
+    GameState.searchAttempts = {};
     GameState.bodyMap = { head: null, arms: null, body: null, legs: null };
     GameState.activeCurses = {};
     GameState.curseClock = 0;
@@ -202,8 +206,8 @@ function getEffectiveStat(statName) {
         }
     });
 
-    // Ensure stat doesn't go below 1 or above 5
-    return Math.max(1, Math.min(5, baseValue));
+    // Ensure stat doesn't go below 1 (no upper cap — equipment can push above 5)
+    return Math.max(1, baseValue);
 }
 
 /**
@@ -219,7 +223,24 @@ function addItemToInventory(itemId) {
 
         // If it's a cursed item, apply the curse effect
         if (item && item.curseEffect) {
-            applyCurse(item.curseEffect.curse);
+            const curseResult = applyCurse(item.curseEffect.curse);
+
+            // Show protection notice if curse was blocked
+            if (curseResult.blocked) {
+                const curseType = item.curseEffect.curse;
+                const curseData = CursesData[curseType];
+                const protectiveItemId = curseData ? curseData.protectiveItem : null;
+                const protectiveItem = protectiveItemId ? ItemsData[protectiveItemId] : null;
+                const curseName = curseData ? curseData.name : curseType;
+                const storyArea = document.getElementById('story-text');
+                if (storyArea && protectiveItem) {
+                    const notice = document.createElement('div');
+                    notice.className = 'item-protection-announcement';
+                    notice.innerHTML = `<strong>✦ ${protectiveItem.name}</strong> flares with protective light! The <strong>${curseName}</strong> tries to take hold, but the ward holds firm. You are protected.`;
+                    storyArea.appendChild(notice);
+                }
+            }
+
             checkBodyMapGameOver();
         }
 

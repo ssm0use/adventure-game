@@ -237,7 +237,7 @@
       "stat": "grit",
       "amount": 1
     },
-    "equipSlot": "pocket",
+    "equipSlot": "feet",
     "canEquip": true,
     "canUse": false
   },

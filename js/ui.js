@@ -37,10 +37,13 @@ function renderStats() {
         const effectiveValue = getEffectiveStat(statName);
         const element = statElements[statName];
 
-        // Generate star display (5 stars total, filled based on stat value)
+        // Generate star display (scales beyond 5 when boosted by equipment)
+        const maxStars = Math.max(5, effectiveValue);
         let starsHTML = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= effectiveValue) {
+        for (let i = 1; i <= maxStars; i++) {
+            if (i <= effectiveValue && i > 5) {
+                starsHTML += '<span class="star-boosted">★</span>';
+            } else if (i <= effectiveValue) {
                 starsHTML += '<span class="star-filled">★</span>';
             } else {
                 starsHTML += '<span class="star-empty">☆</span>';
@@ -59,7 +62,7 @@ function renderStats() {
 function getItemEffectHTML(item) {
     let html = '';
     const statNames = { grit: 'Grit', keenEye: 'Keen Eye', charm: 'Charm' };
-    const slotNames = { head: 'Head', neck: 'Neck', hands: 'Hands', body: 'Body', pocket: 'Pocket' };
+    const slotNames = { head: 'Head', neck: 'Neck', hands: 'Hands', body: 'Body', feet: 'Feet', pocket: 'Pocket' };
 
     // Stat boost (green)
     if (item.statBoost) {

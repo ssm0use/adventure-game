@@ -848,7 +848,10 @@ function performHiddenAreaSearch(roomId) {
  * @param {Object} targetArea - The hidden area object to search for
  */
 function resolveHiddenAreaSearch(roomId, targetArea) {
-    const checkResult = performPassiveKeenEyeCheck(targetArea.luckThreshold);
+    // Cumulative bonus: each prior failed search lowers the threshold by 2
+    const attempts = GameState.searchAttempts[roomId] || 0;
+    const adjustedThreshold = Math.max(5, targetArea.luckThreshold - (attempts * 2));
+    const checkResult = performPassiveKeenEyeCheck(adjustedThreshold);
 
     if (checkResult.success) {
         discoverHiddenArea(targetArea.name);
@@ -858,7 +861,9 @@ function resolveHiddenAreaSearch(roomId, targetArea) {
         const successMsg = document.createElement('div');
         successMsg.className = 'curse-applied-warning';
         successMsg.style.color = '#4a9';
-        successMsg.innerHTML = '<strong>✦ Hidden area discovered!</strong>';
+        const areaRoom = RoomsData[targetArea.name];
+        const areaName = areaRoom ? areaRoom.name : targetArea.name;
+        successMsg.innerHTML = `<strong>✦ You discovered the ${areaName}!</strong>`;
         storyArea.appendChild(successMsg);
 
         clearChoices();
@@ -866,6 +871,9 @@ function resolveHiddenAreaSearch(roomId, targetArea) {
             renderRoomContent(roomId);
         });
     } else {
+        // Track failed attempt for cumulative bonus next time
+        GameState.searchAttempts[roomId] = attempts + 1;
+
         // Show room-specific failure text, or generic fallback
         const failKey = roomId + '_search_fail';
         const storyArea = document.getElementById('story-text');
@@ -876,6 +884,12 @@ function resolveHiddenAreaSearch(roomId, targetArea) {
             storyArea.innerHTML = '<p>You search thoroughly but find nothing new. The room keeps its secrets — for now.</p>';
             storyArea.scrollTop = 0;
         }
+
+        // Hint that familiarity is growing
+        const hint = document.createElement('p');
+        hint.style.cssText = 'color: #6a8a6a; font-style: italic; margin-top: 10px;';
+        hint.textContent = 'Still, you feel you know this place a little better now. Next time, you might spot something you missed.';
+        storyArea.appendChild(hint);
 
         clearChoices();
         addChoice('Continue...', () => {

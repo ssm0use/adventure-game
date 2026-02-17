@@ -331,7 +331,7 @@ Farmer Miller nearly drops his coffee when you tell him what happened. "You free
 [END]
 
 [farmhouse_return]
-Farmer Miller is at the kitchen table, nursing a fresh cup of coffee. He looks up as you enter. "How's the search going out there? Found anything useful yet?" He glances toward the window, worry creasing his brow. "Be careful - the curse runs deeper than just this house. But I'm glad you're still here. Most folks would've run off by now."
+Farmer Miller is at the kitchen table, nursing a fresh cup of coffee. He looks up as you enter. "How's the search going out there? Found anything useful yet?" He glances toward the window, worry creasing his brow. "Be careful - the curse runs deeper than just this house. But I'm glad you're still here. Most folks would've run off by now." As he speaks, you notice a draft of icy air drifting from the back hallway — unnaturally cold, as if something lingers there just out of sight.
 [END]
 
 [rootcellar_return]
