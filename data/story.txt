@@ -334,6 +334,10 @@ Farmer Miller nearly drops his coffee when you tell him what happened. "You free
 Farmer Miller is at the kitchen table, nursing a fresh cup of coffee. He looks up as you enter. "How's the search going out there? Found anything useful yet?" He glances toward the window, worry creasing his brow. "Be careful - the curse runs deeper than just this house. But I'm glad you're still here. Most folks would've run off by now." As he speaks, you notice a draft of icy air drifting from the back hallway — unnaturally cold, as if something lingers there just out of sight.
 [END]
 
+[farmhouse_return_cleared]
+Farmer Miller is at the kitchen table, looking a shade more at ease than last time. The back hallway feels warmer now — whatever was lingering there has moved on, at least for the moment. "The house feels a little lighter since you dealt with that spirit," he says, wrapping both hands around his coffee mug. "But don't let your guard down. The curse on this land runs deep — deeper than one ghost. The farm's still not right, and it won't be until the whole thing is broken for good."
+[END]
+
 [rootcellar_return]
 You descend the creaking stairs back into the root cellar. The air is cool and earthy, the shelves of dusty mason jars undisturbed. The small table sits in its shaft of light, quiet and still.
 [END]

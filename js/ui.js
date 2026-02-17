@@ -457,7 +457,7 @@ function displayAreaExploredIndicator(roomName) {
 
     const indicator = document.createElement('div');
     indicator.className = 'area-explored-indicator';
-    indicator.innerHTML = `<p>You have thoroughly explored the <strong>${roomName}</strong>. Nothing more to find here.</p>`;
+    indicator.innerHTML = `<p>You've uncovered all the secrets of the <strong>${roomName}</strong>. There's nothing left to find here — but the farm itself is still under the sway of the original curse. The answer lies somewhere else.</p>`;
 
     storyArea.appendChild(indicator);
 }

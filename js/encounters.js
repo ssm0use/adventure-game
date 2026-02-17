@@ -17,6 +17,23 @@ function rollDie(sides = 20) {
 }
 
 /**
+ * Formats a stat value as star HTML, with boosted stars (above 5) in green
+ * @param {number} statValue - The effective stat value
+ * @returns {string} HTML string of stars
+ */
+function formatStarDisplay(statValue) {
+    let stars = '';
+    for (let i = 1; i <= statValue; i++) {
+        if (i > 5) {
+            stars += '<span class="star-boosted">★</span>';
+        } else {
+            stars += '★';
+        }
+    }
+    return stars;
+}
+
+/**
  * Performs a stat check
  * @param {string} statName - The stat to check ('grit', 'keenEye', 'charm')
  * @param {number} difficulty - The difficulty threshold (10 = easy, 15 = medium, 20 = hard)
@@ -111,7 +128,7 @@ function formatCheckResult(result) {
     };
 
     const statDisplay = statDisplayNames[result.statName] || result.statName;
-    const stars = '★'.repeat(result.statValue);
+    const stars = formatStarDisplay(result.statValue);
 
     const difficultyName = getDifficultyName(result.difficulty);
 
@@ -251,7 +268,7 @@ function formatEncounterPreview(event) {
     const statDisplay = statDisplayNames[check.stat] || check.stat;
     const statValue = getEffectiveStat(check.stat);
     const modifier = statValue - 2;
-    const stars = '\u2605'.repeat(statValue);
+    const stars = formatStarDisplay(statValue);
     const difficultyName = getDifficultyName(check.difficulty);
     const minRollNeeded = check.difficulty - modifier;
 

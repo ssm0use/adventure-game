@@ -71,6 +71,11 @@ function loadGame(slotNumber) {
             }
         }
 
+        // Migration: old saves without searchAttempts
+        if (!GameState.searchAttempts) {
+            GameState.searchAttempts = {};
+        }
+
         // Migration: old per-curse timer format to master clock format
         if (GameState.curseClock === undefined) {
             GameState.curseClock = 0;

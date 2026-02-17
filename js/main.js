@@ -283,6 +283,15 @@ function renderRoom(roomId, isFirstVisit) {
                 discoverHiddenArea(area.name);
                 displayStoryText(area.name + '_discover');
 
+                const storyArea = document.getElementById('story-text');
+                const successMsg = document.createElement('div');
+                successMsg.className = 'curse-applied-warning';
+                successMsg.style.color = '#4a9';
+                const areaRoom = RoomsData[area.name];
+                const areaName = areaRoom ? areaRoom.name : area.name;
+                successMsg.innerHTML = `<strong>✦ You discovered the ${areaName}!</strong>`;
+                storyArea.appendChild(successMsg);
+
                 clearChoices();
                 addChoice('Continue...', () => {
                     renderRoomContent(roomId);
@@ -333,7 +342,19 @@ function renderRoomContent(roomId) {
         }
     } else {
         // No first-visit events — show return-visit description for this room
-        displayStoryText(roomId + '_return');
+        // Use a cleared variant if all action events are done and one exists
+        const allActionsDone = room.events?.filter(e => e.trigger === 'action').every(e => isEventCompleted(e.id)) ?? true;
+        const clearedKey = roomId + '_return_cleared';
+        if (allActionsDone && hasStoryText(clearedKey)) {
+            displayStoryText(clearedKey);
+        } else {
+            displayStoryText(roomId + '_return');
+        }
+    }
+
+    // If room is fully cleared, append the explored indicator
+    if (isRoomFullyCleared(roomId)) {
+        displayAreaExploredIndicator(room.name);
     }
 
     // Show all available actions for this room
@@ -393,83 +414,14 @@ function isRoomFullyCleared(roomId) {
 }
 
 /**
- * Determines if a destination room should be hidden from navigation
- * A room is hidden only if it AND all rooms exclusively reachable through it
- * are fully cleared with no undiscovered hidden areas
+ * Determines if a destination room should be hidden from navigation.
+ * Currently always returns false — cleared rooms stay visible (styled with hex-cleared).
  * @param {string} destRoomId - The destination room
  * @param {string} currentRoomId - The room the player is currently in
- * @returns {boolean} True if the destination should be hidden
+ * @returns {boolean} Always false — rooms are never hidden
  */
 function shouldHideFromNavigation(destRoomId, currentRoomId) {
-    // BFS: find all rooms reachable from currentRoom WITHOUT going through destRoom
-    const reachableWithout = new Set();
-    const queue = [currentRoomId];
-    reachableWithout.add(currentRoomId);
-
-    while (queue.length > 0) {
-        const roomId = queue.shift();
-        const room = RoomsData[roomId];
-        if (!room) continue;
-
-        room.connections.forEach(connId => {
-            if (connId !== destRoomId && !reachableWithout.has(connId)) {
-                reachableWithout.add(connId);
-                queue.push(connId);
-            }
-        });
-
-        for (const area of getHiddenAreas(room)) {
-            if (isHiddenAreaDiscovered(area.name)) {
-                const hiddenId = area.name;
-                if (hiddenId !== destRoomId && !reachableWithout.has(hiddenId)) {
-                    reachableWithout.add(hiddenId);
-                    queue.push(hiddenId);
-                }
-            }
-        }
-    }
-
-    // BFS: find all rooms only reachable through destRoom
-    const roomsOnlyThroughDest = new Set();
-    const destQueue = [destRoomId];
-    roomsOnlyThroughDest.add(destRoomId);
-
-    while (destQueue.length > 0) {
-        const roomId = destQueue.shift();
-        const room = RoomsData[roomId];
-        if (!room) continue;
-
-        room.connections.forEach(connId => {
-            if (!roomsOnlyThroughDest.has(connId) && !reachableWithout.has(connId)) {
-                roomsOnlyThroughDest.add(connId);
-                destQueue.push(connId);
-            }
-        });
-
-        for (const area of getHiddenAreas(room)) {
-            if (isHiddenAreaDiscovered(area.name)) {
-                const hiddenId = area.name;
-                if (!roomsOnlyThroughDest.has(hiddenId) && !reachableWithout.has(hiddenId)) {
-                    roomsOnlyThroughDest.add(hiddenId);
-                    destQueue.push(hiddenId);
-                }
-            }
-        }
-    }
-
-    // Every room in the subtree must be content-done with no undiscovered hidden areas
-    for (const roomId of roomsOnlyThroughDest) {
-        if (!isRoomContentDone(roomId)) return false;
-
-        const room = RoomsData[roomId];
-        for (const area of getHiddenAreas(room)) {
-            if (!isHiddenAreaDiscovered(area.name)) {
-                return false;
-            }
-        }
-    }
-
-    return true;
+    return false;
 }
 
 /**
