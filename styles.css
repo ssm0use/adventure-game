@@ -869,6 +869,18 @@ body {
     filter: drop-shadow(0 0 6px rgba(139, 111, 71, 0.4)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
 }
 
+.hex-cleared {
+    background: linear-gradient(135deg, #b0a890, #a09880);
+    color: #6b6560;
+    cursor: pointer;
+    transition: filter 0.2s, background 0.2s;
+}
+
+.hex-cleared:hover {
+    background: linear-gradient(135deg, #c0b8a0, #b0a890);
+    filter: drop-shadow(0 0 4px rgba(139, 111, 71, 0.3)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+}
+
 /* ===================================
    RESPONSIVE DESIGN
    =================================== */

@@ -385,3 +385,15 @@ You descend the narrow ladder back into the stone basement beneath the silo. The
 [chickenCoop_return]
 The chicken coop leans and creaks as you step back inside. Feathers drift in the stale air, and the frantic claw-marks in the dust cover the floor in their endless circles and figure-eights. The nesting boxes are quiet -- for now.
 [END]
+
+[barn_search_fail]
+You move through the barn methodically, checking behind hay bales, peering into empty stalls, running your hands along the rough wooden walls. Dust motes swirl in the pale light, and you catch a faint whiff of lavender -- but nothing reveals itself. The barn has been hiding its secrets for a long time, and it's not ready to give them up just yet.
+[END]
+
+[pasture_search_fail]
+You pace the overgrown pasture, kicking through the tall grass, searching for anything out of place. The scarecrow watches you from its post, button eyes impassive. The wind shifts the grass in waves, and for a moment you think you see a pattern -- a circle, a depression -- but when you look closer, it's just more tangled weeds. The pasture keeps its secrets buried deep.
+[END]
+
+[grainSilo_search_fail]
+You circle the interior of the silo, testing the floor with your boot, tapping the corrugated walls for hollow spots. The grain shifts and whispers beneath you, and something about the floor near the catwalk feels wrong -- too solid, too deliberate -- but you can't find a seam or a handle. Whatever's down there, it's well hidden.
+[END]

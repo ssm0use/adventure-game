@@ -365,6 +365,12 @@ function isRoomContentDone(roomId) {
     }) || false;
     if (hasUnclaimedItems) return false;
 
+    // Check for undiscovered hidden areas
+    const hiddenAreas = getHiddenAreas(room);
+    for (const area of hiddenAreas) {
+        if (!isHiddenAreaDiscovered(area.name)) return false;
+    }
+
     return true;
 }
 
@@ -379,7 +385,8 @@ function isRoomFullyCleared(roomId) {
     if (!room) return false;
 
     const hasContent = (room.events?.some(e => e.trigger === 'action') || false) ||
-                       (room.searches?.length > 0 || false);
+                       (room.searches?.length > 0 || false) ||
+                       (getHiddenAreas(room).length > 0);
     if (!hasContent) return false;
 
     return isRoomContentDone(roomId);
@@ -499,17 +506,23 @@ function renderRoomActions(roomId) {
         }
     });
 
-    // Search actions
-    const searches = room.searches?.filter(s =>
+    // Unified search: regular searches take priority, then hidden area discovery
+    const availableSearches = room.searches?.filter(s =>
         !isEventCompleted(s.id) &&
         checkSearchRequirements(s)
     ) || [];
 
-    if (searches.length > 0) {
-        // Use custom search text if provided, otherwise default to "Search the Area"
-        const searchText = searches[0].searchText || 'Search the Area';
+    const hiddenAreas = getHiddenAreas(room);
+    const undiscoveredAreas = hiddenAreas.filter(a => !isHiddenAreaDiscovered(a.name));
+
+    if (availableSearches.length > 0) {
+        const searchText = availableSearches[0].searchText || `Search ${room.name}`;
         addChoice(searchText, () => {
-            performSearchAction(roomId, searches);
+            performSearchAction(roomId, availableSearches);
+        });
+    } else if (undiscoveredAreas.length > 0) {
+        addChoice(`Search ${room.name}`, () => {
+            performHiddenAreaSearch(roomId);
         });
     }
 
@@ -759,6 +772,107 @@ function performSearchAction(roomId, searches) {
 }
 
 /**
+ * Performs an active search for hidden areas in the current room.
+ * Advances the curse clock as a cost, then resolves the Keen Eye check.
+ * @param {string} roomId - The room to search
+ */
+function performHiddenAreaSearch(roomId) {
+    const room = RoomsData[roomId];
+    const hiddenAreas = getHiddenAreas(room);
+    const undiscoveredAreas = hiddenAreas.filter(a => !isHiddenAreaDiscovered(a.name));
+    if (undiscoveredAreas.length === 0) return;
+
+    const targetArea = undiscoveredAreas[0];
+
+    // Advance curse clock (searching costs time like movement)
+    const curseProgressions = progressCurses();
+
+    // Check if curse progression caused game over
+    if (GameState.gameStatus === 'gameOver') {
+        renderCurses();
+        renderCurseStatus();
+
+        const storyArea = document.getElementById('story-text');
+        let html = '';
+        curseProgressions.forEach(prog => {
+            const curseData = CursesData[prog.curseType];
+            html += `<div class="curse-applied-warning"><strong>⚠ ${curseData.name}</strong> — the curse claims the last of you.</div>`;
+        });
+        storyArea.innerHTML = html;
+        setTimeout(() => {
+            displayBodyMapGameOver();
+        }, 3000);
+        return;
+    }
+
+    // If curses progressed (but not game over), show warning first
+    if (curseProgressions.length > 0) {
+        renderCurses();
+        renderCurseStatus();
+
+        const storyArea = document.getElementById('story-text');
+        let html = '';
+        curseProgressions.forEach(prog => {
+            const curseData = CursesData[prog.curseType];
+            html += `<div class="curse-applied-warning"><strong>⚠ ${curseData.name}</strong> — the curse spreads further, claiming more of your body.</div>`;
+        });
+        storyArea.innerHTML = html;
+        storyArea.scrollTop = 0;
+
+        clearChoices();
+        addChoice('Continue...', () => {
+            resolveHiddenAreaSearch(roomId, targetArea);
+        });
+        return;
+    }
+
+    // No curse progression — resolve search immediately
+    resolveHiddenAreaSearch(roomId, targetArea);
+}
+
+/**
+ * Resolves a hidden area search using the Keen Eye check.
+ * @param {string} roomId - The room being searched
+ * @param {Object} targetArea - The hidden area object to search for
+ */
+function resolveHiddenAreaSearch(roomId, targetArea) {
+    const checkResult = performPassiveKeenEyeCheck(targetArea.luckThreshold);
+
+    if (checkResult.success) {
+        discoverHiddenArea(targetArea.name);
+        displayStoryText(targetArea.name + '_discover');
+
+        const storyArea = document.getElementById('story-text');
+        const successMsg = document.createElement('div');
+        successMsg.className = 'curse-applied-warning';
+        successMsg.style.color = '#4a9';
+        successMsg.innerHTML = '<strong>✦ Hidden area discovered!</strong>';
+        storyArea.appendChild(successMsg);
+
+        clearChoices();
+        addChoice('Continue...', () => {
+            renderRoomContent(roomId);
+        });
+    } else {
+        // Show room-specific failure text, or generic fallback
+        const failKey = roomId + '_search_fail';
+        const storyArea = document.getElementById('story-text');
+
+        if (hasStoryText(failKey)) {
+            displayStoryText(failKey);
+        } else {
+            storyArea.innerHTML = '<p>You search thoroughly but find nothing new. The room keeps its secrets — for now.</p>';
+            storyArea.scrollTop = 0;
+        }
+
+        clearChoices();
+        addChoice('Continue...', () => {
+            renderRoomActions(roomId);
+        });
+    }
+}
+
+/**
  * Collects the list of visible neighbor destinations for a room.
  * Uses the same filtering logic as the old button-based navigation
  * (shouldHideFromNavigation + discovered hidden areas + safety fallback).
@@ -842,7 +956,7 @@ function renderHexMap(roomId) {
 
         const offset = HEX_OFFSETS[dir];
         const hex = document.createElement('div');
-        hex.className = 'hex hex-neighbor';
+        hex.className = isRoomFullyCleared(neighbor.id) ? 'hex hex-neighbor hex-cleared' : 'hex hex-neighbor';
         hex.textContent = neighbor.name;
         hex.style.left = `calc(50% + ${offset.x}px)`;
         hex.style.top = `calc(50% + ${offset.y}px)`;
