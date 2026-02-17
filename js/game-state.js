@@ -198,6 +198,14 @@ function getEffectiveStat(statName) {
         }
     });
 
+    // Add bonuses from backpack items in inventory (passive, no equip needed)
+    GameState.inventory.forEach(itemId => {
+        const item = ItemsData[itemId];
+        if (item && item.equipSlot === 'backpack' && item.statBoost && item.statBoost.stat === statName) {
+            baseValue += item.statBoost.amount;
+        }
+    });
+
     // Apply penalties from cursed items in inventory
     GameState.inventory.forEach(itemId => {
         const item = ItemsData[itemId];

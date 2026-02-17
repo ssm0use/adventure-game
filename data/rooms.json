@@ -101,13 +101,19 @@
         "name": "rootcellar",
         "keenEyeRequired": 3,
         "luckThreshold": 18,
-        "description": "A hidden root cellar near the barn"
+        "description": "A hidden root cellar near the barn",
+        "requirements": {
+          "hasItem": "barnKey"
+        }
       },
       {
         "name": "hayloft",
         "keenEyeRequired": 3,
         "luckThreshold": 16,
-        "description": "A hayloft above the main barn"
+        "description": "A hayloft above the main barn",
+        "requirements": {
+          "hasItem": "barnKey"
+        }
       }
     ],
     "events": [

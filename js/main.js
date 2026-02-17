@@ -276,7 +276,7 @@ function renderRoom(roomId, isFirstVisit) {
     // Check for hidden area discovery (small chance each visit)
     const hiddenAreas = getHiddenAreas(room);
     for (const area of hiddenAreas) {
-        if (!isHiddenAreaDiscovered(area.name)) {
+        if (!isHiddenAreaDiscovered(area.name) && checkEventRequirements(area)) {
             const checkResult = performPassiveKeenEyeCheck(area.luckThreshold);
 
             if (checkResult.success) {
@@ -465,7 +465,7 @@ function renderRoomActions(roomId) {
     ) || [];
 
     const hiddenAreas = getHiddenAreas(room);
-    const undiscoveredAreas = hiddenAreas.filter(a => !isHiddenAreaDiscovered(a.name));
+    const undiscoveredAreas = hiddenAreas.filter(a => !isHiddenAreaDiscovered(a.name) && checkEventRequirements(a));
 
     if (availableSearches.length > 0) {
         const searchText = availableSearches[0].searchText || `Search ${room.name}`;
@@ -743,7 +743,7 @@ function performSearchAction(roomId, searches) {
 function performHiddenAreaSearch(roomId) {
     const room = RoomsData[roomId];
     const hiddenAreas = getHiddenAreas(room);
-    const undiscoveredAreas = hiddenAreas.filter(a => !isHiddenAreaDiscovered(a.name));
+    const undiscoveredAreas = hiddenAreas.filter(a => !isHiddenAreaDiscovered(a.name) && checkEventRequirements(a));
     if (undiscoveredAreas.length === 0) return;
 
     const targetArea = undiscoveredAreas[0];
@@ -1050,4 +1050,11 @@ function restartGame() {
  */
 window.addEventListener('DOMContentLoaded', () => {
     initializeGame();
+});
+
+// Warn player before accidental page refresh or close (Cmd+Shift+R, etc.)
+window.addEventListener('beforeunload', (e) => {
+    if (gameInitialized && GameState.gameStatus === 'playing' && GameState.roomTransitions > 0) {
+        e.preventDefault();
+    }
 });

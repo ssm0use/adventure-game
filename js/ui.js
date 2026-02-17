@@ -62,7 +62,7 @@ function renderStats() {
 function getItemEffectHTML(item) {
     let html = '';
     const statNames = { grit: 'Grit', keenEye: 'Keen Eye', charm: 'Charm' };
-    const slotNames = { head: 'Head', neck: 'Neck', hands: 'Hands', body: 'Body', feet: 'Feet', pocket: 'Pocket' };
+    const slotNames = { head: 'Head', neck: 'Neck', gloves: 'Gloves', hands: 'Hands', body: 'Body', feet: 'Feet', pocket: 'Pocket', backpack: 'Backpack' };
 
     // Stat boost (green)
     if (item.statBoost) {

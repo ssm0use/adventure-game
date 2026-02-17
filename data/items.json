@@ -12,6 +12,7 @@
     "name": "Ancestor's Journal",
     "description": "A leather-bound journal from 1897 belonging to Ezekiel Miller. It details the origin of the curse and hints at how to break it.",
     "type": "quest",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -21,6 +22,7 @@
     "description": "A tarnished brass collar with a small bell. Rings with a pure, clear tone that seems to ward off bovine spirits.",
     "type": "protective",
     "protectsFrom": "cow",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -30,6 +32,7 @@
     "description": "An old beekeeper's protective hood with mesh and a small smoke brazier. Still potent despite its age.",
     "type": "protective",
     "protectsFrom": "bee",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -39,6 +42,7 @@
     "description": "A wide-brimmed hat woven from blessed straw. Feels warm and alive in your hands.",
     "type": "protective",
     "protectsFrom": "scarecrow",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -48,6 +52,7 @@
     "description": "A small amulet containing blessed salt in a glass vial. The salt glows faintly with inner light.",
     "type": "protective",
     "protectsFrom": "ghost",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -60,7 +65,7 @@
       "stat": "grit",
       "amount": 1
     },
-    "equipSlot": "hands",
+    "equipSlot": "gloves",
     "canEquip": true,
     "canUse": false
   },
@@ -154,6 +159,7 @@
     "description": "A small carved wooden cat with amber eyes. It radiates warmth and faintly purrs when held. Farm cats have always kept the mice at bay.",
     "type": "protective",
     "protectsFrom": "mouse",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -182,8 +188,8 @@
       "stat": "grit",
       "amount": 1
     },
-    "equipSlot": "body",
-    "canEquip": true,
+    "equipSlot": "backpack",
+    "canEquip": false,
     "canUse": false
   },
   "tarnishedCompass": {
@@ -276,6 +282,7 @@
     "description": "A small bundle of animal bones lashed together with sinew and dried herbs. It rattles softly and smells of sage. Something about it repels the stench of decay.",
     "type": "protective",
     "protectsFrom": "zombie",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   },
@@ -285,6 +292,7 @@
     "description": "A delicate bracelet woven from impossibly fine spider silk. It shimmers faintly and feels warm against your skin, as though warding something away.",
     "type": "protective",
     "protectsFrom": "spider",
+    "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
   }
