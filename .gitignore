@@ -21,6 +21,3 @@ versions/
 
 # Local reference files
 ITEM_LIST.txt
-
-# Music files (user-supplied, not tracked in git)
-music/
