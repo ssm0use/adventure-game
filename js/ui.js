@@ -316,7 +316,7 @@ function displayProtectionText(curseName, itemName) {
         <p>A wave of warmth washes over you, driving back the curse's icy grip.
         The cursed energy recoils, unable to penetrate the ward. You stagger but
         remain yourself, shielded from the transformation.</p>
-        <p><em>Your ${itemName} protected you from the ${curseName}!</em></p>
+        <div class="item-protection-announcement"><strong>✦ ${itemName}</strong> protected you from the <strong>${curseName}</strong>!</div>
     `;
 
     storyArea.innerHTML = html;

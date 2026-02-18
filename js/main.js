@@ -498,6 +498,13 @@ function renderRoomActions(roomId) {
                         renderCurses();
                         renderCurseStatus();
 
+                        // Announce the item in a green block
+                        const storyArea = document.getElementById('story-text');
+                        const rewardDiv = document.createElement('div');
+                        rewardDiv.className = 'item-reward-announcement';
+                        rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
+                        storyArea.appendChild(rewardDiv);
+
                         // Check if picking up a cursed item caused game over
                         if (GameState.gameStatus === 'gameOver') {
                             setTimeout(() => {
@@ -714,6 +721,13 @@ function performSearchAction(roomId, searches) {
                     renderInventory();
                     renderCurses();
                     renderCurseStatus();
+
+                    // Announce the item in a green block
+                    const storyArea = document.getElementById('story-text');
+                    const rewardDiv = document.createElement('div');
+                    rewardDiv.className = 'item-reward-announcement';
+                    rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
+                    storyArea.appendChild(rewardDiv);
 
                     // Check if picking up a cursed item caused game over
                     if (GameState.gameStatus === 'gameOver') {

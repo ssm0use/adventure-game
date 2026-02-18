@@ -259,7 +259,13 @@ function addItemToInventory(itemId) {
                 removeCurse(curseType);
                 const curseName = CursesData[curseType] ? CursesData[curseType].name : curseType;
                 console.log(`${item.name} fully cured ${curseName}!`);
-                alert(`The ${item.name} flares with protective energy! The ${curseName} is purged from your body completely.`);
+                const storyArea = document.getElementById('story-text');
+                if (storyArea) {
+                    const cureNotice = document.createElement('div');
+                    cureNotice.className = 'item-protection-announcement';
+                    cureNotice.innerHTML = `<strong>✦ ${item.name}</strong> flares with protective energy! The <strong>${curseName}</strong> is purged from your body completely.`;
+                    storyArea.appendChild(cureNotice);
+                }
             }
         }
     }
