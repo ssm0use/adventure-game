@@ -83,6 +83,9 @@ async function initializeGame() {
     // Set up event listeners
     setupEventListeners();
 
+    // Initialize audio system
+    initAudio();
+
     // Start a new game (shows Load button if saves exist)
     startNewGame();
 }
@@ -200,6 +203,7 @@ function enterRoom(roomId) {
     const isFirstVisit = !GameState.visitedRooms[roomId];
     moveToRoom(roomId);
     renderLocation();
+    playRoomMusic(roomId);
 
     // Progress any active curses (except on very first room entry)
     if (GameState.roomTransitions > 1) {

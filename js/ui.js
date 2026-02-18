@@ -373,6 +373,7 @@ function renderCurseStatus() {
  * Otherwise shows the generic mixed-curse ending with body part descriptions.
  */
 function displayBodyMapGameOver() {
+    playEndingMusic('music/gameover.mp3');
     const storyArea = document.getElementById('story-text');
 
     // Check if all 4 body parts are claimed by the same curse
@@ -729,6 +730,7 @@ function hideBonusPointUI() {
  * Displays the win screen with enhanced formatting
  */
 function displayWinScreen() {
+    playEndingMusic('music/victory.mp3');
     const storyArea = document.getElementById('story-text');
 
     // Format the win text with proper paragraph tags
