@@ -26,8 +26,11 @@ let gameInitialized = false;
  *  [Chicken][Milk][Hayloft]*
  *   [Coop]  [Stn]    |
  *               [Root Cellar]*
+ *
+ *  Entry: [Farm Gate] → [Farmhouse] (one-way, visit once)
  */
 const MAP_DIRECTIONS = {
+    farmGate:       { farmhouse: 'N' },
     farmhouse:      { barn: 'N',  garden: 'NE', smokehouse: 'NW' },
     barn:           { farmhouse: 'S', pasture: 'NE', milkingStation: 'SE', chickenCoop: 'SW', hayloft: 'N', rootcellar: 'NW' },
     garden:         { farmhouse: 'SW', pasture: 'SE', beeHives: 'N' },
@@ -166,7 +169,7 @@ function beginAdventure() {
     }
 
     console.log('Character name:', GameState.characterName);
-    console.log('Entering farmhouse...');
+    console.log('Entering farm gate...');
 
     hideBonusPointUI();
 
@@ -176,8 +179,8 @@ function beginAdventure() {
     nameDisplay.textContent = GameState.characterName;
     nameInput.parentNode.replaceChild(nameDisplay, nameInput);
 
-    // Start at the farmhouse
-    enterRoom('farmhouse');
+    // Start at the farm gate
+    enterRoom('farmGate');
 }
 
 /**
@@ -459,6 +462,11 @@ function renderRoomActions(roomId) {
             addChoice(event.actionText, () => {
                 performEncounterAction(event);
             });
+        } else if (event.effect) {
+            // Auto-complete action (no dice roll)
+            addChoice(event.actionText, () => {
+                performAutoAction(event);
+            });
         }
     });
 
@@ -547,6 +555,46 @@ function performWinAction(event) {
     setTimeout(() => {
         displayWinScreen();
     }, 3000);
+}
+
+/**
+ * Performs an automatic action event (no dice roll).
+ * Displays story text, applies effects (flags, item consumption, event completion),
+ * and re-renders the room.
+ * @param {Object} event - The event object with an effect field
+ */
+function performAutoAction(event) {
+    displayStoryText(event.storyKey);
+
+    const effect = event.effect;
+
+    // Set flag
+    if (effect.flag) {
+        setFlag(effect.flag);
+    }
+
+    // Consume item (remove from inventory)
+    if (effect.consumeItem) {
+        removeItemFromInventory(effect.consumeItem);
+        renderInventory();
+    }
+
+    // Complete a related event (e.g., skip the charm check)
+    if (effect.completesEvent) {
+        completeEvent(effect.completesEvent);
+    }
+
+    // Mark this event itself as completed
+    completeEvent(event.id);
+
+    // Re-render
+    renderCurses();
+    renderCurseStatus();
+
+    clearChoices();
+    addChoice('Continue...', () => {
+        renderRoomContent(GameState.currentRoom);
+    });
 }
 
 /**

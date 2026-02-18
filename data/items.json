@@ -278,6 +278,15 @@
     "canEquip": false,
     "canUse": false
   },
+  "strawberries": {
+    "id": "strawberries",
+    "name": "Fresh Strawberries",
+    "description": "A handful of impossibly perfect strawberries from the garden, still warm from the sun. They smell heavenly.",
+    "type": "quest",
+    "equipSlot": "backpack",
+    "canEquip": false,
+    "canUse": false
+  },
   "spidersilkBracelet": {
     "id": "spidersilkBracelet",
     "name": "Spidersilk Bracelet",

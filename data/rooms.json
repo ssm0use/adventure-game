@@ -1,4 +1,17 @@
 {
+  "farmGate": {
+    "name": "Farm Gate",
+    "music": "music/farmhouse.mp3",
+    "connections": ["farmhouse"],
+    "events": [
+      {
+        "id": "arrive_at_farm",
+        "trigger": "firstVisit",
+        "storyKey": "farmhouse_arrival",
+        "oneTime": true
+      }
+    ]
+  },
   "farmhouse": {
     "name": "Farmhouse",
     "music": "music/farmhouse.mp3",
@@ -155,6 +168,20 @@
         }
       },
       {
+        "id": "offer_strawberries",
+        "trigger": "action",
+        "storyKey": "barn_strawberry_offering",
+        "actionText": "Offer Strawberries to Abigail",
+        "requirements": {
+          "hasItems": ["ancestorJournal", "strawberries"]
+        },
+        "effect": {
+          "flag": "learnedRitualLocation",
+          "consumeItem": "strawberries",
+          "completesEvent": "talk_to_ghost"
+        }
+      },
+      {
         "id": "talk_to_ghost",
         "trigger": "action",
         "storyKey": "barn_ghost_talk_success",
@@ -172,7 +199,8 @@
           }
         },
         "requirements": {
-          "hasItem": "ancestorJournal"
+          "hasItem": "ancestorJournal",
+          "missingItem": "strawberries"
         }
       }
     ],
@@ -359,7 +387,11 @@
       {
         "id": "search_garden",
         "storyKey": "garden_explore",
-        "oneTime": true
+        "items": ["strawberries"],
+        "oneTime": true,
+        "requirements": {
+          "completedEvent": "garden_spider"
+        }
       }
     ]
   },

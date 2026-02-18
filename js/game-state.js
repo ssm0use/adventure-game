@@ -54,7 +54,7 @@ const GameState = {
     equipped: [],
 
     // Current room the player is in
-    currentRoom: 'farmhouse',
+    currentRoom: 'farmGate',
 
     // Rooms that have been visited (with visit counts)
     visitedRooms: {},
@@ -137,7 +137,7 @@ function initializeNewGame() {
     GameState.characterName = '';
     GameState.inventory = [];
     GameState.equipped = [];
-    GameState.currentRoom = 'farmhouse';
+    GameState.currentRoom = 'farmGate';
     GameState.visitedRooms = {};
     GameState.discoveredHiddenAreas = [];
     GameState.searchAttempts = {};

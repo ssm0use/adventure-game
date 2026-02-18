@@ -6,6 +6,10 @@ You've been searching for work for weeks when you spotted a flyer at the general
 The gravel crunches under your tires as you pull up to the old Victorian farmhouse. The structure looms against the twilight sky, its white paint peeling in long strips. The porch sags slightly, and fog creeps across the yard despite it being mid-afternoon. Through a window, you catch a glimpse of movement - someone's definitely home. The job posting said to come right to the house.
 [END]
 
+[farmGate_return]
+The long dirt driveway stretches back toward the county road, but thick fog has rolled in behind you, swallowing the gate and everything beyond it. You can barely see ten feet past where you parked. Something tells you the farm isn't done with you yet. The farmhouse looms ahead — that's where the answers are.
+[END]
+
 [farmhouse_meet_farmer]
 The door swings open before you can knock, revealing a weathered man in his fifties. His face is lined with worry, and dark circles shadow his eyes. "You're here about the job?" he asks, hope flickering across his features. "Thank God. I'm Farmer Miller. I... I really need the help." He ushers you inside and lowers his voice. "I'll be honest with you - this farm is cursed. Has been for generations. Strange things happen here. Workers change... become something else. I can't get a lick of work done until it's broken." He wrings his hands. "I know that sounds crazy, but if you're willing to help break the curse, I'll make it worth your while. Good pay, room and board, all of it." He leans in closer. "There's a journal - belonged to my ancestor Ezekiel Miller. It holds the key to understanding what happened here and how to undo it. I lost track of it years ago, but I'm pretty sure it ended up in the old root cellar near the barn. The entrance is hidden, overgrown with weeds and such, but it's there. Find that journal, and we'll have a place to start."
 [END]
@@ -74,6 +78,10 @@ You step between the stalls, holding the journal open so she can see it. "Abigai
 
 [barn_ghost_talk_failure]
 You hold out the journal, but your words come out wrong — too loud, too clumsy in the stillness of the barn. Abigail's form flares bright with alarm, her expression shifting from hope to anguish. The temperature plummets. Frost crawls across the stall doors and the hay crackles underfoot. She lets out a wail that echoes through the rafters, and you feel your grip on the living world beginning to slip, the warmth draining from your bones... As the frost recedes, a faint image lingers in the ice on the stall door — the shape of a circle, with something gleaming at its center. Salt. An old amulet, lost somewhere deep where the cattle used to drink.
+[END]
+
+[barn_strawberry_offering]
+You step between the stalls, holding the journal open in one hand and the strawberries in the other. "Abigail," you say softly. "I brought you something." She materializes slowly, her spectral eyes moving from the familiar handwriting to the fruit in your palm. For a moment she is perfectly still. Then a trembling hand reaches out — not toward the journal, but toward the strawberries. "Those..." her voice is barely a whisper, fragile as old glass. "We grew those in the garden. Mother and I. Every summer." Her fingers close around the fruit and the strawberries dissolve into golden light, drifting upward like embers from a fire. The scent of warm earth and summer fills the barn. Abigail closes her eyes, and when she opens them again, they are bright with tears and something you haven't seen in her before — hope. "You found my father's journal. You brought me strawberries from my mother's garden. No one has shown me such kindness in over a hundred years." She steadies herself, wiping spectral tears with the back of her hand. Then she points through the barn wall toward the pasture and traces two gestures in the air: first a slashing motion, then a circle. "The scarecrow in the pasture — that is where my father made his bargain. You must defeat it, and then perform the Breaking Ritual to end the curse. Please. Set me free."
 [END]
 
 [barn_explore]
@@ -157,7 +165,7 @@ You freeze. That's all it takes — one instant of locked joints and held breath
 [END]
 
 [garden_explore]
-You search carefully through the garden, pushing aside oversized leaves and stepping over roots that seem to shift when you're not looking. The soil pulses with unnatural vitality, and more than once you pull your hand back from something that twitches beneath the surface. You don't find anything useful, but you get the distinct impression that this garden has secrets it's not ready to give up.
+With the spider gone, you can finally search the garden properly. Pushing aside oversized leaves and stepping over roots that seem to shift when you're not looking, you find a patch of strawberries growing in a sheltered corner — untouched by the webs that choked the rest of the garden. They're impossibly perfect, each one ruby-red and warm to the touch, as if the sun has been shining on them alone. The scent is intoxicating. Something about them feels important, like the garden grew them on purpose.
 [END]
 
 [beehive_entrance]

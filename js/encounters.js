@@ -167,6 +167,11 @@ function checkEventRequirements(event) {
         return false;
     }
 
+    // Check if player must have ALL items in a list
+    if (req.hasItems && !req.hasItems.every(id => hasItem(id))) {
+        return false;
+    }
+
     // Check if player must NOT have a specific item
     if (req.missingItem && hasItem(req.missingItem)) {
         return false;
@@ -205,6 +210,11 @@ function checkSearchRequirements(search) {
 
     // Check if player must have a specific flag
     if (req.hasFlag && !hasFlag(req.hasFlag)) {
+        return false;
+    }
+
+    // Check if a specific event must have been completed
+    if (req.completedEvent && !isEventCompleted(req.completedEvent)) {
         return false;
     }
 
