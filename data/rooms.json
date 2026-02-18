@@ -69,7 +69,6 @@
       {
         "id": "search_farmhouse",
         "storyKey": "farmhouse_explore",
-        "items": ["boneCharm"],
         "oneTime": true
       }
     ]
@@ -92,6 +91,12 @@
         "items": ["ancestorJournal"],
         "oneTime": true,
         "searchText": "Pick Up and Read the Journal"
+      },
+      {
+        "id": "search_rootcellar",
+        "storyKey": "rootcellar_explore",
+        "items": ["strawDoll"],
+        "oneTime": true
       }
     ]
   },
@@ -168,14 +173,7 @@
         }
       }
     ],
-    "searches": [
-      {
-        "id": "search_barn",
-        "storyKey": "barn_explore",
-        "items": ["brassCollar"],
-        "oneTime": true
-      }
-    ]
+    "searches": []
   },
   "hayloft": {
     "name": "Hayloft",
@@ -192,7 +190,7 @@
       {
         "id": "search_hayloft",
         "storyKey": "hayloft_entrance",
-        "items": ["mouserCharm"],
+        "items": ["mouserCharm", "brassCollar"],
         "oneTime": true
       }
     ]
@@ -305,7 +303,7 @@
       {
         "id": "search_well",
         "storyKey": "oldwell_entrance",
-        "items": ["saltAmulet"],
+        "items": ["saltAmulet", "boneCharm"],
         "oneTime": true
       }
     ]
@@ -331,7 +329,7 @@
       {
         "id": "search_garden",
         "storyKey": "garden_explore",
-        "items": ["magnifyingGlass", "blessedHat", "moldyCheese"],
+        "items": ["magnifyingGlass", "blessedHat"],
         "oneTime": true
       }
     ]
@@ -372,7 +370,7 @@
       {
         "id": "search_beehives",
         "storyKey": "beehive_explore",
-        "items": ["beeVeil", "stickyHoneycomb"],
+        "items": ["stickyHoneycomb"],
         "oneTime": true
       }
     ]
@@ -398,7 +396,7 @@
           "successStory": "smokehouse_zombie_success",
           "failureStory": "smokehouse_zombie_failure",
           "successEffect": {
-            "items": ["smokedJerky"]
+            "items": ["smokedJerky", "moldyCheese"]
           },
           "failureEffect": {
             "curse": "zombie"
@@ -446,7 +444,7 @@
       {
         "id": "search_cornfield",
         "storyKey": "cornfield_explore",
-        "items": ["tarnishedCompass", "strawDoll"],
+        "items": ["tarnishedCompass"],
         "oneTime": true
       }
     ]
@@ -505,7 +503,7 @@
       {
         "id": "search_silobasement",
         "storyKey": "silobasement_explore",
-        "items": ["spidersilkBracelet"],
+        "items": ["spidersilkBracelet", "beeVeil"],
         "oneTime": true
       }
     ]

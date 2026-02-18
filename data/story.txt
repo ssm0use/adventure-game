@@ -50,6 +50,10 @@ The witch told me, in cruel jest, that only true love freely given - a union ble
 The entry ends there. Abigail. The ghost in the farmhouse must be her.
 [END]
 
+[rootcellar_explore]
+You push past the shelves of dusty mason jars and poke into the darker corners of the root cellar. Behind a stack of rotting crates, half-buried in the dirt floor, your fingers close around something small and rough. You pull it free — a crude doll woven from dried corn husks and straw, with black button eyes that seem to stare right through you. Your joints ache the moment you hold it. Someone hid this down here deliberately.
+[END]
+
 [barn_locked]
 The barn door is sealed with a heavy padlock, rusted but secure. The metal is unnaturally cold to the touch, as if the barn itself rejects visitors. You'll need a key to get inside.
 
@@ -323,9 +327,7 @@ Searching the nesting boxes carefully, you find the remnants of old eggs, feathe
 [END]
 
 [farmhouse_explore]
-You poke around the farmhouse, opening cupboards and peering behind furniture. In the back hallway, above a door frame, you find something odd: a small bundle of animal bones tied together with dried sinew and wrapped in sage leaves. It's hung there deliberately, like a ward. When you take it down, it rattles softly in your hand, and the air around it smells clean and sharp -- the exact opposite of rot. Whatever this is, someone put it here to keep something dead from getting any ideas.
-
-Further down the hallway, on a dusty shelf, you spot a cracked hand mirror sitting atop a folded piece of cloth. The mirror's surface is fogged with unnatural frost, and the shelf around it is rimmed with ice despite the warmth of the house. A chill radiates from it, strongest here in this back hallway. Whatever lies beneath the mirror, you'll have to move it to find out.
+You poke around the farmhouse, opening cupboards and peering behind furniture. In the back hallway, a chill settles over you — unnaturally cold, as if something lingers just out of sight. On a dusty shelf, you spot a cracked hand mirror sitting atop a folded piece of cloth. The mirror's surface is fogged with unnatural frost, and the shelf around it is rimmed with ice despite the warmth of the house. A chill radiates from it, strongest here in this back hallway. Whatever lies beneath the mirror, you'll have to move it to find out.
 [END]
 
 [farmhouse_farmer_ghost_reaction]
