@@ -556,10 +556,12 @@ function performEncounterAction(event) {
         addChoice('Brace Yourself...', () => {
             showEncounterPreview(event);
         });
-        addChoice('Back Away', () => {
-            hideEncounterResult();
-            renderRoomActions(GameState.currentRoom);
-        });
+        if (!event.noEscape) {
+            addChoice('Back Away', () => {
+                hideEncounterResult();
+                renderRoomActions(GameState.currentRoom);
+            });
+        }
     } else {
         // No separate story - go straight to the combat preview
         showEncounterPreview(event);
@@ -584,10 +586,12 @@ function showEncounterPreview(event) {
     addChoice('Roll the Dice!', () => {
         executeEncounterRoll(event);
     });
-    addChoice('Back Away', () => {
-        hideEncounterResult();
-        renderRoomActions(GameState.currentRoom);
-    });
+    if (!event.noEscape) {
+        addChoice('Back Away', () => {
+            hideEncounterResult();
+            renderRoomActions(GameState.currentRoom);
+        });
+    }
 }
 
 /**

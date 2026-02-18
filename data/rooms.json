@@ -22,8 +22,9 @@
         "id": "ghost_encounter",
         "trigger": "action",
         "storyKey": "farmhouse_ghost_encounter",
-        "actionText": "Investigate the Cold Spot",
+        "actionText": "Pick Up the Cracked Mirror",
         "completesOnFailure": true,
+        "noEscape": true,
         "check": {
           "stat": "grit",
           "difficulty": 15,
@@ -37,14 +38,15 @@
           }
         },
         "requirements": {
-          "hasItem": "crackedMirror"
+          "completedEvent": "search_farmhouse"
         }
       },
       {
         "id": "confront_ghost",
         "trigger": "action",
         "storyKey": "farmhouse_ghost_deeper",
-        "actionText": "Search for the Ghost",
+        "actionText": "Hunt for the Ghost",
+        "noEscape": true,
         "check": {
           "stat": "grit",
           "difficulty": 15,
@@ -67,7 +69,7 @@
       {
         "id": "search_farmhouse",
         "storyKey": "farmhouse_explore",
-        "items": ["boneCharm", "crackedMirror"],
+        "items": ["boneCharm"],
         "oneTime": true
       }
     ]
