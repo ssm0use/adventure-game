@@ -668,6 +668,22 @@ function executeEncounterRoll(event) {
         });
     }
 
+    // Penalty for losing an unprotected encounter: advance curse clock by 1
+    if (!result.success && result.curseApplied && !result.curseApplied.blocked) {
+        const curseProgressions = progressCurses();
+
+        if (curseProgressions.length > 0) {
+            const storyArea = document.getElementById('story-text');
+            curseProgressions.forEach(prog => {
+                const curseData = CursesData[prog.curseType];
+                const warning = document.createElement('div');
+                warning.className = 'curse-applied-warning';
+                warning.innerHTML = `<strong>⚠ ${curseData.name}</strong> — the curse spreads further, claiming more of your body.`;
+                storyArea.appendChild(warning);
+            });
+        }
+    }
+
     // Re-render UI in case curse was applied
     renderCurses();
     renderCurseStatus();
