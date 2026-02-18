@@ -37,7 +37,7 @@
           }
         },
         "requirements": {
-          "visitCount": 2
+          "hasItem": "crackedMirror"
         }
       },
       {
@@ -67,7 +67,7 @@
       {
         "id": "search_farmhouse",
         "storyKey": "farmhouse_explore",
-        "items": ["boneCharm"],
+        "items": ["boneCharm", "crackedMirror"],
         "oneTime": true
       }
     ]

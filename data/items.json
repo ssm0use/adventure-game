@@ -124,18 +124,10 @@
   "crackedMirror": {
     "id": "crackedMirror",
     "name": "Cracked Hand Mirror",
-    "description": "A small hand mirror with a long crack across its surface. Your reflection looks wrong in it.",
-    "type": "cursed",
-    "statPenalty": {
-      "stat": "keenEye",
-      "amount": 1
-    },
-    "curseEffect": {
-      "curse": "ghost"
-    },
+    "description": "A small hand mirror with a long crack across its surface, fogged with unnatural frost. A ghost was circling it when you found it.",
+    "type": "quest",
     "canEquip": false,
-    "canUse": false,
-    "warning": "This item feels wrong. Taking it might have consequences."
+    "canUse": false
   },
   "moldyCheese": {
     "id": "moldyCheese",
