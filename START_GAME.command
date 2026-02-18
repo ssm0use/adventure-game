@@ -68,18 +68,44 @@ fi
 echo "Starting Cursed Farm Adventure..."
 echo ""
 
+# Kill any existing server on port 8000
+EXISTING_PID=$(lsof -ti :8000 2>/dev/null)
+if [ -n "$EXISTING_PID" ]; then
+    echo "Stopping previous server on port 8000..."
+    kill $EXISTING_PID 2>/dev/null
+    sleep 0.5
+fi
+
 # Start the server in the background
 $PYTHON_CMD -m http.server 8000 &
 SERVER_PID=$!
 
 # Wait for the server to be ready
 echo "Waiting for server to start..."
+SERVER_READY=false
 for i in $(seq 1 30); do
+    # Check if server process is still running
+    if ! kill -0 $SERVER_PID 2>/dev/null; then
+        echo ""
+        echo "ERROR: Server failed to start. Port 8000 may still be in use."
+        echo "Try closing other terminal windows and running this again."
+        read -p "Press Enter to exit..."
+        exit 1
+    fi
     if curl -s -o /dev/null http://localhost:8000 2>/dev/null; then
+        SERVER_READY=true
         break
     fi
     sleep 0.2
 done
+
+if [ "$SERVER_READY" = false ]; then
+    echo ""
+    echo "ERROR: Server did not respond in time."
+    read -p "Press Enter to exit..."
+    kill $SERVER_PID 2>/dev/null
+    exit 1
+fi
 
 echo "Opening browser at http://localhost:8000"
 echo ""
