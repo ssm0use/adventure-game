@@ -83,15 +83,8 @@ async function initializeGame() {
     // Set up event listeners
     setupEventListeners();
 
-    // Start a new game
+    // Start a new game (shows Load button if saves exist)
     startNewGame();
-
-    // Check if there are existing saves and offer to load
-    if (anySavesExist()) {
-        if (confirm('Saved game found! Would you like to load it?')) {
-            showLoadModal();
-        }
-    }
 }
 
 /**
@@ -134,6 +127,13 @@ function startNewGame() {
         console.log('Begin Adventure button clicked!');
         beginAdventure();
     }, false); // Start disabled
+
+    // Offer load option via button (avoids native confirm dialogs that break focus on Windows)
+    if (anySavesExist()) {
+        addChoice('Load Saved Game', () => {
+            showLoadModal();
+        });
+    }
 
     gameInitialized = true;
 }
