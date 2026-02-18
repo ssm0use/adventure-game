@@ -125,7 +125,7 @@ body {
 
 /* Character Name Signature Display (replaces input after submission) */
 #character-name-display {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Segoe Script', 'Lucida Handwriting', 'Brush Script MT', cursive;
     font-size: 1.8em;
     font-weight: 700;
     color: #3d2817;
