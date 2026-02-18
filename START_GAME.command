@@ -66,10 +66,27 @@ if [ -z "$PYTHON_CMD" ]; then
 fi
 
 echo "Starting Cursed Farm Adventure..."
+echo ""
+
+# Start the server in the background
+$PYTHON_CMD -m http.server 8000 &
+SERVER_PID=$!
+
+# Wait for the server to be ready
+echo "Waiting for server to start..."
+for i in $(seq 1 30); do
+    if curl -s -o /dev/null http://localhost:8000 2>/dev/null; then
+        break
+    fi
+    sleep 0.2
+done
+
 echo "Opening browser at http://localhost:8000"
 echo ""
 echo "The game is now running!"
 echo "Press Ctrl+C to stop the server when done."
 echo ""
 open http://localhost:8000
-$PYTHON_CMD -m http.server 8000
+
+# Bring the server back to the foreground so Ctrl+C works
+wait $SERVER_PID

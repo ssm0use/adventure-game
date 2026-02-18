@@ -53,10 +53,29 @@ if /i "%INSTALL_CHOICE%"=="y" (
 
 :start_game
 echo Starting Cursed Farm Adventure...
+echo.
+
+:: Start the server in the background
+start /b %PYTHON_CMD% -m http.server 8000
+
+:: Wait for the server to be ready
+echo Waiting for server to start...
+set ATTEMPTS=0
+:wait_loop
+if %ATTEMPTS% geq 30 goto :open_browser
+powershell -command "(Invoke-WebRequest -Uri http://localhost:8000 -UseBasicParsing -TimeoutSec 1).StatusCode" >nul 2>nul
+if %ERRORLEVEL% equ 0 goto :open_browser
+set /a ATTEMPTS+=1
+timeout /t 1 /nobreak >nul
+goto :wait_loop
+
+:open_browser
 echo Opening browser at http://localhost:8000
 echo.
 echo The game is now running!
 echo Close this window to stop the server when done.
 echo.
 start http://localhost:8000
-%PYTHON_CMD% -m http.server 8000
+
+:: Keep the window open so the server keeps running
+pause >nul
