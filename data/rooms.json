@@ -76,7 +76,7 @@
   },
   "rootcellar": {
     "name": "Root Cellar",
-    "music": "music/rootcellar.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["barn"],
     "events": [
       {
@@ -104,7 +104,7 @@
   },
   "barn": {
     "name": "Barn",
-    "music": "music/barn.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["farmhouse", "milkingStation", "pasture", "chickenCoop"],
     "hiddenAreas": [
       {
@@ -180,7 +180,7 @@
   },
   "hayloft": {
     "name": "Hayloft",
-    "music": "music/barn.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["barn"],
     "events": [
       {
@@ -201,7 +201,7 @@
   },
   "milkingStation": {
     "name": "Milking Station",
-    "music": "music/barn.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["barn"],
     "events": [
       {
@@ -235,7 +235,7 @@
   },
   "pasture": {
     "name": "Pasture",
-    "music": "music/pasture.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["barn", "garden", "cornfield"],
     "hiddenArea": {
       "name": "oldwell",
@@ -278,7 +278,8 @@
         "actionText": "Perform the Breaking Ritual",
         "requirements": {
           "hasItem": "ancestorJournal",
-          "hasFlag": "learnedRitualLocation"
+          "hasFlag": "learnedRitualLocation",
+          "completedEvent": "scarecrow_encounter"
         },
         "winCondition": true
       }
@@ -296,7 +297,7 @@
   },
   "oldwell": {
     "name": "Old Well",
-    "music": "music/oldwell.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["pasture"],
     "events": [
       {
@@ -317,7 +318,7 @@
   },
   "garden": {
     "name": "Working Garden",
-    "music": "music/garden.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["farmhouse", "pasture", "beeHives"],
     "events": [
       {
@@ -344,7 +345,7 @@
   },
   "beeHives": {
     "name": "Bee Hives",
-    "music": "music/garden.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["garden"],
     "events": [
       {
@@ -386,7 +387,7 @@
   },
   "smokehouse": {
     "name": "Smokehouse",
-    "music": "music/smokehouse.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["farmhouse"],
     "events": [
       {
@@ -420,7 +421,7 @@
   },
   "cornfield": {
     "name": "Cornfield",
-    "music": "music/cornfield.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["pasture", "grainSilo"],
     "events": [
       {
@@ -462,7 +463,7 @@
   },
   "grainSilo": {
     "name": "Grain Silo",
-    "music": "music/grainsilo.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["cornfield"],
     "hiddenArea": {
       "name": "siloBasement",
@@ -502,7 +503,7 @@
   },
   "siloBasement": {
     "name": "Silo Basement",
-    "music": "music/grainsilo.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["grainSilo"],
     "events": [
       {
@@ -523,7 +524,7 @@
   },
   "chickenCoop": {
     "name": "Chicken Coop",
-    "music": "music/barn.mp3",
+    "music": "music/farmhouse.mp3",
     "connections": ["barn"],
     "events": [
       {

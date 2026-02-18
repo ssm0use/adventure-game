@@ -69,7 +69,7 @@ You move toward the flickering shadow between the stalls, but the closer you get
 [END]
 
 [barn_ghost_talk_success]
-You step between the stalls, holding the journal open so she can see it. "Abigail," you say gently. "I know what your father did. I know about the curse." She materializes slowly — not retreating this time, but drifting closer, her spectral eyes fixed on the familiar handwriting. A trembling hand reaches out and brushes the page, and the air fills with the scent of lavender. For the first time, hope flickers across her ghostly features. She points through the barn wall toward the pasture, then places her palm over her heart. The message is clear: the scarecrow in the pasture is the key to breaking the curse.
+You step between the stalls, holding the journal open so she can see it. "Abigail," you say gently. "I know what your father did. I know about the curse." She materializes slowly — not retreating this time, but drifting closer, her spectral eyes fixed on the familiar handwriting. A trembling hand reaches out and brushes the page, and the air fills with the scent of lavender. For the first time, hope flickers across her ghostly features. She points through the barn wall toward the pasture, then traces two gestures in the air: first a slashing motion, then a circle. Her voice echoes faintly — "You must defeat the Scarecrow, and then perform the Breaking Ritual to end the curse." The message is clear: the scarecrow in the pasture must fall before the ritual can begin.
 [END]
 
 [barn_ghost_talk_failure]
