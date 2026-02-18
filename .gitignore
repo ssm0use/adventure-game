@@ -18,3 +18,6 @@ node_modules/
 
 # Local version archives
 versions/
+
+# Local reference files
+ITEM_LIST.txt
