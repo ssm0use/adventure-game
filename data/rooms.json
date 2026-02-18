@@ -338,7 +338,7 @@
       {
         "id": "search_garden",
         "storyKey": "garden_explore",
-        "items": ["magnifyingGlass", "blessedHat"],
+        "items": ["magnifyingGlass"],
         "oneTime": true
       }
     ]
@@ -497,6 +497,17 @@
         },
         "requirements": {
           "visitCount": 1
+        }
+      }
+    ],
+    "searches": [
+      {
+        "id": "search_grainsilo",
+        "storyKey": "grainsilo_explore",
+        "items": ["blessedHat"],
+        "oneTime": true,
+        "requirements": {
+          "completedEvent": "silo_cow_encounter"
         }
       }
     ]

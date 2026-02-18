@@ -11,7 +11,7 @@
  * CURSE → CURE ITEM MAPPING (1:1, non-equippable, auto-cure on pickup):
  *   cow      → brassCollar        (Brass Bell Collar)       — found in Barn search
  *   bee      → beeVeil            (Beekeeper's Smoke Veil)  — found in Bee Hives search
- *   scarecrow→ blessedHat         (Blessed Straw Hat)       — found in Garden search
+ *   scarecrow→ blessedHat         (Blessed Straw Hat)       — found in Grain Silo search (after defeating bull)
  *   ghost    → saltAmulet         (Salt Circle Amulet)      — found in Old Well search
  *   mouse    → mouserCharm        (Mouser's Charm)          — found in Hayloft search
  *   zombie   → boneCharm          (Bone Charm)              — found in Farmhouse search

@@ -291,7 +291,7 @@ The bull hits you like a wall of frozen wind. You're lifted off your feet and th
 [END]
 
 [grainsilo_explore]
-Climbing the metal rungs to the catwalk, you find a maintenance platform overlooking the grain below. Someone lived up here once -- there's a bedroll, a tin cup, and scratches on the wall counting days. Hundreds of scratches. Among the meager belongings is a wrought-iron lantern, its glass panes miraculously intact. When you pick it up, a tiny flame flickers to life inside it, warm and steady, casting your shadow in dramatic angles across the silo wall.
+With the shadow in the grain defeated, you can finally search the silo properly. Climbing the metal rungs to the catwalk, you find a maintenance platform overlooking the grain below. Someone lived up here once — there's a bedroll, a tin cup, and scratches on the wall counting days. Hundreds of scratches. Hanging from a nail on the far wall is a wide-brimmed straw hat, woven with care and stitched with faintly glowing thread. It feels warm and alive in your hands, as if blessed by whoever once sheltered here.
 [END]
 
 [siloBasement_discover]
