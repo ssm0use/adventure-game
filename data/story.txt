@@ -144,8 +144,20 @@ The working garden is a riot of growth - perhaps too much growth. Strawberries t
 The strawberry patch is overgrown, the plants tangled together in a green mass. As you push aside leaves the size of dinner plates, you spot something glinting in the soil - a key! It's old and rusted, but the teeth look intact. This might open the padlock on the barn.
 [END]
 
+[garden_spider_encounter]
+As you pull the rusty key free from the strawberry patch, the soil shifts and churns beneath your hands. Something is moving underneath — not worms, not roots, but legs. Dozens of them. The disturbed earth splits open and a mass of glistening web erupts from the hole, strung between the oversized strawberry plants like a trap sprung too late. From the center of the web, something large and dark begins to unfold itself, leg by segmented leg. It's a spider — far too big, far too deliberate, its body the size of a dog and wreathed in the same spectral shimmer that taints everything on this farm. It rises to full height on eight bristled legs, its cluster of eyes reflecting your face back at you eight times over. Venom drips from fangs that click together with a sound like shears snapping shut. The garden suddenly feels less like a place of growth and more like a web you've walked into willingly.
+[END]
+
+[garden_spider_success]
+Your sharp eyes catch what saves you — a gap in the webbing, a thin spot where the silk hasn't yet anchored to the blueberry bushes. You don't hesitate. You dive sideways through the opening just as the spider lunges, its fangs snapping shut on empty air where your neck was a heartbeat ago. You hit the ground rolling, tearing through strawberry vines, and come up three rows away with dirt in your teeth and your heart hammering. The spider hisses — a wet, clicking sound that turns your stomach — but it doesn't follow. It sinks back into the hole with a slow, deliberate folding of legs, dragging its web down after it like a trapdoor. The soil seals shut. In the overturned earth where the web was anchored, something glints in the light — a brass-handled magnifying glass with a crystal-clear lens, buried here who knows how long. The glass is pristine, untouched by the soil, as if something about it repelled the dirt and the spider both.
+[END]
+
+[garden_spider_failure]
+You freeze. That's all it takes — one instant of locked joints and held breath, and the spider is on you, moving with a silence that something that large should not possess. It doesn't bite right away. First it wraps — silk shooting from its spinneret in thick, sticky ropes that pin your arms to your sides before you can raise them. Then it leans close, eight eyes inches from your face, and you see yourself reflected in every one of them: small, trapped, prey. The fangs sink into your shoulder like two needles made of ice. The venom is cold — so cold it burns — and it spreads fast, prickling down your arm and across your chest. Your skin crawls. Fine black hairs stiffen along your forearms. Something behind your eyes shifts, multiplies, and for one terrible moment the garden splits into eight overlapping images before snapping back to one. The spider releases you and retreats into its hole, satisfied, dragging the silk after it. You're on your knees in the strawberry patch, shaking, and your hands look wrong — too many joints, too many angles. But from somewhere deep below — down beneath the grain silo, in a sealed stone chamber — you sense something calling to you. Silk against silk. A ward woven against the very creature that bit you.
+[END]
+
 [garden_explore]
-Searching carefully through the garden, you find various items among the plants - some useful, some decidedly odd. The soil itself seems to pulse with unnatural vitality. You get the distinct impression that anything left here too long might begin to grow roots.
+You search carefully through the garden, pushing aside oversized leaves and stepping over roots that seem to shift when you're not looking. The soil pulses with unnatural vitality, and more than once you pull your hand back from something that twitches beneath the surface. You don't find anything useful, but you get the distinct impression that this garden has secrets it's not ready to give up.
 [END]
 
 [beehive_entrance]

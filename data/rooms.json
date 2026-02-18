@@ -326,6 +326,27 @@
         "trigger": "firstVisit",
         "storyKey": "garden_entrance",
         "oneTime": true
+      },
+      {
+        "id": "garden_spider",
+        "trigger": "action",
+        "storyKey": "garden_spider_encounter",
+        "actionText": "Investigate the Rustling Beneath the Vines",
+        "check": {
+          "stat": "keenEye",
+          "difficulty": 10,
+          "successStory": "garden_spider_success",
+          "failureStory": "garden_spider_failure",
+          "successEffect": {
+            "items": ["magnifyingGlass"]
+          },
+          "failureEffect": {
+            "curse": "spider"
+          }
+        },
+        "requirements": {
+          "completedEvent": "search_strawberries"
+        }
       }
     ],
     "searches": [
@@ -338,7 +359,6 @@
       {
         "id": "search_garden",
         "storyKey": "garden_explore",
-        "items": ["magnifyingGlass"],
         "oneTime": true
       }
     ]

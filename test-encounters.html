@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Encounter Tests — Cursed Farm Adventure</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Courier New', monospace; background: #1a1a2e; color: #e0d8c0; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 10px; color: #c9a860; }
+        #summary { text-align: center; font-size: 1.2em; margin-bottom: 20px; padding: 10px; border-radius: 6px; }
+        #summary.all-pass { background: #1a3a1a; border: 2px solid #2a8a2a; }
+        #summary.has-fail { background: #3a1a1a; border: 2px solid #8a2a2a; }
+        .section { margin-bottom: 24px; }
+        .section h2 { color: #c9a860; border-bottom: 1px solid #444; padding-bottom: 4px; margin-bottom: 8px; font-size: 1.1em; }
+        .test { padding: 6px 12px; margin: 2px 0; border-radius: 4px; font-size: 0.9em; }
+        .test.pass { background: #1a2e1a; border-left: 4px solid #2a8a2a; }
+        .test.fail { background: #2e1a1a; border-left: 4px solid #c0392b; }
+        .pass .label { color: #2ecc71; font-weight: bold; }
+        .fail .label { color: #e74c3c; font-weight: bold; }
+        .detail { color: #999; font-size: 0.85em; margin-left: 12px; }
+        #loading { text-align: center; font-size: 1.4em; padding: 40px; color: #c9a860; }
+    </style>
+</head>
+<body>
+    <h1>Encounter Tests</h1>
+    <div id="loading">Loading game data...</div>
+    <div id="summary" style="display:none;"></div>
+    <div id="results" style="display:none;"></div>
+
+    <!-- Minimal DOM stubs the game code expects -->
+    <div style="display:none;">
+        <div id="story-text"></div>
+        <div id="choices-area"></div>
+        <div id="hex-map"></div>
+        <div id="encounter-results"></div>
+        <div id="curses-section"><ul id="curses-list"></ul></div>
+        <div id="curse-status"></div>
+        <div id="stats-section">
+            <span id="stat-grit"></span>
+            <span id="stat-keenEye"></span>
+            <span id="stat-charm"></span>
+        </div>
+        <div id="inventory-list"></div>
+        <div id="equipped-list"></div>
+        <div id="location-header"><span id="current-location"></span></div>
+        <div id="explored-areas-section"><ul id="explored-areas-list"></ul></div>
+        <div id="bonus-point-section"></div>
+        <div id="modal-overlay"><span id="modal-close"></span><span id="modal-title"></span><span id="modal-body"></span></div>
+        <input id="character-name" value="Tester">
+        <button id="save-btn"></button>
+        <button id="load-btn"></button>
+        <button id="new-game-btn"></button>
+    </div>
+
+    <!-- Load game modules in dependency order -->
+    <script src="js/story-loader.js"></script>
+    <script src="js/game-state.js"></script>
+    <script src="js/encounters.js"></script>
+
+    <!-- Stub modules we don't need for encounter testing -->
+    <script>
+        // Audio stubs
+        function initAudio() {}
+        function playRoomMusic() {}
+        function playEndingMusic() {}
+        // Save/load stubs
+        function anySavesExist() { return false; }
+        function getAllSaveSlots() { return []; }
+        function saveGame() { return false; }
+        function loadGame() { return false; }
+        function deleteSave() { return false; }
+        function clearAllSaves() { return false; }
+        function getRoomDisplayName(roomId) {
+            return RoomsData[roomId] ? RoomsData[roomId].name : roomId;
+        }
+    </script>
+    <script src="js/ui.js"></script>
+
+    <!-- Test runner -->
+    <script>
+    (async function() {
+        // ── Helpers ──────────────────────────────────────────────
+        let forcedRoll = null;
+
+        // Override rollDie to allow controlled outcomes
+        const _originalRollDie = rollDie;
+        rollDie = function(sides) {
+            if (forcedRoll !== null) {
+                const r = forcedRoll;
+                forcedRoll = null;
+                return r;
+            }
+            return _originalRollDie(sides);
+        };
+
+        function forceRoll(value) { forcedRoll = value; }
+
+        function resetGameState() {
+            GameState.characterName = 'Tester';
+            GameState.stats = { grit: 3, keenEye: 3, charm: 3 };
+            GameState.inventory = [];
+            GameState.equipped = [];
+            GameState.currentRoom = 'farmhouse';
+            GameState.visitedRooms = {};
+            GameState.discoveredHiddenAreas = [];
+            GameState.searchAttempts = {};
+            GameState.bodyMap = { head: null, arms: null, body: null, legs: null };
+            GameState.activeCurses = {};
+            GameState.curseClock = 0;
+            GameState.curseClockInterval = 4;
+            GameState.flags = {};
+            GameState.completedEvents = [];
+            GameState.roomTransitions = 0;
+            GameState.gameStatus = 'playing';
+            GameState.bonusPointAssigned = false;
+        }
+
+        // Test bookkeeping
+        const results = [];
+        function assert(condition, testName, detail) {
+            results.push({ pass: !!condition, name: testName, detail: detail || '' });
+        }
+
+        // ── Load data ───────────────────────────────────────────
+        await loadGameData();
+        // Story text isn't needed for encounter logic, but stub it:
+        StoryText['stub'] = 'stub';
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('summary').style.display = 'block';
+        document.getElementById('results').style.display = 'block';
+
+        // ── Catalog all encounters from rooms.json ──────────────
+        const encounters = [];
+        for (const roomId in RoomsData) {
+            const room = RoomsData[roomId];
+            if (!room.events) continue;
+            for (const event of room.events) {
+                if (event.check) {
+                    encounters.push({ roomId, roomName: room.name, event });
+                }
+            }
+        }
+
+        // ── 1. Success path tests ──────────────────────────────
+        for (const enc of encounters) {
+            resetGameState();
+            const ev = enc.event;
+            const check = ev.check;
+
+            // Satisfy prerequisites
+            setupPrereqs(enc.roomId, ev);
+
+            // Force a guaranteed success: roll 20
+            forceRoll(20);
+            const result = resolveEncounter(ev);
+
+            const label = `${enc.roomName} — ${ev.id} (success)`;
+
+            assert(result.success === true, label + ': succeeds on nat 20');
+
+            // Verify reward items returned (resolveEncounter returns them; main.js adds to inventory)
+            if (check.successEffect && check.successEffect.items) {
+                const expected = check.successEffect.items;
+                const returned = result.rewardItems || [];
+                const allReturned = expected.every(id => returned.includes(id));
+                assert(allReturned, label + ': reward items returned',
+                    'expected: ' + expected.join(', ') + ', got: ' + returned.join(', '));
+            }
+
+            // Verify flag set
+            if (check.successEffect && check.successEffect.flag) {
+                assert(GameState.flags[check.successEffect.flag],
+                    label + ': flag set', check.successEffect.flag);
+            }
+
+            // Verify no curse applied on success
+            assert(Object.keys(GameState.activeCurses).length === 0,
+                label + ': no curse on success');
+        }
+
+        // ── 2. Failure path tests ──────────────────────────────
+        for (const enc of encounters) {
+            resetGameState();
+            const ev = enc.event;
+            const check = ev.check;
+
+            setupPrereqs(enc.roomId, ev);
+
+            // Force a guaranteed failure: roll 1
+            forceRoll(1);
+            const result = resolveEncounter(ev);
+
+            const label = `${enc.roomName} — ${ev.id} (failure)`;
+
+            assert(result.success === false, label + ': fails on nat 1');
+
+            // Verify curse applied
+            if (check.failureEffect && check.failureEffect.curse) {
+                const curseType = check.failureEffect.curse;
+                assert(GameState.activeCurses[curseType] === true,
+                    label + ': curse active', curseType);
+
+                // Verify exactly one body part claimed
+                let claimedParts = 0;
+                for (const part in GameState.bodyMap) {
+                    if (GameState.bodyMap[part] === curseType) claimedParts++;
+                }
+                assert(claimedParts === 1,
+                    label + ': one body part claimed', 'claimed: ' + claimedParts);
+
+                // Verify curse clock started
+                assert(GameState.curseClock > 0,
+                    label + ': curse clock running', 'clock: ' + GameState.curseClock);
+            }
+
+            // Verify no reward items on failure
+            if (check.successEffect && check.successEffect.items) {
+                const noneInInventory = check.successEffect.items.every(id => !GameState.inventory.includes(id));
+                assert(noneInInventory, label + ': no reward items on failure');
+            }
+        }
+
+        // ── 3. Protection blocking tests ────────────────────────
+        // Map: curseType -> protectiveItemId (from curses.json)
+        const curseProtectionMap = {};
+        for (const curseType in CursesData) {
+            curseProtectionMap[curseType] = CursesData[curseType].protectiveItem;
+        }
+
+        // For each curse type, find an encounter that applies it and test blocking
+        const testedCurseTypes = new Set();
+        for (const enc of encounters) {
+            const curseType = enc.event.check.failureEffect && enc.event.check.failureEffect.curse;
+            if (!curseType || testedCurseTypes.has(curseType)) continue;
+            testedCurseTypes.add(curseType);
+
+            resetGameState();
+            const ev = enc.event;
+            setupPrereqs(enc.roomId, ev);
+
+            // Give the player the protective item
+            const protectiveItemId = curseProtectionMap[curseType];
+            GameState.inventory.push(protectiveItemId);
+
+            // Force failure
+            forceRoll(1);
+            const result = resolveEncounter(ev);
+
+            const label = `Protection: ${protectiveItemId} blocks ${curseType}`;
+
+            assert(result.success === false, label + ': roll still fails');
+            assert(result.curseApplied && result.curseApplied.blocked === true,
+                label + ': curse blocked', 'result: ' + JSON.stringify(result.curseApplied));
+
+            // Verify no body part claimed
+            let claimedParts = 0;
+            for (const part in GameState.bodyMap) {
+                if (GameState.bodyMap[part] !== null) claimedParts++;
+            }
+            assert(claimedParts === 0, label + ': no body parts claimed');
+
+            // Verify curse not active
+            assert(!GameState.activeCurses[curseType], label + ': curse not in activeCurses');
+        }
+
+        // ── 4. Stat modifier tests ─────────────────────────────
+        {
+            resetGameState();
+            // Stat at 3 -> modifier = 1. Roll 14 + 1 = 15 vs DC 15 should succeed.
+            GameState.stats.grit = 3;
+            forceRoll(14);
+            const r1 = performStatCheck('grit', 15);
+            assert(r1.success === true,
+                'Stat modifier: grit 3, roll 14 vs DC 15 = success',
+                'total: ' + r1.total);
+
+            resetGameState();
+            // Stat at 2 -> modifier = 0. Roll 14 + 0 = 14 vs DC 15 should fail.
+            GameState.stats.grit = 2;
+            forceRoll(14);
+            const r2 = performStatCheck('grit', 15);
+            assert(r2.success === false,
+                'Stat modifier: grit 2, roll 14 vs DC 15 = fail',
+                'total: ' + r2.total);
+        }
+
+        // ── 5. Equipment stat boost affects encounter ───────────
+        {
+            resetGameState();
+            // Base charm 2 (mod 0). Equip silkNeckerchief (+1 charm) -> mod 1.
+            // Roll 11 + 1 = 12 vs DC 12 should succeed.
+            GameState.stats.charm = 2;
+            GameState.equipped.push('silkNeckerchief');
+            forceRoll(11);
+            const r = performStatCheck('charm', 12);
+            assert(r.success === true,
+                'Equipment boost: silkNeckerchief +1 charm makes DC 12 pass on roll 11',
+                'effective charm: ' + r.statValue + ', total: ' + r.total);
+        }
+
+        // ── 6. Prerequisite checks ─────────────────────────────
+        {
+            // ghost_encounter requires completedEvent: search_farmhouse
+            resetGameState();
+            const ghostEvent = RoomsData.farmhouse.events.find(e => e.id === 'ghost_encounter');
+            assert(checkEventRequirements(ghostEvent) === false,
+                'Prereq: ghost_encounter blocked without search_farmhouse');
+            completeEvent('search_farmhouse');
+            assert(checkEventRequirements(ghostEvent) === true,
+                'Prereq: ghost_encounter available after search_farmhouse');
+        }
+        {
+            // talk_to_ghost requires hasItem: ancestorJournal
+            resetGameState();
+            GameState.currentRoom = 'barn';
+            GameState.visitedRooms.barn = 1;
+            const talkEvent = RoomsData.barn.events.find(e => e.id === 'talk_to_ghost');
+            assert(checkEventRequirements(talkEvent) === false,
+                'Prereq: talk_to_ghost blocked without ancestorJournal');
+            GameState.inventory.push('ancestorJournal');
+            assert(checkEventRequirements(talkEvent) === true,
+                'Prereq: talk_to_ghost available with ancestorJournal');
+        }
+        {
+            // confront_ghost requires completedEvent: ghost_encounter AND missingItem: silkNeckerchief
+            resetGameState();
+            const confrontEvent = RoomsData.farmhouse.events.find(e => e.id === 'confront_ghost');
+            assert(checkEventRequirements(confrontEvent) === false,
+                'Prereq: confront_ghost blocked without ghost_encounter');
+            completeEvent('ghost_encounter');
+            assert(checkEventRequirements(confrontEvent) === true,
+                'Prereq: confront_ghost available after ghost_encounter when missing silkNeckerchief');
+            GameState.inventory.push('silkNeckerchief');
+            assert(checkEventRequirements(confrontEvent) === false,
+                'Prereq: confront_ghost blocked when player has silkNeckerchief');
+        }
+        {
+            // visitCount requirement: cow_encounter requires visitCount 1
+            resetGameState();
+            GameState.currentRoom = 'milkingStation';
+            const cowEvent = RoomsData.milkingStation.events.find(e => e.id === 'cow_encounter');
+            GameState.visitedRooms.milkingStation = 0;
+            assert(checkEventRequirements(cowEvent) === false,
+                'Prereq: cow_encounter blocked on first visit (count 0)');
+            GameState.visitedRooms.milkingStation = 1;
+            assert(checkEventRequirements(cowEvent) === true,
+                'Prereq: cow_encounter available on second visit (count 1)');
+        }
+        {
+            // perform_ritual requires hasItem + hasFlag + completedEvent
+            resetGameState();
+            GameState.currentRoom = 'pasture';
+            const ritualEvent = RoomsData.pasture.events.find(e => e.id === 'perform_ritual');
+            assert(checkEventRequirements(ritualEvent) === false,
+                'Prereq: perform_ritual blocked without any prerequisites');
+            GameState.inventory.push('ancestorJournal');
+            assert(checkEventRequirements(ritualEvent) === false,
+                'Prereq: perform_ritual blocked with only journal');
+            GameState.flags.learnedRitualLocation = true;
+            assert(checkEventRequirements(ritualEvent) === false,
+                'Prereq: perform_ritual blocked without scarecrow_encounter completed');
+            completeEvent('scarecrow_encounter');
+            assert(checkEventRequirements(ritualEvent) === true,
+                'Prereq: perform_ritual available with all prerequisites');
+        }
+
+        // ── 7. Curse stacking: second curse claims different body part ──
+        {
+            resetGameState();
+            forceRoll(1);
+            // First encounter - apply cow curse
+            const cowEnc = encounters.find(e => e.event.check.failureEffect && e.event.check.failureEffect.curse === 'cow');
+            setupPrereqs(cowEnc.roomId, cowEnc.event);
+            resolveEncounter(cowEnc.event);
+
+            // Reset for second encounter
+            const ghostEnc = encounters.find(e => e.event.check.failureEffect && e.event.check.failureEffect.curse === 'ghost');
+            setupPrereqs(ghostEnc.roomId, ghostEnc.event);
+            forceRoll(1);
+            resolveEncounter(ghostEnc.event);
+
+            const occupied = getBodyMapOccupiedCount();
+            assert(occupied === 2,
+                'Curse stacking: two curses claim 2 body parts',
+                'occupied: ' + occupied);
+            assert(GameState.activeCurses.cow && GameState.activeCurses.ghost,
+                'Curse stacking: both cow and ghost active');
+        }
+
+        // ── 8. Double-apply same curse returns alreadyActive ────
+        {
+            resetGameState();
+            applyCurse('bee');
+            const second = applyCurse('bee');
+            assert(second.alreadyActive === true,
+                'Double-apply: second bee curse returns alreadyActive');
+            const beeCount = Object.values(GameState.bodyMap).filter(v => v === 'bee').length;
+            assert(beeCount === 1,
+                'Double-apply: still only 1 body part claimed',
+                'bee parts: ' + beeCount);
+        }
+
+        // ── Render results ──────────────────────────────────────
+        const container = document.getElementById('results');
+        const summaryDiv = document.getElementById('summary');
+
+        const passed = results.filter(r => r.pass).length;
+        const failed = results.filter(r => !r.pass).length;
+        const total = results.length;
+
+        summaryDiv.textContent = `${passed} / ${total} passed` + (failed > 0 ? ` — ${failed} FAILED` : ' — All green!');
+        summaryDiv.className = failed > 0 ? 'has-fail' : 'all-pass';
+
+        // Group results into sections
+        const sections = [
+            { title: 'Success Paths', filter: r => r.name.includes('(success)') },
+            { title: 'Failure Paths', filter: r => r.name.includes('(failure)') },
+            { title: 'Protection Blocking', filter: r => r.name.startsWith('Protection:') },
+            { title: 'Stat Modifiers & Equipment', filter: r => r.name.startsWith('Stat modifier') || r.name.startsWith('Equipment boost') },
+            { title: 'Prerequisites', filter: r => r.name.startsWith('Prereq:') },
+            { title: 'Curse Mechanics', filter: r => r.name.startsWith('Curse stacking') || r.name.startsWith('Double-apply') },
+        ];
+
+        const categorized = new Set();
+        for (const section of sections) {
+            const sectionResults = results.filter(section.filter);
+            if (sectionResults.length === 0) continue;
+
+            sectionResults.forEach(r => categorized.add(r));
+
+            const div = document.createElement('div');
+            div.className = 'section';
+            div.innerHTML = `<h2>${section.title} (${sectionResults.filter(r=>r.pass).length}/${sectionResults.length})</h2>`;
+
+            for (const r of sectionResults) {
+                const testDiv = document.createElement('div');
+                testDiv.className = 'test ' + (r.pass ? 'pass' : 'fail');
+                testDiv.innerHTML = `<span class="label">${r.pass ? 'PASS' : 'FAIL'}</span> ${r.name}` +
+                    (r.detail ? `<div class="detail">${r.detail}</div>` : '');
+                div.appendChild(testDiv);
+            }
+            container.appendChild(div);
+        }
+
+        // Any uncategorized
+        const uncategorized = results.filter(r => !categorized.has(r));
+        if (uncategorized.length > 0) {
+            const div = document.createElement('div');
+            div.className = 'section';
+            div.innerHTML = '<h2>Other</h2>';
+            for (const r of uncategorized) {
+                const testDiv = document.createElement('div');
+                testDiv.className = 'test ' + (r.pass ? 'pass' : 'fail');
+                testDiv.innerHTML = `<span class="label">${r.pass ? 'PASS' : 'FAIL'}</span> ${r.name}` +
+                    (r.detail ? `<div class="detail">${r.detail}</div>` : '');
+                div.appendChild(testDiv);
+            }
+            container.appendChild(div);
+        }
+
+        // ── Helper: set up prerequisites for an encounter ───────
+        function setupPrereqs(roomId, event) {
+            GameState.currentRoom = roomId;
+
+            if (!event.requirements) return;
+            const req = event.requirements;
+
+            if (req.visitCount !== undefined) {
+                GameState.visitedRooms[roomId] = req.visitCount;
+            }
+            if (req.hasItem) {
+                if (!GameState.inventory.includes(req.hasItem)) {
+                    GameState.inventory.push(req.hasItem);
+                }
+            }
+            if (req.completedEvent) {
+                completeEvent(req.completedEvent);
+            }
+            if (req.hasFlag) {
+                setFlag(req.hasFlag);
+            }
+        }
+    })();
+    </script>
+</body>
+</html>
