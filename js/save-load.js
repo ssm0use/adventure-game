@@ -107,6 +107,17 @@ function loadGame(slotNumber) {
             }
         }
 
+        // Migration: old saves without item randomization
+        if (!GameState.itemSeed) {
+            GameState.itemSeed = 0;
+        }
+        if (!GameState.itemPlacements) {
+            GameState.itemPlacements = null;
+        }
+
+        // Restore randomized item placements to rooms data
+        restoreAndApplyPlacements();
+
         console.log(`Game loaded from slot ${slotNumber}`);
         return true;
     } catch (error) {

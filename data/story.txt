@@ -23,7 +23,7 @@ You steady yourself, planting your feet firmly on the ground. The chill is overw
 [END]
 
 [farmhouse_ghost_failure]
-The cold pierces through to your bones. Your fingers feel numb, then translucent. The ghost's sad smile widens as she recognizes a kindred spirit in the making. As your vision blurs, her voice echoes in your mind - not cruel, but sorrowful. "Now you carry the same chill I do," she whispers. "You'll fade like me... unless you find protection. There is an old amulet, a circle of salt bound in silver. It was lost long ago, dropped into the depths where the cattle used to drink." She drifts back to the shelf, settling over the neckerchief once more. "Find it before the cold takes you completely."
+The cold pierces through to your bones. Your fingers feel numb, then translucent. The ghost's sad smile widens as she recognizes a kindred spirit in the making. As your vision blurs, her voice echoes in your mind - not cruel, but sorrowful. "Now you carry the same chill I do," she whispers. "You'll fade like me... unless you find protection." She drifts back to the shelf, settling over the neckerchief once more. "Find it before the cold takes you completely."
 [END]
 
 [farmhouse_ghost_deeper]
@@ -77,7 +77,7 @@ You step between the stalls, holding the journal open so she can see it. "Abigai
 [END]
 
 [barn_ghost_talk_failure]
-You hold out the journal, but your words come out wrong — too loud, too clumsy in the stillness of the barn. Abigail's form flares bright with alarm, her expression shifting from hope to anguish. The temperature plummets. Frost crawls across the stall doors and the hay crackles underfoot. She lets out a wail that echoes through the rafters, and you feel your grip on the living world beginning to slip, the warmth draining from your bones... As the frost recedes, a faint image lingers in the ice on the stall door — the shape of a circle, with something gleaming at its center. Salt. An old amulet, lost somewhere deep where the cattle used to drink.
+You hold out the journal, but your words come out wrong — too loud, too clumsy in the stillness of the barn. Abigail's form flares bright with alarm, her expression shifting from hope to anguish. The temperature plummets. Frost crawls across the stall doors and the hay crackles underfoot. She lets out a wail that echoes through the rafters, and you feel your grip on the living world beginning to slip, the warmth draining from your bones...
 [END]
 
 [barn_strawberry_offering]
@@ -109,7 +109,7 @@ You plant your feet wide and clench your fists, every muscle tensed. The spectra
 [END]
 
 [milkingstation_cow_failure]
-The impact of the ghost cow hits you like a wall of ice, slamming you back against the milking equipment. Metal clangs and chains rattle as you crash to the tile floor. As you struggle to rise, you feel something terrible beginning — a heaviness in your limbs, a pulling sensation in your spine. Your hands look strange, thicker somehow... But through the ringing in your ears, you hear something — a clear, pure bell tone drifting from somewhere in the barn. It cuts through the pain like a lifeline, steady and bright.
+The impact of the ghost cow hits you like a wall of ice, slamming you back against the milking equipment. Metal clangs and chains rattle as you crash to the tile floor. As you struggle to rise, you feel something terrible beginning — a heaviness in your limbs, a pulling sensation in your spine. Your hands look strange, thicker somehow...
 [END]
 
 [milkingstation_explore]
@@ -137,7 +137,7 @@ You wrench your arm away with all your strength, tearing your sleeve but freeing
 [END]
 
 [pasture_scarecrow_failure]
-The scarecrow's grip is impossibly strong. Wooden fingers dig into your arm, and you feel the transformation spreading - your skin hardening, your joints stiffening. You try to scream, but your jaw is locked. Straw begins pushing through your pores... As the scarecrow releases you, a warm breeze drifts from the direction of the garden, carrying the scent of freshly blessed straw. Something there might still save you.
+The scarecrow's grip is impossibly strong. Wooden fingers dig into your arm, and you feel the transformation spreading - your skin hardening, your joints stiffening. You try to scream, but your jaw is locked. Straw begins pushing through your pores...
 [END]
 
 [pasture_ritual_location]
@@ -173,7 +173,7 @@ Your sharp eyes catch what saves you — a gap in the webbing, a thin spot where
 [END]
 
 [garden_spider_failure]
-You freeze. That's all it takes — one instant of locked joints and held breath, and the spider is on you, moving with a silence that something that large should not possess. It doesn't bite right away. First it wraps — silk shooting from its spinneret in thick, sticky ropes that pin your arms to your sides before you can raise them. Then it leans close, eight eyes inches from your face, and you see yourself reflected in every one of them: small, trapped, prey. The fangs sink into your shoulder like two needles made of ice. The venom is cold — so cold it burns — and it spreads fast, prickling down your arm and across your chest. Your skin crawls. Fine black hairs stiffen along your forearms. Something behind your eyes shifts, multiplies, and for one terrible moment the garden splits into eight overlapping images before snapping back to one. The spider releases you and retreats into its hole, satisfied, dragging the silk after it. You're on your knees in the strawberry patch, shaking, and your hands look wrong — too many joints, too many angles. But from somewhere deep below — down beneath the grain silo, in a sealed stone chamber — you sense something calling to you. Silk against silk. A ward woven against the very creature that bit you.
+You freeze. That's all it takes — one instant of locked joints and held breath, and the spider is on you, moving with a silence that something that large should not possess. It doesn't bite right away. First it wraps — silk shooting from its spinneret in thick, sticky ropes that pin your arms to your sides before you can raise them. Then it leans close, eight eyes inches from your face, and you see yourself reflected in every one of them: small, trapped, prey. The fangs sink into your shoulder like two needles made of ice. The venom is cold — so cold it burns — and it spreads fast, prickling down your arm and across your chest. Your skin crawls. Fine black hairs stiffen along your forearms. Something behind your eyes shifts, multiplies, and for one terrible moment the garden splits into eight overlapping images before snapping back to one. The spider releases you and retreats into its hole, satisfied, dragging the silk after it. You're on your knees in the strawberry patch, shaking, and your hands look wrong — too many joints, too many angles.
 [END]
 
 [garden_explore]
@@ -193,7 +193,7 @@ Your sharp eyes spot the pattern in the swarm's movement - there's a gap, a spac
 [END]
 
 [beehive_failure]
-The swarm engulfs you completely. You can't see, can't breathe without inhaling the phantom bees. Their buzzing fills your skull, and you feel yourself shrinking, changing. Your skin prickles as yellow and black stripes begin to form... When the swarm finally thins, you catch a glimpse of something half-buried in the weeds near the hive — an old equipment box. A beekeeper's tools. There might be something in there that could help.
+The swarm engulfs you completely. You can't see, can't breathe without inhaling the phantom bees. Their buzzing fills your skull, and you feel yourself shrinking, changing. Your skin prickles as yellow and black stripes begin to form...
 [END]
 
 [beehive_explore]
@@ -279,7 +279,7 @@ You hold your ground and speak slowly, clearly, the way you'd talk to a confused
 [END]
 
 [smokehouse_zombie_failure]
-You gag and stumble backward, but the shambling farmhand is faster than it looks. Its swollen fingers close around your wrist with a grip like a cold ham, and the smell hits you full in the face -- smoke and rot and something sickeningly sweet. Your vision swims. Your stomach lurches. When it finally lets go and shuffles back into the haze, something feels deeply wrong. Your skin looks... grayish. There's a stiffness in your joints that wasn't there before, and you keep groaning involuntarily. This can't be good. But as you stumble out of the smokehouse, a faint scent of sage and old bones drifts from the farmhouse, clean and sharp against the rot. Someone hung a ward in there once. Maybe it's still there.
+You gag and stumble backward, but the shambling farmhand is faster than it looks. Its swollen fingers close around your wrist with a grip like a cold ham, and the smell hits you full in the face -- smoke and rot and something sickeningly sweet. Your vision swims. Your stomach lurches. When it finally lets go and shuffles back into the haze, something feels deeply wrong. Your skin looks... grayish. There's a stiffness in your joints that wasn't there before, and you keep groaning involuntarily. This can't be good.
 [END]
 
 [smokehouse_explore]
@@ -299,7 +299,7 @@ Your sharp eyes catch what others would miss -- a pattern in the scarecrows' pos
 [END]
 
 [cornfield_scarecrow_failure]
-The corn closes like a fist. You can't see the sky, can't see the ground, can't see anything but an endless wall of dry stalks pressing against you from every side. Something rough scrapes across your arms -- not corn leaves, but twine. Your joints lock up, stiffening like green wood drying in the sun. When the stalks finally part again, your arms feel wrong. Heavy. Rigid. You look down and see splinters where skin should be... But the wind shifts, and from the direction of the garden you catch a whisper of warmth — the faint memory of blessed straw, growing somewhere among the living plants.
+The corn closes like a fist. You can't see the sky, can't see the ground, can't see anything but an endless wall of dry stalks pressing against you from every side. Something rough scrapes across your arms -- not corn leaves, but twine. Your joints lock up, stiffening like green wood drying in the sun. When the stalks finally part again, your arms feel wrong. Heavy. Rigid. You look down and see splinters where skin should be...
 [END]
 
 [cornfield_explore]
@@ -319,7 +319,7 @@ You brace yourself, feet planted wide in the shifting grain, and let out a roar 
 [END]
 
 [grainsilo_cow_failure]
-The bull hits you like a wall of frozen wind. You're lifted off your feet and thrown backward into the grain, which swallows you to the chest. The bull circles back, lowering its horns, and you feel its cursed energy washing over you in waves. Your shoulders broaden painfully, your spine shifts with a sickening crack. When you finally claw your way out of the grain, your hands feel thick and clumsy, and there's a heaviness in your bones that wasn't there before... From somewhere far behind you, carried on the wind from the barn, you hear the pure ring of a brass bell. It makes the pain recede, just for a moment.
+The bull hits you like a wall of frozen wind. You're lifted off your feet and thrown backward into the grain, which swallows you to the chest. The bull circles back, lowering its horns, and you feel its cursed energy washing over you in waves. Your shoulders broaden painfully, your spine shifts with a sickening crack. When you finally claw your way out of the grain, your hands feel thick and clumsy, and there's a heaviness in your bones that wasn't there before...
 [END]
 
 [grainsilo_explore]
@@ -351,7 +351,7 @@ You take a slow, deliberate breath and let your shoulders drop. "Easy," you murm
 [END]
 
 [chickencoop_mouse_failure]
-You flinch. That's all it takes. The mice sense your fear like a spark in dry tinder, and the swarm surges upward -- over your boots, up your legs, across your stomach. Their tiny spectral claws prickle against your skin, and where they touch, you feel yourself shrinking, condensing. Your nose twitches involuntarily. Your ears itch. When the swarm finally retreats, you're on your hands and knees, and your hands look... smaller. The fingernails are darker. More like claws... But from somewhere above -- up in the hayloft of the barn -- you hear a faint, rumbling purr. The mice hear it too, and they freeze. Cats have always kept the mice at bay on this farm.
+You flinch. That's all it takes. The mice sense your fear like a spark in dry tinder, and the swarm surges upward -- over your boots, up your legs, across your stomach. Their tiny spectral claws prickle against your skin, and where they touch, you feel yourself shrinking, condensing. Your nose twitches involuntarily. Your ears itch. When the swarm finally retreats, you're on your hands and knees, and your hands look... smaller. The fingernails are darker. More like claws...
 [END]
 
 [chickencoop_explore]

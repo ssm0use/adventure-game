@@ -125,6 +125,12 @@ function startNewGame() {
         btn.textContent = btn.textContent.replace(' ✓', '');
     });
 
+    // Randomize item placements for this new game
+    GameState.itemSeed = Math.floor(Math.random() * 2147483647);
+    GameState.itemPlacements = randomizeItemPlacements(GameState.itemSeed);
+    restoreAndApplyPlacements();
+    debugItemPlacements();
+
     // Show the bonus point selection UI
     displayStoryText('game_intro');
     clearChoices();
@@ -731,7 +737,7 @@ function executeEncounterRoll(event) {
         // Normal path: display the encounter story
         displayStoryText(result.storyKey);
 
-        // If a curse was applied, append a prominent warning to the story text
+        // If a curse was applied, append a prominent warning + dynamic cure clue
         if (result.curseApplied && result.curseApplied.success) {
             const curseType = event.check.failureEffect.curse;
             const curseData = CursesData[curseType];
@@ -741,6 +747,15 @@ function executeEncounterRoll(event) {
                 warning.className = 'curse-applied-warning';
                 warning.innerHTML = `<strong>⚠ ${curseData.name}!</strong> A curse has taken hold. It will spread further with each place you visit unless you find a cure.`;
                 storyArea.appendChild(warning);
+
+                // Dynamic cure clue based on where the protective item actually is
+                const clue = getCureClue(curseType);
+                if (clue) {
+                    const clueP = document.createElement('p');
+                    clueP.style.cssText = 'color: #4a7a4a; font-style: italic; margin-top: 12px;';
+                    clueP.textContent = `But through the haze of the transformation, you sense something — ${clue}. Something there might still save you.`;
+                    storyArea.appendChild(clueP);
+                }
             }
         }
     }
