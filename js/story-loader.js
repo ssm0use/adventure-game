@@ -45,7 +45,7 @@ async function loadStoryText() {
         console.error('Error loading story text:', error);
         // Provide fallback content for critical blocks
         StoryText['error'] = 'Failed to load story content. Please refresh the page.';
-        StoryText['game_intro'] = 'Welcome to the Cursed Farm Adventure! You have arrived at an old farm looking for work...';
+        StoryText['game_intro'] = 'Welcome to Blightmill Dairy! You have arrived at an old farm looking for work...';
         StoryText['game_over'] = 'You have been transformed completely. The curse has claimed another victim.';
         StoryText['game_win'] = 'You have broken the curse! The farm is free at last.';
     }

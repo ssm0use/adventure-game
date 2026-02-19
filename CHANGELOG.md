@@ -1,4 +1,4 @@
-# Cursed Farm Adventure - Changelog
+# Blightmill Dairy - Changelog
 
 ## Bug Fixes & Improvements - February 12, 2025
 

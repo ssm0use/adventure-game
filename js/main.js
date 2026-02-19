@@ -77,7 +77,7 @@ function getHiddenAreas(room) {
  * Called when the page loads
  */
 async function initializeGame() {
-    console.log('Initializing Cursed Farm Adventure...');
+    console.log('Initializing Blightmill Dairy...');
 
     // Load all data files
     await loadGameData();

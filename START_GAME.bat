@@ -2,7 +2,7 @@
 cd /d "%~dp0"
 
 echo =====================================
-echo   Cursed Farm Adventure - Launcher
+echo   Blightmill Dairy - Launcher
 echo =====================================
 echo.
 
@@ -52,7 +52,7 @@ if /i "%INSTALL_CHOICE%"=="y" (
 )
 
 :start_game
-echo Starting Cursed Farm Adventure...
+echo Starting Blightmill Dairy...
 echo.
 
 :: Start the server in the background

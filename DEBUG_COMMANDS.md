@@ -1,4 +1,4 @@
-# Debug Commands for Cursed Farm Adventure
+# Debug Commands for Blightmill Dairy
 
 If you experience issues with the game, you can use these commands in the browser's JavaScript console (F12 or Cmd+Option+I).
 

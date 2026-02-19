@@ -1,4 +1,4 @@
-# 🏚️ Cursed Farm Adventure - Complete Game Summary
+# 🏚️ Blightmill Dairy - Complete Game Summary
 
 ## ✅ Game Complete and Ready to Play!
 

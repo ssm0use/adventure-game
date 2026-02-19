@@ -1,4 +1,4 @@
-# How to Play Cursed Farm Adventure
+# How to Play Blightmill Dairy
 
 ## IMPORTANT: How to Start the Game
 

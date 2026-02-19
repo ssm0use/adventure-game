@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 
 echo "====================================="
-echo "  Cursed Farm Adventure - Launcher"
+echo "  Blightmill Dairy - Launcher"
 echo "====================================="
 echo ""
 
@@ -65,7 +65,7 @@ if [ -z "$PYTHON_CMD" ]; then
     fi
 fi
 
-echo "Starting Cursed Farm Adventure..."
+echo "Starting Blightmill Dairy..."
 echo ""
 
 # Kill any existing server on port 8000

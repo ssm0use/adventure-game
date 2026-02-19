@@ -1,4 +1,4 @@
-# Cursed Farm Adventure
+# Blightmill Dairy
 
 A browser-based "Choose Your Own Adventure" game set on a haunted dairy farm. Help break the century-old curse while avoiding transformations into various farm creatures!
 
