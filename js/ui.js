@@ -290,6 +290,12 @@ function renderCurses() {
 }
 
 /**
+ * Temporary context for encounter-specific story substitutions.
+ * Set before calling displayStoryText, cleared automatically after.
+ */
+let StoryContext = {};
+
+/**
  * Substitutes story variables like {playerName} with actual values
  * @param {string} text - The raw story text
  * @returns {string} Text with variables replaced
@@ -297,7 +303,14 @@ function renderCurses() {
 function substituteStoryVariables(text) {
     const fullName = GameState.characterName || 'Adventurer';
     const firstName = fullName.split(' ')[0];
-    return text.replace(/\{playerName\}/g, firstName);
+    let result = text.replace(/\{playerName\}/g, firstName);
+
+    // Apply any encounter-specific context substitutions
+    for (const [key, value] of Object.entries(StoryContext)) {
+        result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), value);
+    }
+
+    return result;
 }
 
 /**

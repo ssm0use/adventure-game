@@ -652,6 +652,27 @@ function performAutoAction(event) {
 }
 
 /**
+ * Sets StoryContext with encounter-specific substitutions (reward item name, cure clue)
+ * so that story text placeholders like {rewardItem} and {cureClue} resolve correctly.
+ * @param {Object} event - The encounter event object
+ */
+function setEncounterStoryContext(event) {
+    StoryContext = {};
+    if (event.check) {
+        // Reward item name
+        const rewardId = event.check.successEffect?.items?.[0];
+        if (rewardId && ItemsData[rewardId]) {
+            StoryContext.rewardItem = ItemsData[rewardId].name;
+        }
+        // Cure clue for the curse this encounter inflicts
+        const curseType = event.check.failureEffect?.curse;
+        if (curseType) {
+            StoryContext.cureClue = getCureClue(curseType) || '';
+        }
+    }
+}
+
+/**
  * Shows the encounter preview before the player commits to rolling
  * @param {Object} event - The event object
  */
@@ -664,6 +685,7 @@ function performEncounterAction(event) {
 
     if (hasEncounterDescription) {
         // Phase 1: Show the encounter story, then transition to combat
+        setEncounterStoryContext(event);
         displayStoryText(event.storyKey);
         clearChoices();
         addChoice('Brace Yourself...', () => {
@@ -713,6 +735,7 @@ function showEncounterPreview(event) {
  * @param {Object} event - The event object
  */
 function executeEncounterRoll(event) {
+    setEncounterStoryContext(event);
     const result = resolveEncounter(event);
 
     // Check if a curse was blocked by a protective item
