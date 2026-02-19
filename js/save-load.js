@@ -76,6 +76,16 @@ function loadGame(slotNumber) {
             GameState.searchAttempts = {};
         }
 
+        // Migration: old saves without difficulty
+        if (!GameState.difficulty) {
+            GameState.difficulty = 'default';
+        }
+
+        // Migration: old saves without pendingItems
+        if (!GameState.pendingItems) {
+            GameState.pendingItems = {};
+        }
+
         // Migration: old per-curse timer format to master clock format
         if (GameState.curseClock === undefined) {
             GameState.curseClock = 0;

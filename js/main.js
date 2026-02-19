@@ -532,6 +532,50 @@ function renderRoomActions(roomId) {
         });
     });
 
+    // Show pending items (encounter rewards not yet picked up, in Default/Story mode)
+    const pendingItems = getPendingItems(roomId);
+    pendingItems.forEach(itemId => {
+        const item = ItemsData[itemId];
+        if (!item) return;
+
+        let btnText = `Pick Up ${item.name}`;
+        if (item.type === 'cursed') {
+            btnText = `Pick Up ${item.name} (Cursed!)`;
+        }
+
+        addChoice(btnText, () => {
+            addItemToInventory(itemId);
+            removePendingItem(roomId, itemId);
+            renderInventory();
+            renderCurses();
+            renderCurseStatus();
+
+            // Announce the item in the story area
+            const storyArea = document.getElementById('story-text');
+            const rewardDiv = document.createElement('div');
+            rewardDiv.className = 'item-reward-announcement';
+            rewardDiv.innerHTML = `<strong>✦ Picked Up: ${item.name}</strong> — ${item.description}`;
+            storyArea.appendChild(rewardDiv);
+
+            if (item.type === 'cursed') {
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'curse-applied-warning';
+                warningDiv.innerHTML = `<span class="story-warning">You picked up a cursed item!</span>`;
+                storyArea.appendChild(warningDiv);
+            }
+
+            // Check if picking up a cursed item caused game over
+            if (GameState.gameStatus === 'gameOver') {
+                setTimeout(() => {
+                    displayBodyMapGameOver();
+                }, 3000);
+                return;
+            }
+
+            renderRoomActions(roomId);
+        });
+    });
+
     // Navigation choices
     renderNavigationChoices(roomId);
 
@@ -674,6 +718,15 @@ function executeEncounterRoll(event) {
 
         // Show protection story instead of failure story
         displayProtectionText(curseName, protectiveItem.name);
+    } else if (result.curseApplied && result.curseApplied.storyModeBlocked) {
+        // Story Mode: existing curse blocked a new one
+        displayStoryText(result.storyKey);
+
+        const storyArea = document.getElementById('story-text');
+        const notice = document.createElement('div');
+        notice.className = 'item-protection-announcement';
+        notice.innerHTML = `<strong>✦ Something strange happens...</strong> You feel a dark energy try to take hold, but the existing curse seems to repel it. Perhaps one affliction is all the farm's magic can sustain in you at once.`;
+        storyArea.appendChild(notice);
     } else {
         // Normal path: display the encounter story
         displayStoryText(result.storyKey);
@@ -702,31 +755,52 @@ function executeEncounterRoll(event) {
 
     // Grant reward items on success
     if (result.success && result.rewardItems) {
-        result.rewardItems.forEach(itemId => {
-            addItemToInventory(itemId);
-        });
-        renderInventory();
-        renderCurses();
-        renderCurseStatus();
+        if (GameState.difficulty === 'hard') {
+            // Hard mode: auto-pickup all items (legacy behavior)
+            result.rewardItems.forEach(itemId => {
+                addItemToInventory(itemId);
+            });
+            renderInventory();
+            renderCurses();
+            renderCurseStatus();
 
-        // Announce discovered items in the story area
-        const storyArea = document.getElementById('story-text');
-        result.rewardItems.forEach(itemId => {
-            const item = ItemsData[itemId];
-            if (item) {
-                const rewardDiv = document.createElement('div');
-                rewardDiv.className = 'item-reward-announcement';
-                rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
-                storyArea.appendChild(rewardDiv);
+            // Announce discovered items in the story area
+            const storyArea = document.getElementById('story-text');
+            result.rewardItems.forEach(itemId => {
+                const item = ItemsData[itemId];
+                if (item) {
+                    const rewardDiv = document.createElement('div');
+                    rewardDiv.className = 'item-reward-announcement';
+                    rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
+                    storyArea.appendChild(rewardDiv);
 
-                if (item.type === 'cursed') {
-                    const warningDiv = document.createElement('div');
-                    warningDiv.className = 'curse-applied-warning';
-                    warningDiv.innerHTML = `<span class="story-warning">You were compelled to pick up a cursed item and are now cursed.</span>`;
-                    storyArea.appendChild(warningDiv);
+                    if (item.type === 'cursed') {
+                        const warningDiv = document.createElement('div');
+                        warningDiv.className = 'curse-applied-warning';
+                        warningDiv.innerHTML = `<span class="story-warning">You were compelled to pick up a cursed item and are now cursed.</span>`;
+                        storyArea.appendChild(warningDiv);
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            // Default / Story mode: show items as pending pickups
+            addPendingItems(GameState.currentRoom, result.rewardItems);
+
+            const storyArea = document.getElementById('story-text');
+            result.rewardItems.forEach(itemId => {
+                const item = ItemsData[itemId];
+                if (item) {
+                    const rewardDiv = document.createElement('div');
+                    rewardDiv.className = 'item-reward-announcement';
+                    if (item.type === 'cursed') {
+                        rewardDiv.innerHTML = `<strong>✦ Found: ${item.name}</strong> — ${item.description}<br><em class="story-warning">${item.warning || 'This item radiates dark energy.'}</em>`;
+                    } else {
+                        rewardDiv.innerHTML = `<strong>✦ Found: ${item.name}</strong> — ${item.description}`;
+                    }
+                    storyArea.appendChild(rewardDiv);
+                }
+            });
+        }
     }
 
     // Penalty for losing an unprotected encounter: advance curse clock by 1
@@ -778,29 +852,47 @@ function performSearchAction(roomId, searches) {
     // Track which items have been taken this search
     const itemsTakenThisSearch = new Set();
 
-    // Auto-add any cursed items immediately — the player is compelled to take them
-    if (search.items && search.items.length > 0) {
-        search.items.forEach(itemId => {
-            const item = ItemsData[itemId];
-            if (item && item.type === 'cursed') {
-                addItemToInventory(itemId);
-                itemsTakenThisSearch.add(itemId);
-                renderInventory();
-                renderCurses();
-                renderCurseStatus();
+    if (GameState.difficulty === 'hard') {
+        // Hard mode: auto-add cursed items immediately (legacy behavior)
+        if (search.items && search.items.length > 0) {
+            search.items.forEach(itemId => {
+                const item = ItemsData[itemId];
+                if (item && item.type === 'cursed') {
+                    addItemToInventory(itemId);
+                    itemsTakenThisSearch.add(itemId);
+                    renderInventory();
+                    renderCurses();
+                    renderCurseStatus();
 
-                const storyArea = document.getElementById('story-text');
-                const rewardDiv = document.createElement('div');
-                rewardDiv.className = 'item-reward-announcement';
-                rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
-                storyArea.appendChild(rewardDiv);
+                    const storyArea = document.getElementById('story-text');
+                    const rewardDiv = document.createElement('div');
+                    rewardDiv.className = 'item-reward-announcement';
+                    rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
+                    storyArea.appendChild(rewardDiv);
 
-                const warningDiv = document.createElement('div');
-                warningDiv.className = 'curse-applied-warning';
-                warningDiv.innerHTML = `<span class="story-warning">You were compelled to pick up a cursed item and are now cursed.</span>`;
-                storyArea.appendChild(warningDiv);
-            }
-        });
+                    const warningDiv = document.createElement('div');
+                    warningDiv.className = 'curse-applied-warning';
+                    warningDiv.innerHTML = `<span class="story-warning">You were compelled to pick up a cursed item and are now cursed.</span>`;
+                    storyArea.appendChild(warningDiv);
+                }
+            });
+        }
+    } else {
+        // Default / Story mode: announce cursed items but don't auto-add
+        if (search.items && search.items.length > 0) {
+            search.items.forEach(itemId => {
+                const item = ItemsData[itemId];
+                if (item && item.type === 'cursed') {
+                    const storyArea = document.getElementById('story-text');
+                    const rewardDiv = document.createElement('div');
+                    rewardDiv.className = 'item-reward-announcement';
+                    rewardDiv.style.borderColor = '#8b6f47';
+                    rewardDiv.style.color = '#6b5638';
+                    rewardDiv.innerHTML = `<strong>✦ Found: ${item.name}</strong> — ${item.description}<br><em class="story-warning">${item.warning || 'This item radiates dark energy.'}</em>`;
+                    storyArea.appendChild(rewardDiv);
+                }
+            });
+        }
     }
 
     function renderSearchChoices() {
@@ -815,7 +907,10 @@ function performSearchAction(roomId, searches) {
                 const item = ItemsData[itemId];
                 if (!item) return;
 
-                const itemText = `Take ${item.name}`;
+                let itemText = `Take ${item.name}`;
+                if (item.type === 'cursed' && GameState.difficulty !== 'hard') {
+                    itemText = `Pick Up ${item.name} (Cursed!)`;
+                }
 
                 addChoice(itemText, () => {
                     addItemToInventory(itemId);
@@ -824,12 +919,21 @@ function performSearchAction(roomId, searches) {
                     renderCurses();
                     renderCurseStatus();
 
-                    // Announce the item in a green block
+                    // Announce the item
                     const storyArea = document.getElementById('story-text');
                     const rewardDiv = document.createElement('div');
                     rewardDiv.className = 'item-reward-announcement';
                     rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
                     storyArea.appendChild(rewardDiv);
+
+                    if (item.type === 'cursed') {
+                        // Check if curse was blocked by story mode
+                        const curseResult = GameState.activeCurses[item.curseEffect?.curse] ? null : true;
+                        const warningDiv = document.createElement('div');
+                        warningDiv.className = 'curse-applied-warning';
+                        warningDiv.innerHTML = `<span class="story-warning">You picked up a cursed item!</span>`;
+                        storyArea.appendChild(warningDiv);
+                    }
 
                     // Check if picking up a cursed item caused game over
                     if (GameState.gameStatus === 'gameOver') {

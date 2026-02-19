@@ -745,6 +745,7 @@ function initGameSettings() {
     difficultyRadios.forEach(radio => {
         radio.addEventListener('change', (e) => {
             GameState.difficulty = e.target.value;
+            renderDifficultyLabel();
             console.log('Difficulty set to:', GameState.difficulty);
         });
     });
@@ -785,6 +786,22 @@ function syncDifficultyUI() {
     if (radio) {
         radio.checked = true;
     }
+    renderDifficultyLabel();
+}
+
+/**
+ * Renders a subtle difficulty label below the character section
+ */
+function renderDifficultyLabel() {
+    let label = document.getElementById('difficulty-label');
+    if (!label) {
+        label = document.createElement('div');
+        label.id = 'difficulty-label';
+        const charSection = document.getElementById('character-section');
+        charSection.appendChild(label);
+    }
+    const names = { story: 'Story Mode', default: 'Default', hard: 'Hard' };
+    label.textContent = names[GameState.difficulty] || 'Default';
 }
 
 /**

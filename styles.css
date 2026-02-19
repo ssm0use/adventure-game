@@ -111,6 +111,15 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Difficulty Label (below character name) */
+#difficulty-label {
+    font-size: 0.8em;
+    color: #8b6f47;
+    text-align: center;
+    font-style: italic;
+    margin-top: 6px;
+}
+
 /* Character Name Input */
 #character-name {
     width: 100%;

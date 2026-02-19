@@ -98,7 +98,10 @@ const GameState = {
     bonusPointAssigned: false,
 
     // Difficulty mode: 'story', 'default', or 'hard'
-    difficulty: 'default'
+    difficulty: 'default',
+
+    // Pending items per room (not yet picked up, keyed by roomId → array of itemIds)
+    pendingItems: {}
 };
 
 // Data loaded from JSON files
@@ -154,6 +157,7 @@ function initializeNewGame() {
     GameState.gameStatus = 'playing';
     GameState.bonusPointAssigned = false;
     GameState.difficulty = 'default';
+    GameState.pendingItems = {};
 
     // Randomly assign stats (2-5 stars each)
     // Total of 3 stats, each gets a random value between 2 and 5
@@ -249,6 +253,17 @@ function addItemToInventory(itemId) {
                     const notice = document.createElement('div');
                     notice.className = 'item-protection-announcement';
                     notice.innerHTML = `<strong>✦ ${protectiveItem.name}</strong> flares with protective light! The <strong>${curseName}</strong> tries to take hold, but the ward holds firm. You are protected.`;
+                    storyArea.appendChild(notice);
+                }
+            }
+
+            // Story Mode: existing curse blocked the new one
+            if (curseResult.storyModeBlocked) {
+                const storyArea = document.getElementById('story-text');
+                if (storyArea) {
+                    const notice = document.createElement('div');
+                    notice.className = 'item-protection-announcement';
+                    notice.innerHTML = `<strong>✦ Something strange happens...</strong> You feel a dark energy try to take hold, but the existing curse seems to repel it. The item's power fizzles against the affliction already inside you.`;
                     storyArea.appendChild(notice);
                 }
             }
@@ -429,6 +444,12 @@ function applyCurse(curseType) {
         return { alreadyActive: true };
     }
 
+    // Story Mode: only one curse can be active at a time
+    if (GameState.difficulty === 'story' && Object.keys(GameState.activeCurses).length > 0) {
+        console.log(`Curse ${curseType} blocked by Story Mode single-curse limit`);
+        return { storyModeBlocked: true };
+    }
+
     const curseData = CursesData[curseType];
     if (!curseData) return { error: 'Curse not found' };
 
@@ -439,8 +460,12 @@ function applyCurse(curseType) {
     const claimResult = claimClearZone(curseType);
 
     // Start the master curse clock if not already running
+    // Story Mode uses a slower clock interval (+1)
+    const interval = GameState.difficulty === 'story'
+        ? GameState.curseClockInterval + 1
+        : GameState.curseClockInterval;
     if (GameState.curseClock <= 0) {
-        GameState.curseClock = GameState.curseClockInterval;
+        GameState.curseClock = interval;
     }
 
     console.log(`Applied curse: ${curseType}`);
@@ -479,8 +504,11 @@ function progressCurses() {
             });
         }
 
-        // Reset the clock
-        GameState.curseClock = GameState.curseClockInterval;
+        // Reset the clock (Story Mode uses a slower interval)
+        const interval = GameState.difficulty === 'story'
+            ? GameState.curseClockInterval + 1
+            : GameState.curseClockInterval;
+        GameState.curseClock = interval;
 
         // Check game over
         if (getBodyMapOccupiedCount() >= 4) {
@@ -515,6 +543,45 @@ function removeCurse(curseType) {
         return true;
     }
     return false;
+}
+
+/**
+ * Adds items to the pending items list for a room (click-to-pickup in non-Hard modes)
+ * @param {string} roomId - The room where items are waiting
+ * @param {Array<string>} itemIds - Array of item IDs to add
+ */
+function addPendingItems(roomId, itemIds) {
+    if (!GameState.pendingItems[roomId]) {
+        GameState.pendingItems[roomId] = [];
+    }
+    itemIds.forEach(id => {
+        if (!GameState.pendingItems[roomId].includes(id) && !hasItem(id)) {
+            GameState.pendingItems[roomId].push(id);
+        }
+    });
+}
+
+/**
+ * Removes an item from the pending items list (after pickup)
+ * @param {string} roomId - The room
+ * @param {string} itemId - The item to remove
+ */
+function removePendingItem(roomId, itemId) {
+    if (GameState.pendingItems[roomId]) {
+        const idx = GameState.pendingItems[roomId].indexOf(itemId);
+        if (idx > -1) {
+            GameState.pendingItems[roomId].splice(idx, 1);
+        }
+    }
+}
+
+/**
+ * Gets pending items for a room
+ * @param {string} roomId - The room
+ * @returns {Array<string>} Array of item IDs
+ */
+function getPendingItems(roomId) {
+    return (GameState.pendingItems[roomId] || []).filter(id => !hasItem(id));
 }
 
 /**
