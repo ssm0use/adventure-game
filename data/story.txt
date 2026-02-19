@@ -1,5 +1,5 @@
 [game_intro]
-You've been searching for work for weeks when you spotted a flyer at the general store: "FARM HELP WANTED - Room and Board Included. Good pay for hard workers. Ask for directions at Miller's Dairy Farm." The paper was yellowed and curling at the edges, but the address was clear enough. Now, as your car rattles down the long dirt driveway, you're starting to wonder if this was such a good idea after all.
+You've been searching for work for weeks when you spotted a flyer at the general store: "FARM HELP WANTED - Room and Board Included. Good pay for hard workers. Ask for directions at <span class="story-highlight">Miller's Dairy Farm</span>." The paper was yellowed and curling at the edges, but the address was clear enough. Now, as your car rattles down the long dirt driveway, you're starting to wonder if this was such a good idea after all.
 [END]
 
 [farmhouse_arrival]
