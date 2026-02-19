@@ -89,6 +89,11 @@ function getItemEffectHTML(item) {
         html += `<div class="item-effect item-effect-slot">Slot: ${slotNames[item.equipSlot] || item.equipSlot}</div>`;
     }
 
+    // Consumable
+    if (item.consumable) {
+        html += `<div class="item-effect item-effect-good">Consumable: removes one curse</div>`;
+    }
+
     return html;
 }
 
@@ -116,7 +121,7 @@ function renderInventory() {
 
         const itemName = document.createElement('div');
         itemName.className = 'item-name';
-        itemName.textContent = item.name;
+        itemName.textContent = item.consumable ? `${item.name} (1 use)` : item.name;
         itemName.title = item.description;
         infoDiv.appendChild(itemName);
 
@@ -145,6 +150,17 @@ function renderInventory() {
                 renderCurseStatus();
             };
             actions.appendChild(equipBtn);
+        }
+
+        // Add use button for consumable items
+        if (item.consumable) {
+            const useBtn = document.createElement('button');
+            useBtn.className = 'item-btn item-btn-use';
+            useBtn.textContent = 'Use';
+            useBtn.onclick = () => {
+                useConsumableItem(itemId);
+            };
+            actions.appendChild(useBtn);
         }
 
         li.appendChild(infoDiv);
@@ -687,6 +703,115 @@ function handleClearAllSaves() {
             closeModal();
         }
     }
+}
+
+// ==========================================
+// CONSUMABLE ITEMS
+// ==========================================
+
+/**
+ * Uses a consumable item from inventory.
+ * Each consumable type has its own behavior.
+ * @param {string} itemId - The item to use
+ */
+function useConsumableItem(itemId) {
+    const item = ItemsData[itemId];
+    if (!item || !item.consumable) return;
+
+    if (itemId === 'potionOfCleansing') {
+        usePotionOfCleansing(itemId);
+    } else {
+        console.warn(`No use handler for consumable: ${itemId}`);
+    }
+}
+
+/**
+ * Uses the Potion of Cleansing to remove one active curse.
+ * @param {string} itemId - The potion item ID
+ */
+function usePotionOfCleansing(itemId) {
+    const activeCurseTypes = Object.keys(GameState.activeCurses);
+
+    if (activeCurseTypes.length === 0) {
+        // No curses — potion fizzles but is NOT consumed
+        const storyArea = document.getElementById('story-text');
+        const notice = document.createElement('div');
+        notice.className = 'item-protection-announcement';
+        notice.innerHTML = `<strong>✦ Potion of Cleansing</strong> — You uncork the potion, but its magic finds nothing to cleanse. The silver liquid fizzles harmlessly and settles back into the vial. Best to save it for when you need it.`;
+        storyArea.appendChild(notice);
+        return;
+    }
+
+    if (activeCurseTypes.length === 1) {
+        // Only one curse — remove it automatically
+        const curseType = activeCurseTypes[0];
+        const curseData = CursesData[curseType];
+        removeCurse(curseType);
+        removeItemFromInventory(itemId);
+        renderInventory();
+        renderCurses();
+        renderCurseStatus();
+
+        const storyArea = document.getElementById('story-text');
+        const notice = document.createElement('div');
+        notice.className = 'item-protection-announcement';
+        notice.innerHTML = `<strong>✦ Potion of Cleansing</strong> — You drink the silver liquid in one gulp. It burns like cold fire, racing through your veins. The <strong>${curseData.name}</strong> writhes and shrieks as the potion's magic tears it from your body. The vial crumbles to dust in your hand. You are free.`;
+        storyArea.appendChild(notice);
+        return;
+    }
+
+    // Multiple curses — prompt the player to choose
+    showCurseChoiceModal(itemId, activeCurseTypes);
+}
+
+/**
+ * Shows a modal for choosing which curse to cleanse
+ * @param {string} itemId - The potion item ID
+ * @param {Array<string>} curseTypes - Active curse type IDs
+ */
+function showCurseChoiceModal(itemId, curseTypes) {
+    const modal = document.getElementById('modal-overlay');
+    const title = document.getElementById('modal-title');
+    const body = document.getElementById('modal-body');
+
+    title.textContent = 'Choose a Curse to Cleanse';
+
+    let html = '<p style="margin-bottom: 15px;">The potion can purge one curse. Which affliction will you cleanse?</p>';
+
+    curseTypes.forEach(curseType => {
+        const curseData = CursesData[curseType];
+        if (!curseData) return;
+        const stage = getCurseStage(curseType);
+        html += `<div class="save-slot" onclick="confirmCleanseCurse('${itemId}', '${curseType}')">`;
+        html += `<div class="save-slot-name" style="color: #cc0000;">${curseData.name}</div>`;
+        html += `<div class="save-slot-details">Stage ${stage}/4</div>`;
+        html += `</div>`;
+    });
+
+    body.innerHTML = html;
+    modal.style.display = 'flex';
+}
+
+/**
+ * Confirms and executes curse cleansing from the modal
+ * @param {string} itemId - The potion item ID
+ * @param {string} curseType - The curse type to remove
+ */
+function confirmCleanseCurse(itemId, curseType) {
+    closeModal();
+
+    const curseData = CursesData[curseType];
+    removeCurse(curseType);
+    removeItemFromInventory(itemId);
+    renderInventory();
+    renderCurses();
+    renderCurseStatus();
+
+    const storyArea = document.getElementById('story-text');
+    const notice = document.createElement('div');
+    notice.className = 'item-protection-announcement';
+    notice.innerHTML = `<strong>✦ Potion of Cleansing</strong> — You drink the silver liquid in one gulp. It burns like cold fire, racing through your veins. The <strong>${curseData.name}</strong> writhes and shrieks as the potion's magic tears it from your body. The vial crumbles to dust in your hand. You are free.`;
+    storyArea.appendChild(notice);
 }
 
 // ==========================================

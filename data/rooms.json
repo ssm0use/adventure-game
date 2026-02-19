@@ -259,6 +259,17 @@
           "visitCount": 1
         }
       }
+    ],
+    "searches": [
+      {
+        "id": "search_milkingstation",
+        "storyKey": "milkingstation_explore",
+        "items": ["potionOfCleansing"],
+        "oneTime": true,
+        "requirements": {
+          "completedEvent": "cow_encounter"
+        }
+      }
     ]
   },
   "pasture": {

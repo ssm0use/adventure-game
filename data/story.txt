@@ -112,6 +112,18 @@ You plant your feet wide and clench your fists, every muscle tensed. The spectra
 The impact of the ghost cow hits you like a wall of ice, slamming you back against the milking equipment. Metal clangs and chains rattle as you crash to the tile floor. As you struggle to rise, you feel something terrible beginning — a heaviness in your limbs, a pulling sensation in your spine. Your hands look strange, thicker somehow... But through the ringing in your ears, you hear something — a clear, pure bell tone drifting from somewhere in the barn. It cuts through the pain like a lifeline, steady and bright.
 [END]
 
+[milkingstation_explore]
+Now that the spectral cow has been dealt with, you take a closer look around the milking station. Behind a row of rusted milk pails, tucked into a gap between two stanchions, you spot a glint of silver. Reaching in carefully — minding the cobwebs and something that might be a mouse nest — your fingers close around a small glass vial. The liquid inside swirls on its own, a luminous silver that casts faint dancing light across the grimy tiles. Someone hid this here on purpose. A faded label reads: "For Cleansing — One Dose Only. Do Not Waste."
+[END]
+
+[milkingstation_return]
+The milking station is quiet now. The spectral hoofprints have faded and the machines stand still, monuments to an era when this place bustled with honest work.
+[END]
+
+[milkingstation_return_cleared]
+The milking station holds no more secrets. The equipment stands silent, all its ghostly visitors departed.
+[END]
+
 [pasture_entrance]
 The pasture stretches before you, a wide expanse of overgrown grass swaying in a wind you can't quite feel. In the center stands a scarecrow, its burlap face expressionless, arms spread wide on a wooden cross. Something about it makes your skin crawl - the way it seems to track your movement, the way shadows cling to it even in full daylight. Off to one side, the grass grows in a strange perfect circle, darker and lusher than the rest, as though fed by something beneath the soil.
 [END]

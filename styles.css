@@ -297,6 +297,14 @@ body {
     background: #6b5638;
 }
 
+.item-btn-use {
+    background: #4a7a6a;
+}
+
+.item-btn-use:hover {
+    background: #3a6a5a;
+}
+
 .empty-state {
     color: #888;
     font-style: italic;

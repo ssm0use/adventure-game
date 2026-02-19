@@ -296,5 +296,14 @@
     "equipSlot": "backpack",
     "canEquip": false,
     "canUse": false
+  },
+  "potionOfCleansing": {
+    "id": "potionOfCleansing",
+    "name": "Potion of Cleansing",
+    "description": "A small glass vial filled with swirling silver liquid. It glows faintly and hums with purifying energy. One sip should be enough to purge a single curse.",
+    "type": "consumable",
+    "consumable": true,
+    "canEquip": false,
+    "canUse": true
   }
 }
