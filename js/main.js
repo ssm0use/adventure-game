@@ -89,6 +89,9 @@ async function initializeGame() {
     // Initialize audio system
     initAudio();
 
+    // Initialize game settings panel
+    initGameSettings();
+
     // Start a new game (shows Load button if saves exist)
     startNewGame();
 }
@@ -126,6 +129,7 @@ function startNewGame() {
     displayStoryText('game_intro');
     clearChoices();
     renderAllUI();
+    syncDifficultyUI();
     showBonusPointUI();
 
     // Add continue button - disabled until bonus point assigned

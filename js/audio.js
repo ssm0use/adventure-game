@@ -100,7 +100,7 @@ function toggleMute() {
 function updateAudioToggleUI() {
     const toggleBtn = document.getElementById('audio-toggle');
     if (!toggleBtn) return;
-    toggleBtn.textContent = isMuted ? '\u{1F507}' : '\u{1F50A}';
+    toggleBtn.textContent = isMuted ? '\u{1F507} Off' : '\u{1F50A} On';
     toggleBtn.title = isMuted ? 'Turn music on' : 'Turn music off';
 }
 

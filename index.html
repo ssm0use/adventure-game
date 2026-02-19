@@ -7,14 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=16">
+    <link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
     <div id="game-container">
         <!-- Header -->
         <header id="game-header">
             <h1>🏚️ CURSED FARM ADVENTURE</h1>
-            <button id="audio-toggle" title="Turn music on">🔇</button>
         </header>
 
         <div id="game-main">
@@ -94,6 +93,47 @@
                     <button id="load-btn" class="action-btn">Load Game</button>
                     <button id="new-game-btn" class="action-btn">New Game</button>
                 </div>
+
+                <!-- Game Settings (collapsible) -->
+                <div id="game-settings-section">
+                    <div id="game-settings-header">
+                        <span>Game Settings</span>
+                        <span id="game-settings-chevron" class="settings-chevron">&#9654;</span>
+                    </div>
+                    <div id="game-settings-body" class="settings-body collapsed">
+                        <!-- Sound Toggle -->
+                        <div class="settings-row">
+                            <span class="settings-label">Sound</span>
+                            <button id="audio-toggle" class="settings-toggle-btn" title="Turn music on">🔇 Off</button>
+                        </div>
+
+                        <!-- Story Text Size -->
+                        <div class="settings-row">
+                            <span class="settings-label">Story Text Size</span>
+                            <div class="settings-size-controls">
+                                <button id="font-size-decrease" class="settings-size-btn" title="Decrease text size">−</button>
+                                <span id="font-size-label">Default</span>
+                                <button id="font-size-increase" class="settings-size-btn" title="Increase text size">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Difficulty Selector -->
+                        <div class="settings-row settings-row-vertical">
+                            <span class="settings-label">Difficulty</span>
+                            <div class="settings-difficulty">
+                                <label class="difficulty-option">
+                                    <input type="radio" name="difficulty" value="story"> Story Mode
+                                </label>
+                                <label class="difficulty-option">
+                                    <input type="radio" name="difficulty" value="default" checked> Default
+                                </label>
+                                <label class="difficulty-option">
+                                    <input type="radio" name="difficulty" value="hard"> Hard
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </aside>
 
             <!-- Main Story Area -->
@@ -146,12 +186,12 @@
     </div>
 
     <!-- Load all JavaScript modules -->
-    <script src="js/story-loader.js?v=16"></script>
-    <script src="js/game-state.js?v=16"></script>
-    <script src="js/encounters.js?v=16"></script>
-    <script src="js/save-load.js?v=16"></script>
-    <script src="js/audio.js?v=16"></script>
-    <script src="js/ui.js?v=16"></script>
-    <script src="js/main.js?v=16"></script>
+    <script src="js/story-loader.js?v=17"></script>
+    <script src="js/game-state.js?v=17"></script>
+    <script src="js/encounters.js?v=17"></script>
+    <script src="js/save-load.js?v=17"></script>
+    <script src="js/audio.js?v=17"></script>
+    <script src="js/ui.js?v=17"></script>
+    <script src="js/main.js?v=17"></script>
 </body>
 </html>

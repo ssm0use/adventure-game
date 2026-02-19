@@ -657,6 +657,7 @@ function handleLoadFromSlot(slotNumber) {
             closeModal();
             // Re-render everything
             renderAllUI();
+            syncDifficultyUI();
             // Navigate to current room
             enterRoom(GameState.currentRoom);
         }
@@ -685,6 +686,104 @@ function handleClearAllSaves() {
             alert('All saves cleared!');
             closeModal();
         }
+    }
+}
+
+// ==========================================
+// GAME SETTINGS
+// ==========================================
+
+const FONT_SIZE_STEPS = [
+    { label: 'Small',   value: '0.95em' },
+    { label: 'Default', value: '1.1em'  },
+    { label: 'Large',   value: '1.25em' },
+    { label: 'XL',      value: '1.4em'  }
+];
+
+let currentFontSizeIndex = 1; // Default
+
+/**
+ * Initializes the Game Settings panel interactions
+ */
+function initGameSettings() {
+    // Collapsible header toggle
+    const header = document.getElementById('game-settings-header');
+    const body = document.getElementById('game-settings-body');
+    const chevron = document.getElementById('game-settings-chevron');
+
+    if (header) {
+        header.addEventListener('click', () => {
+            body.classList.toggle('collapsed');
+            chevron.classList.toggle('open');
+        });
+    }
+
+    // Font size controls
+    const decreaseBtn = document.getElementById('font-size-decrease');
+    const increaseBtn = document.getElementById('font-size-increase');
+
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', () => {
+            if (currentFontSizeIndex > 0) {
+                currentFontSizeIndex--;
+                applyFontSize();
+            }
+        });
+    }
+
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', () => {
+            if (currentFontSizeIndex < FONT_SIZE_STEPS.length - 1) {
+                currentFontSizeIndex++;
+                applyFontSize();
+            }
+        });
+    }
+
+    // Difficulty selector
+    const difficultyRadios = document.querySelectorAll('input[name="difficulty"]');
+    difficultyRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            GameState.difficulty = e.target.value;
+            console.log('Difficulty set to:', GameState.difficulty);
+        });
+    });
+
+    applyFontSize();
+}
+
+/**
+ * Applies the current font size step to story text
+ */
+function applyFontSize() {
+    const storyText = document.getElementById('story-text');
+    const label = document.getElementById('font-size-label');
+    const decreaseBtn = document.getElementById('font-size-decrease');
+    const increaseBtn = document.getElementById('font-size-increase');
+
+    const step = FONT_SIZE_STEPS[currentFontSizeIndex];
+
+    if (storyText) {
+        storyText.style.fontSize = step.value;
+    }
+    if (label) {
+        label.textContent = step.label;
+    }
+    if (decreaseBtn) {
+        decreaseBtn.disabled = currentFontSizeIndex <= 0;
+    }
+    if (increaseBtn) {
+        increaseBtn.disabled = currentFontSizeIndex >= FONT_SIZE_STEPS.length - 1;
+    }
+}
+
+/**
+ * Syncs the difficulty radio buttons to match GameState.difficulty
+ */
+function syncDifficultyUI() {
+    const radio = document.querySelector(`input[name="difficulty"][value="${GameState.difficulty}"]`);
+    if (radio) {
+        radio.checked = true;
     }
 }
 

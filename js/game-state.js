@@ -95,7 +95,10 @@ const GameState = {
     searchAttempts: {},
 
     // Bonus point assigned flag
-    bonusPointAssigned: false
+    bonusPointAssigned: false,
+
+    // Difficulty mode: 'story', 'default', or 'hard'
+    difficulty: 'default'
 };
 
 // Data loaded from JSON files
@@ -150,6 +153,7 @@ function initializeNewGame() {
     GameState.roomTransitions = 0;
     GameState.gameStatus = 'playing';
     GameState.bonusPointAssigned = false;
+    GameState.difficulty = 'default';
 
     // Randomly assign stats (2-5 stars each)
     // Total of 3 stats, each gets a random value between 2 and 5
