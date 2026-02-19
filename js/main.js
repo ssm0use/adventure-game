@@ -702,6 +702,8 @@ function executeEncounterRoll(event) {
             addItemToInventory(itemId);
         });
         renderInventory();
+        renderCurses();
+        renderCurseStatus();
 
         // Announce discovered items in the story area
         const storyArea = document.getElementById('story-text');
@@ -712,6 +714,13 @@ function executeEncounterRoll(event) {
                 rewardDiv.className = 'item-reward-announcement';
                 rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
                 storyArea.appendChild(rewardDiv);
+
+                if (item.type === 'cursed') {
+                    const warningDiv = document.createElement('div');
+                    warningDiv.className = 'curse-applied-warning';
+                    warningDiv.innerHTML = `<span class="story-warning">You were compelled to pick up a cursed item and are now cursed.</span>`;
+                    storyArea.appendChild(warningDiv);
+                }
             }
         });
     }
@@ -764,6 +773,31 @@ function performSearchAction(roomId, searches) {
 
     // Track which items have been taken this search
     const itemsTakenThisSearch = new Set();
+
+    // Auto-add any cursed items immediately — the player is compelled to take them
+    if (search.items && search.items.length > 0) {
+        search.items.forEach(itemId => {
+            const item = ItemsData[itemId];
+            if (item && item.type === 'cursed') {
+                addItemToInventory(itemId);
+                itemsTakenThisSearch.add(itemId);
+                renderInventory();
+                renderCurses();
+                renderCurseStatus();
+
+                const storyArea = document.getElementById('story-text');
+                const rewardDiv = document.createElement('div');
+                rewardDiv.className = 'item-reward-announcement';
+                rewardDiv.innerHTML = `<strong>✦ Discovered: ${item.name}</strong> — ${item.description}`;
+                storyArea.appendChild(rewardDiv);
+
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'curse-applied-warning';
+                warningDiv.innerHTML = `<span class="story-warning">You were compelled to pick up a cursed item and are now cursed.</span>`;
+                storyArea.appendChild(warningDiv);
+            }
+        });
+    }
 
     function renderSearchChoices() {
         clearChoices();
