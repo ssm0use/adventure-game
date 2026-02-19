@@ -501,6 +501,17 @@ body {
 
 /* Story paragraph text - no drop cap to keep letters together */
 
+/* Story text inline styling helpers */
+.story-warning {
+    color: #8b0000;
+    font-weight: bold;
+}
+
+.story-highlight {
+    color: #d4af37;
+    font-weight: bold;
+}
+
 /* Area Explored Indicator */
 .area-explored-indicator {
     margin-top: 20px;
