@@ -29,7 +29,15 @@
         "storyKey": "farmhouse_farmer_ghost_reaction",
         "oneTime": true,
         "requirements": {
-          "hasItem": "silkNeckerchief"
+          "hasFlag": "defeatedFarmhouseGhost"
+        }
+      },
+      {
+        "id": "ghost_friendly",
+        "trigger": "firstVisit",
+        "storyKey": "farmhouse_ghost_friendly",
+        "requirements": {
+          "hasFlag": "defeatedFarmhouseGhost"
         }
       },
       {
@@ -45,6 +53,7 @@
           "successStory": "farmhouse_ghost_success",
           "failureStory": "farmhouse_ghost_failure",
           "successEffect": {
+            "flag": "defeatedFarmhouseGhost",
             "items": ["silkNeckerchief"]
           },
           "failureEffect": {
@@ -53,7 +62,7 @@
         },
         "requirements": {
           "completedEvent": "search_farmhouse",
-          "missingItem": "silkNeckerchief"
+          "missingFlag": "defeatedFarmhouseGhost"
         }
       },
       {
@@ -68,6 +77,7 @@
           "successStory": "farmhouse_ghost_success",
           "failureStory": "farmhouse_ghost_failure_retry",
           "successEffect": {
+            "flag": "defeatedFarmhouseGhost",
             "items": ["silkNeckerchief"]
           },
           "failureEffect": {
@@ -76,7 +86,7 @@
         },
         "requirements": {
           "completedEvent": "ghost_encounter",
-          "missingItem": "silkNeckerchief"
+          "missingFlag": "defeatedFarmhouseGhost"
         }
       }
     ],

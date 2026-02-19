@@ -363,7 +363,11 @@ You poke around the farmhouse, opening cupboards and peering behind furniture. I
 [END]
 
 [farmhouse_farmer_ghost_reaction]
-Farmer Miller nearly drops his coffee when you tell him what happened. "You freed her? The ghost in the mirror?" He sits down heavily, running a hand through his thinning hair. "That spirit has haunted this house since before I was born. My grandmother used to say she was a young woman who got trapped by the curse long ago - maybe one of the hired girls from the old days, or..." He pauses, glancing at the family portraits. "Or maybe someone closer to the family than we ever knew. A.M. - those initials on that neckerchief. Could be an Abigail Miller. There's been more than a few of those in this family." He shakes his head in wonder. "Well, the house already feels warmer. Thank you for that. Now, about that journal - any luck finding it yet?"
+Farmer Miller nearly drops his coffee when you tell him what happened. "You freed her? The ghost in the mirror?" He sits down heavily, running a hand through his thinning hair. "That spirit has haunted this house since before I was born. My grandmother used to say she was a young woman who got trapped by the curse long ago — maybe one of the hired girls from the old days, or..." He pauses, glancing at the family portraits. "Or maybe someone closer to the family than we ever knew. There's been more than a few lost souls on this land." He shakes his head in wonder. "Well, the house already feels warmer. Thank you for that. Now, about that journal — any luck finding it yet?"
+[END]
+
+[farmhouse_ghost_friendly]
+As you step into the back hallway, the air shimmers faintly — not with cold, but with a gentle warmth. The translucent figure of the young woman appears near the window, her expression peaceful now. She looks at you and nods slowly, a faint smile on her lips. No words, but the meaning is clear: she's rooting for you. Her gaze drifts toward the fields beyond the glass, toward Miller's Dairy Farm and the curse that still grips it. Then she fades, leaving behind only the faint scent of lavender and a feeling that you're not alone in this fight.
 [END]
 
 [farmhouse_return]

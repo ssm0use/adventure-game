@@ -182,6 +182,11 @@ function checkEventRequirements(event) {
         return false;
     }
 
+    // Check if player must NOT have a specific flag
+    if (req.missingFlag && hasFlag(req.missingFlag)) {
+        return false;
+    }
+
     // Check if a specific event must have been completed
     if (req.completedEvent && !isEventCompleted(req.completedEvent)) {
         return false;
