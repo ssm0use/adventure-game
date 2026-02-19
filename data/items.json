@@ -9,8 +9,8 @@
   },
   "ancestorJournal": {
     "id": "ancestorJournal",
-    "name": "Ancestor's Journal",
-    "description": "A leather-bound journal from 1897 belonging to Ezekiel Miller. It details the origin of the curse and hints at how to break it.",
+    "name": "Ezekiel's Journal",
+    "description": "A leather-bound journal from 1897, penned by Ezekiel Miller himself. It details the origin of the curse and hints at how to break it.",
     "type": "quest",
     "equipSlot": "backpack",
     "canEquip": false,

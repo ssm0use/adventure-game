@@ -52,7 +52,8 @@
           }
         },
         "requirements": {
-          "completedEvent": "search_farmhouse"
+          "completedEvent": "search_farmhouse",
+          "missingItem": "silkNeckerchief"
         }
       },
       {

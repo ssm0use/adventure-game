@@ -18,7 +18,7 @@
  *   spider   → spidersilkBracelet (Spidersilk Bracelet)     — found in Silo Basement search
  *
  * ENCOUNTER → REWARD MAPPING:
- *   Farmhouse ghost     → silkNeckerchief  (+1 Charm)
+ *   Farmhouse ghost     → silkNeckerchief   (+1 Charm)
  *   Milking station cow → workGloves       (+1 Grit)
  *   Pasture scarecrow   → sturdyOveralls   (+1 Grit)
  *   Bee hives           → luckyHorseshoe   (+1 Keen Eye)
